@@ -7,7 +7,7 @@ delim [" "\n\t]
 whitespace {delim}+
 words {chars}+
 %%
-{words} { wordCount++; /*increase the word count by one*/ }
+{words} { wordCount++; printf("%s\n", yytext); /*increase the word count by one*/ }
 {whitespace} { /* donothing*/ }
 {numbers} { /* one maywant to add some processing here*/ }
 %%
