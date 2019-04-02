@@ -3,15 +3,25 @@
     #include <string.h>
     #define MAXLENGTH 30
     #define MAXSIZE 1000
-    #define FULLSTOP "full_stop"
-    #define SPECIALSUBJS "special_subj"
-    #define NORMALSUBJS "normal_subj"
-    #define VERBS "verb"
-    #define PREPOS "prepos"
-    #define QUALIFIERS "qualifier"
-    #define AUXILIARY_VERB_E "auxiliary_verb_e"
+    // #define FULLSTOP "full_stop"
+    // #define SPECIALSUBJS "special_subj"
+    // #define NORMALSUBJS "normal_subj"
+    // #define VERBS "verb"
+    // #define PREPOS "prepos"
+    // #define QUALIFIERS "qualifier"
+    // #define AUXILIARY_VERB "auxiliary_verb"
+    
+    enum WordType{
+        FULLSTOP,
+        SPECIALSUBJS,
+        NORMALSUBJS,
+        VERBS,
+        PREPOS,
+        QUALIFIERS,
+        AUXILIARY_VERB
+    };
 
-    void printPairs(const char *, const char *);
+    void printPairs(const char *, int);
 
     // typedef struct WordElement{
     //     char word[MAXLENGTH];
@@ -20,7 +30,7 @@
 %}
 chars [A-za-z\_\'\.\"]
 notwords {chars}+
-names (jan \"notwords\")
+names "jan 'notwords'"
 blank [" "\n\t]
 whitespace {blank}+
 full_stop [\.]
@@ -29,7 +39,7 @@ normalsubjs names|akesi|ala|ale|ali|ante|ijo|ike|ilo|insa|jaki|jan|jo|kala|kalam
 verbs anpa|ante|awen|ijo|ike|jaki|jan|jo|kalama|kama|ken|kepeken|kule|lape|lawa|lete|lili|lon|lukin|moku|moli|musi|mute|nasa|olin|open|pakala|pali|pana|pilin|pimeja|pini|poka|pona|seli|sin|sitelen|sona|suli|suwi|tawa|telo|toki|tomo|tu|unpa|utala|wan|wawa|weka|wile
 prepos kepeken|lon|poka|sama|tan|tawa
 qualifiers ala|ale|ali|ante|awen|ijo|ike|insa|jaki|jan|jelo|kalama|kama|kin|kiwen|kule|kute|kulupu|laso|lape|lawa|lete|lili|loje|lukin|mama|meli|mi|mije|moku|moli|monsi|mun|musi|mute|nasa|ni|olin|ona|pakala|pali|pimeja|pini|poka|pona|sama|seli|seme|sewi|sike|sin|sina|suli|suwi|taso|tawa|telo|toki|tomo|tu|unpa|uta|walo|wan|wawa|weka|wike
-auxiliary_verb_e (e)
+auxiliary_verb e|li
 %%
 {whitespace} { ;/* do nothing*/ }
 {full_stop} { printPairs(yytext, FULLSTOP); }
@@ -38,7 +48,7 @@ auxiliary_verb_e (e)
 {verbs} { printPairs(yytext, VERBS); }
 {prepos} { printPairs(yytext, PREPOS); }
 {qualifiers} { printPairs(yytext, QUALIFIERS); }
-{auxiliary_verb_e} { printPairs(yytext, AUXILIARY_VERB_E); }
+{auxiliary_verb} { printPairs(yytext, AUXILIARY_VERB); }
 %%
 void main()
 {
@@ -48,7 +58,7 @@ int yywrap()
 {
 	return 1;
 }
-void printPairs(const char *str, const char *typeMark)
+void printPairs(const char *str, int wordCode)
 {
-    printf("%s  %s\n", str, typeMark);
+    printf("%s  %d\n", str, wordCode);
 }

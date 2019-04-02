@@ -289,7 +289,7 @@ static yyconst short int yy_accept[195] =
         0,    0,   10,    9,    1,    2,    9,    8,    9,    9,
         9,    9,    9,    9,    9,    9,    9,    9,    9,    9,
         1,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-        0,    4,    0,    0,    0,    0,    0,    0,    0,    0,
+        0,    4,    0,    0,    0,    0,    0,    0,    8,    0,
         0,    4,    0,    3,    0,    0,    0,    0,    4,    0,
         0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
         0,    0,    0,    0,    0,    4,    0,    0,    0,    0,
@@ -494,21 +494,31 @@ char *yytext;
     #include <string.h>
     #define MAXLENGTH 30
     #define MAXSIZE 1000
-    #define FULLSTOP "full_stop"
-    #define SPECIALSUBJS "special_subj"
-    #define NORMALSUBJS "normal_subj"
-    #define VERBS "verb"
-    #define PREPOS "prepos"
-    #define QUALIFIERS "qualifier"
-    #define AUXILIARY_VERB_E "auxiliary_verb_e"
+    // #define FULLSTOP "full_stop"
+    // #define SPECIALSUBJS "special_subj"
+    // #define NORMALSUBJS "normal_subj"
+    // #define VERBS "verb"
+    // #define PREPOS "prepos"
+    // #define QUALIFIERS "qualifier"
+    // #define AUXILIARY_VERB "auxiliary_verb"
+    
+    enum WordType{
+        FULLSTOP,
+        SPECIALSUBJS,
+        NORMALSUBJS,
+        VERBS,
+        PREPOS,
+        QUALIFIERS,
+        AUXILIARY_VERB
+    };
 
-    void printPairs(const char *, const char *);
+    void printPairs(const char *, int);
 
     // typedef struct WordElement{
     //     char word[MAXLENGTH];
     //     char prop[MAXLENGTH];
     // } WElemt;
-#line 512 "lex.yy.c"
+#line 522 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -659,9 +669,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 33 ".\\toki_pona.l"
+#line 43 ".\\toki_pona.l"
 
-#line 665 "lex.yy.c"
+#line 675 "lex.yy.c"
 
 	if ( yy_init )
 		{
@@ -746,50 +756,50 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 34 ".\\toki_pona.l"
+#line 44 ".\\toki_pona.l"
 { ;/* do nothing*/ }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 35 ".\\toki_pona.l"
+#line 45 ".\\toki_pona.l"
 { printPairs(yytext, FULLSTOP); }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 36 ".\\toki_pona.l"
+#line 46 ".\\toki_pona.l"
 { printPairs(yytext, SPECIALSUBJS); }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 37 ".\\toki_pona.l"
+#line 47 ".\\toki_pona.l"
 { printPairs(yytext, NORMALSUBJS); }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 38 ".\\toki_pona.l"
+#line 48 ".\\toki_pona.l"
 { printPairs(yytext, VERBS); }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 39 ".\\toki_pona.l"
+#line 49 ".\\toki_pona.l"
 { printPairs(yytext, PREPOS); }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 40 ".\\toki_pona.l"
+#line 50 ".\\toki_pona.l"
 { printPairs(yytext, QUALIFIERS); }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 41 ".\\toki_pona.l"
-{ printPairs(yytext, AUXILIARY_VERB_E); }
+#line 51 ".\\toki_pona.l"
+{ printPairs(yytext, AUXILIARY_VERB); }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 42 ".\\toki_pona.l"
+#line 52 ".\\toki_pona.l"
 ECHO;
 	YY_BREAK
-#line 793 "lex.yy.c"
+#line 803 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1675,7 +1685,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 42 ".\\toki_pona.l"
+#line 52 ".\\toki_pona.l"
 
 void main()
 {
@@ -1685,7 +1695,7 @@ int yywrap()
 {
 	return 1;
 }
-void printPairs(const char *str, const char *typeMark)
+void printPairs(const char *str, int wordCode)
 {
-    printf("%s  %s\n", str, typeMark);
+    printf("%s  %d\n", str, wordCode);
 }
