@@ -492,6 +492,7 @@ char *yytext;
 #line 2 ".\\toki_pona.l"
     #include <stdio.h>
     #include <string.h>
+    #include "y.tab.h"
     #define MAXLENGTH 30
     #define MAXSIZE 1000
     // #define FULLSTOP "full_stop"
@@ -502,15 +503,15 @@ char *yytext;
     // #define QUALIFIERS "qualifier"
     // #define AUXILIARY_VERB "auxiliary_verb"
     
-    enum WordType{
-        FULLSTOP,
-        SPECIALSUBJS,
-        NORMALSUBJS,
-        VERBS,
-        PREPOS,
-        QUALIFIERS,
-        AUXILIARY_VERB
-    };
+    // enum WordType{
+    //     FULLSTOP,
+    //     SPECIALSUBJS,
+    //     NORMALSUBJS,
+    //     VERBS,
+    //     PREPOS,
+    //     QUALIFIERS,
+    //     AUXILIARY_VERB
+    // };
 
     void printPairs(const char *, int);
 
@@ -518,7 +519,7 @@ char *yytext;
     //     char word[MAXLENGTH];
     //     char prop[MAXLENGTH];
     // } WElemt;
-#line 522 "lex.yy.c"
+#line 523 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -669,9 +670,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 43 ".\\toki_pona.l"
+#line 44 ".\\toki_pona.l"
 
-#line 675 "lex.yy.c"
+#line 676 "lex.yy.c"
 
 	if ( yy_init )
 		{
@@ -756,50 +757,50 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 44 ".\\toki_pona.l"
+#line 45 ".\\toki_pona.l"
 { ;/* do nothing*/ }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 45 ".\\toki_pona.l"
+#line 46 ".\\toki_pona.l"
 { printPairs(yytext, FULLSTOP); }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 46 ".\\toki_pona.l"
+#line 47 ".\\toki_pona.l"
 { printPairs(yytext, SPECIALSUBJS); }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 47 ".\\toki_pona.l"
+#line 48 ".\\toki_pona.l"
 { printPairs(yytext, NORMALSUBJS); }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 48 ".\\toki_pona.l"
+#line 49 ".\\toki_pona.l"
 { printPairs(yytext, VERBS); }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 49 ".\\toki_pona.l"
+#line 50 ".\\toki_pona.l"
 { printPairs(yytext, PREPOS); }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 50 ".\\toki_pona.l"
+#line 51 ".\\toki_pona.l"
 { printPairs(yytext, QUALIFIERS); }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 51 ".\\toki_pona.l"
+#line 52 ".\\toki_pona.l"
 { printPairs(yytext, AUXILIARY_VERB); }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 52 ".\\toki_pona.l"
+#line 53 ".\\toki_pona.l"
 ECHO;
 	YY_BREAK
-#line 803 "lex.yy.c"
+#line 804 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1685,7 +1686,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 52 ".\\toki_pona.l"
+#line 53 ".\\toki_pona.l"
 
 void main()
 {

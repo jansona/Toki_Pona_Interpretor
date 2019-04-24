@@ -1,6 +1,7 @@
 %{
     #include <stdio.h>
     #include <string.h>
+    #include "y.tab.h"
     #define MAXLENGTH 30
     #define MAXSIZE 1000
     // #define FULLSTOP "full_stop"
@@ -11,15 +12,15 @@
     // #define QUALIFIERS "qualifier"
     // #define AUXILIARY_VERB "auxiliary_verb"
     
-    enum WordType{
-        FULLSTOP,
-        SPECIALSUBJS,
-        NORMALSUBJS,
-        VERBS,
-        PREPOS,
-        QUALIFIERS,
-        AUXILIARY_VERB
-    };
+    // enum WordType{
+    //     FULLSTOP,
+    //     SPECIALSUBJS,
+    //     NORMALSUBJS,
+    //     VERBS,
+    //     PREPOS,
+    //     QUALIFIERS,
+    //     AUXILIARY_VERB
+    // };
 
     void printPairs(const char *, int);
 
@@ -42,8 +43,8 @@ qualifiers ala|ale|ali|ante|awen|ijo|ike|insa|jaki|jan|jelo|kalama|kama|kin|kiwe
 auxiliary_verb e|li
 %%
 {whitespace} { ;/* do nothing*/ }
-{full_stop} { printPairs(yytext, FULLSTOP); }
-{specialsubjs} { printPairs(yytext, SPECIALSUBJS); }
+{full_stop} { printPairs(yytext, FULLSTOP); return FULLSTOP;}
+{specialsubjs} { printPairs(yytext, SPECIALSUBJS); return SPECIALSUBJS;}
 {normalsubjs} { printPairs(yytext, NORMALSUBJS); }
 {verbs} { printPairs(yytext, VERBS); }
 {prepos} { printPairs(yytext, PREPOS); }
