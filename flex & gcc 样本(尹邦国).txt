@@ -1,1 +1,4 @@
-flex .\toki_pona.l;gcc .\lex.yy.c -L "C:\Program Files (x86)\GnuWin32\lib" -lfl
+flex .\toki_pona.l;gcc .\lex.yy.c -L "C:\GnuWin32\lib" -lfl
+
+https://nchc.dl.sourceforge.net/project/gnuwin32/bison/2.4.1/bison-2.4.1-setup.exe
+https://nchc.dl.sourceforge.net/project/gnuwin32/flex/2.5.4a-1/flex-2.5.4a-1.exe
