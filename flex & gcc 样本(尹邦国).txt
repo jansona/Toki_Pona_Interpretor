@@ -2,3 +2,15 @@ flex .\toki_pona.l;gcc .\lex.yy.c -L "C:\GnuWin32\lib" -lfl
 
 https://nchc.dl.sourceforge.net/project/gnuwin32/bison/2.4.1/bison-2.4.1-setup.exe
 https://nchc.dl.sourceforge.net/project/gnuwin32/flex/2.5.4a-1/flex-2.5.4a-1.exe
+
+
+流程：
+1. 写XXX.y
+2. bison -d XXX.y
+(生成XXX.tab.h, XXX.tab.c)
+3. 写XXX.l
+(注意引用XXX.tab.h)
+4. flex XXX.l
+(生成lex.yy.c)
+5. gcc -o XXX.exe lex.yy.c XXX.tab.c -lfl
+
