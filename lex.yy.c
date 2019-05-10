@@ -282,13 +282,41 @@ static void yy_fatal_error YY_PROTO(( yyconst char msg[] ));
 	*yy_cp = '\0'; \
 	yy_c_buf_p = yy_cp;
 
-#define YY_NUM_RULES 7
-#define YY_END_OF_BUFFER 8
-static yyconst short int yy_accept[23] =
+#define YY_NUM_RULES 117
+#define YY_END_OF_BUFFER 118
+static yyconst short int yy_accept[284] =
     {   0,
-        0,    0,    8,    7,    1,    7,    5,    7,    7,    7,
-        1,    0,    2,    0,    0,    0,    0,    0,    4,    6,
-        3,    0
+        0,    0,  118,  117,    1,  117,  116,  117,  117,  117,
+      117,  117,  117,  113,  117,  117,  117,  117,  117,    1,
+        0,    0,    0,    0,  115,    0,    0,    0,    0,    0,
+        0,   37,    0,    0,    0,    0,  112,    0,  111,    0,
+        0,   92,    0,   33,    0,    0,    0,    0,   94,    0,
+        0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+        0,    0,    0,    0,    0,   46,    0,    0,    0,    0,
+        0,    0,   99,  106,   25,    0,    0,  114,    0,   15,
+       81,    2,    0,    0,   68,    0,    0,    0,    0,   58,
+        0,    0,   14,    0,    0,    0,    0,    0,    0,   31,
+
+        0,    0,    0,    0,    0,   84,    0,    0,    0,    0,
+        0,    0,    0,    0,    0,   16,    0,    0,    0,    0,
+        0,    0,    0,   45,    0,   27,    0,    0,    0,    0,
+        0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+        0,    0,   28,    0,    0,    0,    0,    0,    0,    0,
+       72,    0,    0,    0,    0,    0,    0,    0,   24,    0,
+       40,    0,    0,    0,    0,    0,    0,  108,    6,   36,
+       50,   59,   52,   51,   74,   34,    0,   42,    0,   21,
+        0,   88,   12,   79,   77,   82,   11,    0,    4,   61,
+      103,    0,   23,   95,   67,   60,   96,   76,   83,    0,
+
+       35,   64,    0,   38,    0,   39,   55,   75,    5,  101,
+        0,   17,   56,    0,    0,   13,   63,  102,   90,   54,
+      104,   18,   43,   91,  107,    0,   48,   49,    0,    0,
+       44,    0,  105,   89,   85,  110,   57,   69,   78,    0,
+       66,   87,    8,    0,   97,    7,  109,   80,   65,   22,
+       73,    0,    0,  100,    0,   19,   71,   30,   98,   86,
+        0,    0,   53,    0,    0,    0,    0,    0,   10,   29,
+       47,    0,   26,   20,    3,   41,    9,   62,    0,   93,
+       70,   32,    0
     } ;
 
 static yyconst int yy_ec[256] =
@@ -304,8 +332,8 @@ static yyconst int yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    3,    1,    1,    1,
 
-        4,    1,    1,    1,    5,    1,    1,    6,    7,    8,
-        9,    1,    1,    1,   10,   11,    1,    1,    1,    1,
+        4,    1,    1,    1,    5,    6,    7,    8,    9,   10,
+       11,   12,    1,    1,   13,   14,   15,    1,   16,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -323,40 +351,154 @@ static yyconst int yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static yyconst int yy_meta[12] =
+static yyconst int yy_meta[17] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1
+        1,    1,    1,    1,    1,    1
     } ;
 
-static yyconst short int yy_base[23] =
+static yyconst short int yy_base[284] =
     {   0,
-        0,    0,   24,   25,   21,   14,   25,   16,   14,   14,
-       16,    6,   25,   11,    7,   10,    5,    9,   25,   25,
-       25,   25
+        0,    0,  281,  282,  278,   10,  269,   21,   29,   38,
+       51,   64,   77,   82,   92,  101,  114,    9,  127,  276,
+      273,  130,  124,  272,  282,  264,  270,  262,  259,   14,
+      263,  282,  132,   24,  138,   30,  143,   25,  152,   39,
+       18,   37,  262,  263,  158,  159,   38,  258,  258,  259,
+      254,  259,  260,  258,  167,  170,   50,  252,  175,  186,
+       42,  193,  200,   51,   56,  282,  248,  256,  209,  251,
+       63,  244,  282,  282,  282,  253,  251,  282,  244,  282,
+      282,  282,  250,  247,  282,  240,  247,  246,  243,  282,
+      243,  241,  282,  241,   68,  240,  239,  231,  238,  282,
+
+      236,  234,  232,  222,  232,  282,   71,  232,  231,  228,
+      227,  227,  215,  224,  215,  282,  222,  222,  212,   81,
+      220,  216,  217,  282,  208,  282,  205,  211,  207,  208,
+      203,  203,  201,  199,   82,  199,  196,   88,  194,  192,
+      191,  190,   61,  186,  186,  184,  182,  175,  182,  176,
+      282,  165,  168,  159,  155,  158,  150,  155,  149,  142,
+      282,  141,  148,  147,  145,  143,  139,  282,  282,  282,
+      282,  282,  282,  134,  282,  282,  135,  282,  127,  282,
+      116,  282,  282,  282,  282,  282,  282,  124,  282,  282,
+      282,  116,  282,  282,  282,  282,  282,  282,  282,  119,
+
+      282,  282,  120,  282,  112,  282,  282,  282,  282,  282,
+      113,  107,  282,  109,  109,  282,  282,  282,  282,  282,
+      282,  282,  282,  282,  282,  106,  282,  282,  108,  103,
+      282,  102,  282,  282,  282,  282,  282,  282,  282,   98,
+      282,  282,  282,  105,  282,  282,  282,  282,  282,  282,
+      282,  104,   98,  282,   86,  282,  282,  282,  282,  282,
+       97,   95,  282,   93,   80,   68,   73,   45,  282,  282,
+      282,   27,  282,  282,  282,  282,  282,  282,   12,  282,
+      282,  282,  282
     } ;
 
-static yyconst short int yy_def[23] =
+static yyconst short int yy_def[284] =
     {   0,
-       22,    1,   22,   22,   22,   22,   22,   22,   22,   22,
-       22,   22,   22,   22,   22,   22,   22,   22,   22,   22,
-       22,    0
+      283,    1,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,    0
     } ;
 
-static yyconst short int yy_nxt[37] =
+static yyconst short int yy_nxt[299] =
     {   0,
-        4,    5,    6,    7,    4,    4,    8,    4,    9,   10,
-        4,   21,   20,   19,   18,   17,   16,   11,   15,   14,
-       13,   12,   11,   22,    3,   22,   22,   22,   22,   22,
-       22,   22,   22,   22,   22,   22
+        4,    5,    6,    7,    8,    9,   10,   11,   12,   13,
+       14,   15,   16,   17,   18,   19,   21,   22,   67,   23,
+       84,  282,   68,   85,  107,   24,   26,   27,   28,  108,
+       29,   30,   31,   90,  100,   91,  281,   95,  101,   32,
+       33,   34,   35,   96,  105,  109,  110,  119,  106,  280,
+      120,  145,   36,   37,   38,   39,  135,  146,  154,  136,
+      155,   40,  156,  228,  157,   41,   42,   43,   44,  165,
+      166,  180,  229,  191,   45,  192,  279,  278,   46,   47,
+       48,   49,  181,  204,  218,  205,  219,   50,   51,   52,
+      277,   53,  222,   54,   55,  276,   56,  275,  223,  274,
+
+      273,  272,   57,   58,   59,   60,  271,  270,  269,  268,
+      267,   61,  266,  265,  264,   62,   63,   64,  263,  262,
+      261,  260,  259,  258,   65,  257,  256,  255,   66,   69,
+       70,   71,   73,   74,   75,   76,  254,   77,   78,   87,
+       88,  253,  252,  251,   89,   92,  250,   93,  249,  248,
+      247,  246,  245,   94,   97,   98,  244,  243,   99,  102,
+      242,  103,  241,  104,  113,  114,  240,  115,  116,  239,
+      238,  117,  118,  128,  129,  237,  130,  131,  132,  133,
+      236,  134,  138,  139,  235,  234,  233,  232,  231,  230,
+      140,  141,  142,  227,  226,  143,  225,  224,  221,  144,
+
+      147,  220,  148,  217,  149,  216,  215,  214,  150,  151,
+      213,  212,  152,  211,  210,  153,  160,  209,  161,  208,
+      207,  162,  206,  203,  163,  202,  201,  200,  199,  198,
+      197,  196,  195,  194,  193,  190,  189,  188,  187,  186,
+      185,  184,  183,  182,  179,  178,  177,  176,  175,  174,
+      173,  172,  171,  170,  169,  168,  167,  164,  159,  158,
+      137,  127,  126,  125,  124,  123,  122,  121,  112,  111,
+       86,   83,   82,   81,   80,   79,   72,   20,   25,   20,
+      283,    3,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283
+
     } ;
 
-static yyconst short int yy_chk[37] =
+static yyconst short int yy_chk[299] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,   18,   17,   16,   15,   14,   12,   11,   10,    9,
-        8,    6,    5,    3,   22,   22,   22,   22,   22,   22,
-       22,   22,   22,   22,   22,   22
+        1,    1,    1,    1,    1,    1,    6,    6,   18,    6,
+       30,  279,   18,   30,   41,    6,    8,    8,    8,   41,
+        8,    9,    9,   34,   38,   34,  272,   36,   38,    9,
+       10,   10,   10,   36,   40,   42,   42,   47,   40,  268,
+       47,   61,   10,   11,   11,   11,   57,   61,   64,   57,
+       64,   11,   65,  143,   65,   11,   12,   12,   12,   71,
+       71,   95,  143,  107,   12,  107,  267,  266,   12,   13,
+       13,   13,   95,  120,  135,  120,  135,   13,   14,   14,
+      265,   14,  138,   14,   15,  264,   15,  262,  138,  261,
+
+      255,  253,   15,   16,   16,   16,  252,  244,  240,  232,
+      230,   16,  229,  226,  215,   16,   17,   17,  214,  212,
+      211,  205,  203,  200,   17,  192,  188,  181,   17,   19,
+       19,   19,   22,   22,   22,   23,  179,   23,   23,   33,
+       33,  177,  174,  167,   33,   35,  166,   35,  165,  164,
+      163,  162,  160,   35,   37,   37,  159,  158,   37,   39,
+      157,   39,  156,   39,   45,   45,  155,   45,   46,  154,
+      153,   46,   46,   55,   55,  152,   55,   56,   56,   56,
+      150,   56,   59,   59,  149,  148,  147,  146,  145,  144,
+       59,   60,   60,  142,  141,   60,  140,  139,  137,   60,
+
+       62,  136,   62,  134,   62,  133,  132,  131,   62,   63,
+      130,  129,   63,  128,  127,   63,   69,  125,   69,  123,
+      122,   69,  121,  119,   69,  118,  117,  115,  114,  113,
+      112,  111,  110,  109,  108,  105,  104,  103,  102,  101,
+       99,   98,   97,   96,   94,   92,   91,   89,   88,   87,
+       86,   84,   83,   79,   77,   76,   72,   70,   68,   67,
+       58,   54,   53,   52,   51,   50,   49,   48,   44,   43,
+       31,   29,   28,   27,   26,   24,   21,   20,    7,    5,
+        3,  283,  283,  283,  283,  283,  283,  283,  283,  283,
+      283,  283,  283,  283,  283,  283,  283,  283
+
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -376,7 +518,7 @@ char *yytext;
 #include "toki_pona.tab.h"
 #include <stdio.h>
 #include <stdlib.h>
-#line 380 "lex.yy.c"
+#line 522 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -529,7 +671,7 @@ YY_DECL
 
 #line 8 ".\\toki_pona.l"
 
-#line 533 "lex.yy.c"
+#line 675 "lex.yy.c"
 
 	if ( yy_init )
 		{
@@ -580,13 +722,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 23 )
+				if ( yy_current_state >= 284 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 25 );
+		while ( yy_base[yy_current_state] != 282 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -620,34 +762,584 @@ YY_RULE_SETUP
 case 2:
 YY_RULE_SETUP
 #line 10 ".\\toki_pona.l"
-{return MI;}
+{return ILO;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
 #line 11 ".\\toki_pona.l"
-{return SINA;}
+{return PALISA;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
 #line 12 ".\\toki_pona.l"
-{return ANTE;}
+{return LIPU;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
 #line 13 ".\\toki_pona.l"
-{return E;}
+{return OLIN;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
 #line 14 ".\\toki_pona.l"
-{return OLIN;}
+{return ANTE;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 15 ".\\toki_pona.l"
+{return WASO;}
+	YY_BREAK
+case 8:
+YY_RULE_SETUP
+#line 16 ".\\toki_pona.l"
+{return UNPA;}
+	YY_BREAK
+case 9:
+YY_RULE_SETUP
+#line 17 ".\\toki_pona.l"
+{return SIJELO;}
+	YY_BREAK
+case 10:
+YY_RULE_SETUP
+#line 18 ".\\toki_pona.l"
+{return TENPO;}
+	YY_BREAK
+case 11:
+YY_RULE_SETUP
+#line 19 ".\\toki_pona.l"
+{return LILI;}
+	YY_BREAK
+case 12:
+YY_RULE_SETUP
+#line 20 ".\\toki_pona.l"
+{return LAPE;}
+	YY_BREAK
+case 13:
+YY_RULE_SETUP
+#line 21 ".\\toki_pona.l"
+{return PINI;}
+	YY_BREAK
+case 14:
+YY_RULE_SETUP
+#line 22 ".\\toki_pona.l"
+{return KIN;}
+	YY_BREAK
+case 15:
+YY_RULE_SETUP
+#line 23 ".\\toki_pona.l"
+{return IJO;}
+	YY_BREAK
+case 16:
+YY_RULE_SETUP
+#line 24 ".\\toki_pona.l"
+{return MUN;}
+	YY_BREAK
+case 17:
+YY_RULE_SETUP
+#line 25 ".\\toki_pona.l"
+{return PALI;}
+	YY_BREAK
+case 18:
+YY_RULE_SETUP
+#line 26 ".\\toki_pona.l"
+{return SELI;}
+	YY_BREAK
+case 19:
+YY_RULE_SETUP
+#line 27 ".\\toki_pona.l"
+{return LINJA;}
+	YY_BREAK
+case 20:
+YY_RULE_SETUP
+#line 28 ".\\toki_pona.l"
+{return PAKALA;}
+	YY_BREAK
+case 21:
+YY_RULE_SETUP
+#line 29 ".\\toki_pona.l"
+{return KULE;}
+	YY_BREAK
+case 22:
+YY_RULE_SETUP
+#line 30 ".\\toki_pona.l"
+{return WILE;}
+	YY_BREAK
+case 23:
+YY_RULE_SETUP
+#line 31 ".\\toki_pona.l"
+{return LUPA;}
+	YY_BREAK
+case 24:
+YY_RULE_SETUP
+#line 32 ".\\toki_pona.l"
+{return UTA;}
+	YY_BREAK
+case 25:
+YY_RULE_SETUP
+#line 33 ".\\toki_pona.l"
+{return ALI;}
+	YY_BREAK
+case 26:
+YY_RULE_SETUP
+#line 34 ".\\toki_pona.l"
+{return KULUPU;}
+	YY_BREAK
+case 27:
+YY_RULE_SETUP
+#line 35 ".\\toki_pona.l"
+{return ONA;}
+	YY_BREAK
+case 28:
+YY_RULE_SETUP
+#line 36 ".\\toki_pona.l"
+{return SIN;}
+	YY_BREAK
+case 29:
+YY_RULE_SETUP
+#line 37 ".\\toki_pona.l"
+{return UTALA;}
+	YY_BREAK
+case 30:
+YY_RULE_SETUP
+#line 38 ".\\toki_pona.l"
+{return MONSI;}
+	YY_BREAK
+case 31:
+YY_RULE_SETUP
+#line 39 ".\\toki_pona.l"
+{return LEN;}
+	YY_BREAK
+case 32:
+YY_RULE_SETUP
+#line 40 ".\\toki_pona.l"
+{return SITELEN;}
+	YY_BREAK
+case 33:
+YY_RULE_SETUP
+#line 41 ".\\toki_pona.l"
+{return MI;}
+	YY_BREAK
+case 34:
+YY_RULE_SETUP
+#line 42 ".\\toki_pona.l"
+{return KASI;}
+	YY_BREAK
+case 35:
+YY_RULE_SETUP
+#line 43 ".\\toki_pona.l"
+{return MUSI;}
+	YY_BREAK
+case 36:
+YY_RULE_SETUP
+#line 44 ".\\toki_pona.l"
+{return AWEN;}
+	YY_BREAK
+case 37:
+YY_RULE_SETUP
+#line 45 ".\\toki_pona.l"
+{return JO;}
+	YY_BREAK
+case 38:
+YY_RULE_SETUP
+#line 46 ".\\toki_pona.l"
+{return NASA;}
+	YY_BREAK
+case 39:
+YY_RULE_SETUP
+#line 47 ".\\toki_pona.l"
+{return NENA;}
+	YY_BREAK
+case 40:
+YY_RULE_SETUP
+#line 48 ".\\toki_pona.l"
+{return WAN;}
+	YY_BREAK
+case 41:
+YY_RULE_SETUP
+#line 49 ".\\toki_pona.l"
+{return PIMEJA;}
+	YY_BREAK
+case 42:
+YY_RULE_SETUP
+#line 50 ".\\toki_pona.l"
+{return KILI;}
+	YY_BREAK
+case 43:
+YY_RULE_SETUP
+#line 51 ".\\toki_pona.l"
+{return SELO;}
+	YY_BREAK
+case 44:
+YY_RULE_SETUP
+#line 52 ".\\toki_pona.l"
+{return SONA;}
+	YY_BREAK
+case 45:
+YY_RULE_SETUP
+#line 53 ".\\toki_pona.l"
+{return OKO;}
+	YY_BREAK
+case 46:
+YY_RULE_SETUP
+#line 54 ".\\toki_pona.l"
+{return TU;}
+	YY_BREAK
+case 47:
+YY_RULE_SETUP
+#line 55 ".\\toki_pona.l"
+{return KALAMA;}
+	YY_BREAK
+case 48:
+YY_RULE_SETUP
+#line 56 ".\\toki_pona.l"
+{return SIKE;}
+	YY_BREAK
+case 49:
+YY_RULE_SETUP
+#line 57 ".\\toki_pona.l"
+{return SINA;}
+	YY_BREAK
+case 50:
+YY_RULE_SETUP
+#line 58 ".\\toki_pona.l"
+{return INSA;}
+	YY_BREAK
+case 51:
+YY_RULE_SETUP
+#line 59 ".\\toki_pona.l"
+{return KALA;}
+	YY_BREAK
+case 52:
+YY_RULE_SETUP
+#line 60 ".\\toki_pona.l"
+{return JELO;}
+	YY_BREAK
+case 53:
+YY_RULE_SETUP
+#line 61 ".\\toki_pona.l"
+{return PILIN;}
+	YY_BREAK
+case 54:
+YY_RULE_SETUP
+#line 62 ".\\toki_pona.l"
+{return PONA;}
+	YY_BREAK
+case 55:
+YY_RULE_SETUP
+#line 63 ".\\toki_pona.l"
+{return NIMI;}
+	YY_BREAK
+case 56:
+YY_RULE_SETUP
+#line 64 ".\\toki_pona.l"
+{return PANA;}
+	YY_BREAK
+case 57:
+YY_RULE_SETUP
+#line 65 ".\\toki_pona.l"
+{return TASO;}
+	YY_BREAK
+case 58:
+YY_RULE_SETUP
+#line 66 ".\\toki_pona.l"
+{return KEN;}
+	YY_BREAK
+case 59:
+YY_RULE_SETUP
+#line 67 ".\\toki_pona.l"
+{return JAKI;}
+	YY_BREAK
+case 60:
+YY_RULE_SETUP
+#line 68 ".\\toki_pona.l"
+{return MELI;}
+	YY_BREAK
+case 61:
+YY_RULE_SETUP
+#line 69 ".\\toki_pona.l"
+{return LOJE;}
+	YY_BREAK
+case 62:
+YY_RULE_SETUP
+#line 70 ".\\toki_pona.l"
+{return SINPIN;}
+	YY_BREAK
+case 63:
+YY_RULE_SETUP
+#line 71 ".\\toki_pona.l"
+{return PIPI;}
+	YY_BREAK
+case 64:
+YY_RULE_SETUP
+#line 72 ".\\toki_pona.l"
+{return MUTE;}
+	YY_BREAK
+case 65:
+YY_RULE_SETUP
+#line 73 ".\\toki_pona.l"
+{return WIKE;}
+	YY_BREAK
+case 66:
+YY_RULE_SETUP
+#line 74 ".\\toki_pona.l"
+{return TOKI;}
+	YY_BREAK
+case 67:
+YY_RULE_SETUP
+#line 75 ".\\toki_pona.l"
+{return MANI;}
+	YY_BREAK
+case 68:
+YY_RULE_SETUP
+#line 76 ".\\toki_pona.l"
+{return JAN;}
+	YY_BREAK
+case 69:
+YY_RULE_SETUP
+#line 77 ".\\toki_pona.l"
+{return TAWA;}
+	YY_BREAK
+case 70:
+YY_RULE_SETUP
+#line 78 ".\\toki_pona.l"
+{return KEPEKEN;}
+	YY_BREAK
+case 71:
+YY_RULE_SETUP
+#line 79 ".\\toki_pona.l"
+{return LUKIN;}
+	YY_BREAK
+case 72:
+YY_RULE_SETUP
+#line 80 ".\\toki_pona.l"
+{return TAN;}
+	YY_BREAK
+case 73:
+YY_RULE_SETUP
+#line 81 ".\\toki_pona.l"
+{return AKESI;}
+	YY_BREAK
+case 74:
+YY_RULE_SETUP
+#line 82 ".\\toki_pona.l"
+{return KAMA;}
+	YY_BREAK
+case 75:
+YY_RULE_SETUP
+#line 83 ".\\toki_pona.l"
+{return NOKA;}
+	YY_BREAK
+case 76:
+YY_RULE_SETUP
+#line 84 ".\\toki_pona.l"
+{return MOKU;}
+	YY_BREAK
+case 77:
+YY_RULE_SETUP
+#line 85 ".\\toki_pona.l"
+{return LAWA;}
+	YY_BREAK
+case 78:
+YY_RULE_SETUP
+#line 86 ".\\toki_pona.l"
+{return TELO;}
+	YY_BREAK
+case 79:
+YY_RULE_SETUP
+#line 87 ".\\toki_pona.l"
+{return LASO;}
+	YY_BREAK
+case 80:
+YY_RULE_SETUP
+#line 88 ".\\toki_pona.l"
+{return WEKA;}
+	YY_BREAK
+case 81:
+YY_RULE_SETUP
+#line 89 ".\\toki_pona.l"
+{return IKE;}
+	YY_BREAK
+case 82:
+YY_RULE_SETUP
+#line 90 ".\\toki_pona.l"
+{return LETE;}
+	YY_BREAK
+case 83:
+YY_RULE_SETUP
+#line 91 ".\\toki_pona.l"
+{return MOLI;}
+	YY_BREAK
+case 84:
+YY_RULE_SETUP
+#line 92 ".\\toki_pona.l"
+{return LON;}
+	YY_BREAK
+case 85:
+YY_RULE_SETUP
+#line 93 ".\\toki_pona.l"
+{return SUPA;}
+	YY_BREAK
+case 86:
+YY_RULE_SETUP
+#line 94 ".\\toki_pona.l"
+{return NASIN;}
+	YY_BREAK
+case 87:
+YY_RULE_SETUP
+#line 95 ".\\toki_pona.l"
+{return TOMO;}
+	YY_BREAK
+case 88:
+YY_RULE_SETUP
+#line 96 ".\\toki_pona.l"
+{return KUTE;}
+	YY_BREAK
+case 89:
+YY_RULE_SETUP
+#line 97 ".\\toki_pona.l"
+{return SUNO;}
+	YY_BREAK
+case 90:
+YY_RULE_SETUP
+#line 98 ".\\toki_pona.l"
+{return POKI;}
+	YY_BREAK
+case 91:
+YY_RULE_SETUP
+#line 99 ".\\toki_pona.l"
+{return SEME;}
+	YY_BREAK
+case 92:
+YY_RULE_SETUP
+#line 100 ".\\toki_pona.l"
+{return MA;}
+	YY_BREAK
+case 93:
+YY_RULE_SETUP
+#line 101 ".\\toki_pona.l"
+{return SOWELI;}
+	YY_BREAK
+case 94:
+YY_RULE_SETUP
+#line 102 ".\\toki_pona.l"
+{return NI;}
+	YY_BREAK
+case 95:
+YY_RULE_SETUP
+#line 103 ".\\toki_pona.l"
+{return MAMA;}
+	YY_BREAK
+case 96:
+YY_RULE_SETUP
+#line 104 ".\\toki_pona.l"
+{return MIJE;}
+	YY_BREAK
+case 97:
+YY_RULE_SETUP
+#line 105 ".\\toki_pona.l"
+{return WALO;}
+	YY_BREAK
+case 98:
+YY_RULE_SETUP
+#line 106 ".\\toki_pona.l"
+{return NANPA;}
+	YY_BREAK
+case 99:
+YY_RULE_SETUP
+#line 107 ".\\toki_pona.l"
+{return ALA;}
+	YY_BREAK
+case 100:
+YY_RULE_SETUP
+#line 108 ".\\toki_pona.l"
+{return KIWEN;}
+	YY_BREAK
+case 101:
+YY_RULE_SETUP
+#line 109 ".\\toki_pona.l"
+{return OPEN;}
+	YY_BREAK
+case 102:
+YY_RULE_SETUP
+#line 110 ".\\toki_pona.l"
+{return POKA;}
+	YY_BREAK
+case 103:
+YY_RULE_SETUP
+#line 111 ".\\toki_pona.l"
+{return LUKA;}
+	YY_BREAK
+case 104:
+YY_RULE_SETUP
+#line 112 ".\\toki_pona.l"
+{return SAMA;}
+	YY_BREAK
+case 105:
+YY_RULE_SETUP
+#line 113 ".\\toki_pona.l"
+{return SULI;}
+	YY_BREAK
+case 106:
+YY_RULE_SETUP
+#line 114 ".\\toki_pona.l"
+{return ALE;}
+	YY_BREAK
+case 107:
+YY_RULE_SETUP
+#line 115 ".\\toki_pona.l"
+{return SEWI;}
+	YY_BREAK
+case 108:
+YY_RULE_SETUP
+#line 116 ".\\toki_pona.l"
+{return ANPA;}
+	YY_BREAK
+case 109:
+YY_RULE_SETUP
+#line 117 ".\\toki_pona.l"
+{return WAWA;}
+	YY_BREAK
+case 110:
+YY_RULE_SETUP
+#line 118 ".\\toki_pona.l"
+{return SUWI;}
+	YY_BREAK
+case 111:
+YY_RULE_SETUP
+#line 119 ".\\toki_pona.l"
+{return LI;}
+	YY_BREAK
+case 112:
+YY_RULE_SETUP
+#line 120 ".\\toki_pona.l"
+{return LA;}
+	YY_BREAK
+case 113:
+YY_RULE_SETUP
+#line 121 ".\\toki_pona.l"
+{return O;}
+	YY_BREAK
+case 114:
+YY_RULE_SETUP
+#line 122 ".\\toki_pona.l"
+{return ANU;}
+	YY_BREAK
+case 115:
+YY_RULE_SETUP
+#line 123 ".\\toki_pona.l"
+{return EN;}
+	YY_BREAK
+case 116:
+YY_RULE_SETUP
+#line 124 ".\\toki_pona.l"
+{return E;}
+	YY_BREAK
+case 117:
+YY_RULE_SETUP
+#line 125 ".\\toki_pona.l"
 ECHO;
 	YY_BREAK
-#line 651 "lex.yy.c"
+#line 1343 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -939,7 +1631,7 @@ static yy_state_type yy_get_previous_state()
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 23 )
+			if ( yy_current_state >= 284 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -974,11 +1666,11 @@ yy_state_type yy_current_state;
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 23 )
+		if ( yy_current_state >= 284 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-	yy_is_jam = (yy_current_state == 22);
+	yy_is_jam = (yy_current_state == 283);
 
 	return yy_is_jam ? 0 : yy_current_state;
 	}
@@ -1533,6 +2225,6 @@ int main()
 	return 0;
 	}
 #endif
-#line 15 ".\\toki_pona.l"
+#line 125 ".\\toki_pona.l"
 
 
