@@ -122,5 +122,6 @@ o          {return O;}
 anu        {return ANU;}
 en         {return EN;}
 e          {return E;}
+.          {return ENDMARK;}
 %%
 

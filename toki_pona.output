@@ -1,7 +1,18 @@
-State 20 conflicts: 3 shift/reduce
-State 28 conflicts: 1 shift/reduce
+Nonterminals useless in grammar
+
+   norm_noun_phase
+
+
+Rules useless in grammar
+
+   76 norm_noun_phase: norm_subject_noun
+   77                | structed_noun_phase
+
+
+State 19 conflicts: 3 shift/reduce
 State 29 conflicts: 1 shift/reduce
-State 31 conflicts: 1 shift/reduce
+State 30 conflicts: 1 shift/reduce
+State 32 conflicts: 1 shift/reduce
 State 85 conflicts: 1 reduce/reduce
 State 87 conflicts: 1 reduce/reduce
 State 93 conflicts: 2 shift/reduce
@@ -37,209 +48,206 @@ Grammar
 
    17 subject: MI
    18        | SINA
-   19        | norm_noun_phase LI
+   19        | norm_subject_noun LI
 
-   20 norm_noun_phase: norm_subject_noun
-   21                | structed_noun_phase
+   20 structed_noun_phase: decorated_noun_struct
+   21                    | noun_phase conj noun_phase
 
-   22 structed_noun_phase: decorated_noun_struct
-   23                    | noun_phase conj noun_phase
+   22 noun_phase: noun
+   23           | structed_noun_phase
 
-   24 noun_phase: noun
-   25           | structed_noun_phase
+   24 conj: EN
+   25     | ANU
 
-   26 conj: EN
-   27     | ANU
+   26 decorated_noun_struct: noun decorator
+   27                      | noun noun
+   28                      | noun noun decorator
 
-   28 decorated_noun_struct: noun decorator
-   29                      | noun noun
-   30                      | noun noun decorator
+   29 decorator: decorator_word
+   30          | decorator_word decorator
 
-   31 decorator: decorator_word
-   32          | decorator_word decorator
+   31 vo_struct: verb_phase
+   32          | verb_phase LI vo_struct
 
-   33 vo_struct: verb_phase
-   34          | verb_phase LI vo_struct
+   33 verb_phase: no_acceptance_verb_phase
+   34           | acceptance_verb_phase
+   35           | verb_phase po_phase
 
-   35 verb_phase: no_acceptance_verb_phase
-   36           | acceptance_verb_phase
-   37           | verb_phase po_phase
+   36 no_acceptance_verb_phase: verb_group
+   37                         | LON noun_phase
+   38                         | TAWA noun_phase
+   39                         | modal_verb LON noun_phase
+   40                         | modal_verb TAWA noun_phase
 
-   38 no_acceptance_verb_phase: verb_group
-   39                         | LON noun_phase
-   40                         | TAWA noun_phase
-   41                         | modal_verb LON noun_phase
-   42                         | modal_verb TAWA noun_phase
+   41 acceptance_verb_phase: verb_group acceptance_obj
+   42                      | modal_verb verb_group acceptance_obj
 
-   43 acceptance_verb_phase: verb_group acceptance_obj
-   44                      | modal_verb verb_group acceptance_obj
+   43 acceptance_obj: E noun_phase
+   44               | E noun_phase acceptance_obj
 
-   45 acceptance_obj: E noun_phase
-   46               | E noun_phase acceptance_obj
+   45 verb_group: verb
+   46           | modal_verb verb
+   47           | verb decorator
+   48           | YnN_verb
+   49           | modal_verb YnN_verb
+   50           | YnN_verb decorator
 
-   47 verb_group: verb
-   48           | modal_verb verb
-   49           | verb decorator
-   50           | YnN_verb
-   51           | modal_verb YnN_verb
-   52           | YnN_verb decorator
+   51 YnN_verb: verb ALA verb
 
-   53 YnN_verb: verb ALA verb
+   52 po_phase: prepostion noun_phase
+   53         | prepostion noun_phase po_phase
 
-   54 po_phase: prepostion noun_phase
-   55         | prepostion noun_phase po_phase
+   54 modal_verb: postive_modal_verb
+   55           | negative_modal_verb
+   56           | YnN_modal_verb
 
-   56 modal_verb: postive_modal_verb
-   57           | negative_modal_verb
-   58           | YnN_modal_verb
+   57 postive_modal_verb: KAMA
+   58                   | KEN
+   59                   | WILE
 
-   59 postive_modal_verb: KAMA
-   60                   | KEN
-   61                   | WILE
+   60 negative_modal_verb: postive_modal_verb ALA
 
-   62 negative_modal_verb: postive_modal_verb ALA
+   61 YnN_modal_verb: KAMA ALA KAMA
+   62               | KEN ALA KEN
+   63               | WILE ALA WILE
 
-   63 YnN_modal_verb: KAMA ALA KAMA
-   64               | KEN ALA KEN
-   65               | WILE ALA WILE
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   65 noun: MI
+   66     | SINA
+   67     | norm_subject_noun
 
-   67 noun: MI
-   68     | SINA
-   69     | norm_subject_noun
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
-
-   72 prepostion: KEPEKEN
-   73           | LON
-   74           | POKA
-   75           | SAMA
-   76           | TAN
-   77           | TAWA
+   70 prepostion: KEPEKEN
+   71           | LON
+   72           | POKA
+   73           | SAMA
+   74           | TAN
+   75           | TAWA
 
 
 Terminals, with rules where they appear
 
 $end (0) 0
 error (256)
-ILO (258) 70
-PALISA (259) 70
-LIPU (260) 70
-OLIN (261) 70
-ANTE (262) 15 66
-WASO (263) 70
-UNPA (264) 70
-SIJELO (265) 70
-TENPO (266) 70
-LILI (267) 66
-LAPE (268) 71
-PINI (269) 70
-KIN (270) 71
-IJO (271) 66
-MUN (272) 70
-PALI (273) 66
-SELI (274) 66
-LINJA (275) 70
-PAKALA (276) 70
-KULE (277) 66
-WILE (278) 61 65 70
-LUPA (279) 70
-UTA (280) 71
-ALI (281) 71
-KULUPU (282) 71
-ONA (283) 71
-SIN (284) 71
-UTALA (285) 66
-MONSI (286) 70
-LEN (287) 70
-SITELEN (288) 66
-MI (289) 17 67 70 71
-KASI (290) 70
-MUSI (291) 66
-AWEN (292) 66
-JO (293) 70
-NASA (294) 71
-NENA (295) 70
-WAN (296) 70
-PIMEJA (297) 66
-KILI (298) 70
-SELO (299) 70
-SONA (300) 66
-OKO (301) 70
-TU (302) 70
-KALAMA (303) 71
-SIKE (304) 71
-SINA (305) 18 68 70 71
-INSA (306) 70
-KALA (307) 70
-JELO (308) 71
-PILIN (309) 70
-PONA (310) 71
-NIMI (311) 70
-PANA (312) 66
-TASO (313) 13 71
-KEN (314) 14 60 64 66
-JAKI (315) 66
-MELI (316) 71
-LOJE (317) 71
-SINPIN (318) 70
-PIPI (319) 70
-MUTE (320) 66
-WIKE (321) 71
-TOKI (322) 66
-MANI (323) 70
-JAN (324) 66
-TAWA (325) 40 42 66 77
-KEPEKEN (326) 66 72
-LUKIN (327) 71
-TAN (328) 70 76
-AKESI (329) 70
-KAMA (330) 59 63 66
-NOKA (331) 70
-MOKU (332) 71
-LAWA (333) 66
-TELO (334) 70
-LASO (335) 71
-WEKA (336) 66
-IKE (337) 70
-LETE (338) 66
-MOLI (339) 66
-LON (340) 39 41 66 73
-SUPA (341) 70
-NASIN (342) 70
-TOMO (343) 66
-KUTE (344) 71
-SUNO (345) 70
-POKI (346) 70
-SEME (347) 70
-MA (348) 70
-SOWELI (349) 70
-NI (350) 70
-MAMA (351) 70
-MIJE (352) 70
-WALO (353) 70
-NANPA (354) 70
-ALA (355) 53 62 63 64 65 71
-KIWEN (356) 70
-OPEN (357) 66
-POKA (358) 71 74
-LUKA (359) 70
-SAMA (360) 71 75
-SULI (361) 66
-ALE (362) 71
-SEWI (363) 71
-ANPA (364) 66
-WAWA (365) 71
-SUWI (366) 71
-LI (367) 19 34
+ILO (258) 68
+PALISA (259) 68
+LIPU (260) 68
+OLIN (261) 68
+ANTE (262) 15 64
+WASO (263) 68
+UNPA (264) 68
+SIJELO (265) 68
+TENPO (266) 68
+LILI (267) 64
+LAPE (268) 69
+PINI (269) 68
+KIN (270) 69
+IJO (271) 64
+MUN (272) 68
+PALI (273) 64
+SELI (274) 64
+LINJA (275) 68
+PAKALA (276) 68
+KULE (277) 64
+WILE (278) 59 63 68
+LUPA (279) 68
+UTA (280) 69
+ALI (281) 69
+KULUPU (282) 69
+ONA (283) 69
+SIN (284) 69
+UTALA (285) 64
+MONSI (286) 68
+LEN (287) 68
+SITELEN (288) 64
+MI (289) 17 65 68 69
+KASI (290) 68
+MUSI (291) 64
+AWEN (292) 64
+JO (293) 68
+NASA (294) 69
+NENA (295) 68
+WAN (296) 68
+PIMEJA (297) 64
+KILI (298) 68
+SELO (299) 68
+SONA (300) 64
+OKO (301) 68
+TU (302) 68
+KALAMA (303) 69
+SIKE (304) 69
+SINA (305) 18 66 68 69
+INSA (306) 68
+KALA (307) 68
+JELO (308) 69
+PILIN (309) 68
+PONA (310) 69
+NIMI (311) 68
+PANA (312) 64
+TASO (313) 13 69
+KEN (314) 14 58 62 64
+JAKI (315) 64
+MELI (316) 69
+LOJE (317) 69
+SINPIN (318) 68
+PIPI (319) 68
+MUTE (320) 64
+WIKE (321) 69
+TOKI (322) 64
+MANI (323) 68
+JAN (324) 64
+TAWA (325) 38 40 64 75
+KEPEKEN (326) 64 70
+LUKIN (327) 69
+TAN (328) 68 74
+AKESI (329) 68
+KAMA (330) 57 61 64
+NOKA (331) 68
+MOKU (332) 69
+LAWA (333) 64
+TELO (334) 68
+LASO (335) 69
+WEKA (336) 64
+IKE (337) 68
+LETE (338) 64
+MOLI (339) 64
+LON (340) 37 39 64 71
+SUPA (341) 68
+NASIN (342) 68
+TOMO (343) 64
+KUTE (344) 69
+SUNO (345) 68
+POKI (346) 68
+SEME (347) 68
+MA (348) 68
+SOWELI (349) 68
+NI (350) 68
+MAMA (351) 68
+MIJE (352) 68
+WALO (353) 68
+NANPA (354) 68
+ALA (355) 51 60 61 62 63 69
+KIWEN (356) 68
+OPEN (357) 64
+POKA (358) 69 72
+LUKA (359) 68
+SAMA (360) 69 73
+SULI (361) 64
+ALE (362) 69
+SEWI (363) 69
+ANPA (364) 64
+WAWA (365) 69
+SUWI (366) 69
+LI (367) 19 32
 LA (368) 11 12 14 15
 O (369) 7 8 9 10
-ANU (370) 27
-EN (371) 26
-E (372) 45 46
+ANU (370) 25
+EN (371) 24
+E (372) 43 44
 
 
 Nonterminals, with rules where they appear
@@ -262,52 +270,50 @@ svo_sentence (125)
     on left: 16, on right: 2 4 11 13
 subject (126)
     on left: 17 18 19, on right: 16
-norm_noun_phase (127)
-    on left: 20 21, on right: 19
-structed_noun_phase (128)
-    on left: 22 23, on right: 21 25
-noun_phase (129)
-    on left: 24 25, on right: 7 8 12 23 39 40 41 42 45 46 54 55
-conj (130)
-    on left: 26 27, on right: 23
-decorated_noun_struct (131)
-    on left: 28 29 30, on right: 22
-decorator (132)
-    on left: 31 32, on right: 28 30 32 49 52
-vo_struct (133)
-    on left: 33 34, on right: 8 9 10 16 34
-verb_phase (134)
-    on left: 35 36 37, on right: 33 34 37
-no_acceptance_verb_phase (135)
-    on left: 38 39 40 41 42, on right: 35
-acceptance_verb_phase (136)
-    on left: 43 44, on right: 36
-acceptance_obj (137)
-    on left: 45 46, on right: 43 44 46
-verb_group (138)
-    on left: 47 48 49 50 51 52, on right: 38 43 44
-YnN_verb (139)
-    on left: 53, on right: 50 51 52
-po_phase (140)
-    on left: 54 55, on right: 37 55
-modal_verb (141)
-    on left: 56 57 58, on right: 41 42 44 48 51
-postive_modal_verb (142)
-    on left: 59 60 61, on right: 56 62
-negative_modal_verb (143)
-    on left: 62, on right: 57
-YnN_modal_verb (144)
-    on left: 63 64 65, on right: 58
-verb (145)
-    on left: 66, on right: 47 48 49 53
-noun (146)
-    on left: 67 68 69, on right: 24 28 29 30
-norm_subject_noun (147)
-    on left: 70, on right: 20 69
-decorator_word (148)
-    on left: 71, on right: 31 32
-prepostion (149)
-    on left: 72 73 74 75 76 77, on right: 54 55
+structed_noun_phase (127)
+    on left: 20 21, on right: 23
+noun_phase (128)
+    on left: 22 23, on right: 7 8 12 21 37 38 39 40 43 44 52 53
+conj (129)
+    on left: 24 25, on right: 21
+decorated_noun_struct (130)
+    on left: 26 27 28, on right: 20
+decorator (131)
+    on left: 29 30, on right: 26 28 30 47 50
+vo_struct (132)
+    on left: 31 32, on right: 8 9 10 16 32
+verb_phase (133)
+    on left: 33 34 35, on right: 31 32 35
+no_acceptance_verb_phase (134)
+    on left: 36 37 38 39 40, on right: 33
+acceptance_verb_phase (135)
+    on left: 41 42, on right: 34
+acceptance_obj (136)
+    on left: 43 44, on right: 41 42 44
+verb_group (137)
+    on left: 45 46 47 48 49 50, on right: 36 41 42
+YnN_verb (138)
+    on left: 51, on right: 48 49 50
+po_phase (139)
+    on left: 52 53, on right: 35 53
+modal_verb (140)
+    on left: 54 55 56, on right: 39 40 42 46 49
+postive_modal_verb (141)
+    on left: 57 58 59, on right: 54 60
+negative_modal_verb (142)
+    on left: 60, on right: 55
+YnN_modal_verb (143)
+    on left: 61 62 63, on right: 56
+verb (144)
+    on left: 64, on right: 45 46 47 51
+noun (145)
+    on left: 65 66 67, on right: 22 26 27 28
+norm_subject_noun (146)
+    on left: 68, on right: 19 67
+decorator_word (147)
+    on left: 69, on right: 29 30
+prepostion (148)
+    on left: 70 71 72 73 74 75, on right: 52 53
 
 
 state 0
@@ -331,20 +337,18 @@ state 0
    16 svo_sentence: . subject vo_struct
    17 subject: . MI
    18        | . SINA
-   19        | . norm_noun_phase LI
-   20 norm_noun_phase: . norm_subject_noun
-   21                | . structed_noun_phase
-   22 structed_noun_phase: . decorated_noun_struct
-   23                    | . noun_phase conj noun_phase
-   24 noun_phase: . noun
-   25           | . structed_noun_phase
-   28 decorated_noun_struct: . noun decorator
-   29                      | . noun noun
-   30                      | . noun noun decorator
-   67 noun: . MI
-   68     | . SINA
-   69     | . norm_subject_noun
-   70 norm_subject_noun: . SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   19        | . norm_subject_noun LI
+   20 structed_noun_phase: . decorated_noun_struct
+   21                    | . noun_phase conj noun_phase
+   22 noun_phase: . noun
+   23           | . structed_noun_phase
+   26 decorated_noun_struct: . noun decorator
+   27                      | . noun noun
+   28                      | . noun noun decorator
+   65 noun: . MI
+   66     | . SINA
+   67     | . norm_subject_noun
+   68 norm_subject_noun: . SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     ANTE  shift, and go to state 1
     MI    shift, and go to state 2
@@ -362,25 +366,24 @@ state 0
     condition              go to state 13
     svo_sentence           go to state 14
     subject                go to state 15
-    norm_noun_phase        go to state 16
-    structed_noun_phase    go to state 17
-    noun_phase             go to state 18
-    decorated_noun_struct  go to state 19
-    noun                   go to state 20
-    norm_subject_noun      go to state 21
+    structed_noun_phase    go to state 16
+    noun_phase             go to state 17
+    decorated_noun_struct  go to state 18
+    noun                   go to state 19
+    norm_subject_noun      go to state 20
 
 
 state 1
 
    15 condition: ANTE . LA
 
-    LA  shift, and go to state 22
+    LA  shift, and go to state 21
 
 
 state 2
 
    17 subject: MI .  [IJO, WILE, KEN, TAWA, KAMA, LON]
-   67 noun: MI .  [MI, SINA, SUPA, ALA, LA, O, ANU, EN]
+   65 noun: MI .  [MI, SINA, SUPA, ALA, LA, O, ANU, EN]
 
     IJO       reduce using rule 17 (subject)
     WILE      reduce using rule 17 (subject)
@@ -388,13 +391,13 @@ state 2
     TAWA      reduce using rule 17 (subject)
     KAMA      reduce using rule 17 (subject)
     LON       reduce using rule 17 (subject)
-    $default  reduce using rule 67 (noun)
+    $default  reduce using rule 65 (noun)
 
 
 state 3
 
    18 subject: SINA .  [IJO, WILE, KEN, TAWA, KAMA, LON]
-   68 noun: SINA .  [MI, SINA, SUPA, ALA, LA, O, ANU, EN]
+   66 noun: SINA .  [MI, SINA, SUPA, ALA, LA, O, ANU, EN]
 
     IJO       reduce using rule 18 (subject)
     WILE      reduce using rule 18 (subject)
@@ -402,7 +405,7 @@ state 3
     TAWA      reduce using rule 18 (subject)
     KAMA      reduce using rule 18 (subject)
     LON       reduce using rule 18 (subject)
-    $default  reduce using rule 68 (noun)
+    $default  reduce using rule 66 (noun)
 
 
 state 4
@@ -411,108 +414,91 @@ state 4
    16 svo_sentence: . subject vo_struct
    17 subject: . MI
    18        | . SINA
-   19        | . norm_noun_phase LI
-   20 norm_noun_phase: . norm_subject_noun
-   21                | . structed_noun_phase
-   22 structed_noun_phase: . decorated_noun_struct
-   23                    | . noun_phase conj noun_phase
-   24 noun_phase: . noun
-   25           | . structed_noun_phase
-   28 decorated_noun_struct: . noun decorator
-   29                      | . noun noun
-   30                      | . noun noun decorator
-   67 noun: . MI
-   68     | . SINA
-   69     | . norm_subject_noun
-   70 norm_subject_noun: . SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   19        | . norm_subject_noun LI
+   68 norm_subject_noun: . SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
-    MI    shift, and go to state 2
-    SINA  shift, and go to state 3
+    MI    shift, and go to state 22
+    SINA  shift, and go to state 23
     SUPA  shift, and go to state 6
 
-    svo_sentence           go to state 23
-    subject                go to state 15
-    norm_noun_phase        go to state 16
-    structed_noun_phase    go to state 17
-    noun_phase             go to state 24
-    decorated_noun_struct  go to state 19
-    noun                   go to state 20
-    norm_subject_noun      go to state 21
+    svo_sentence       go to state 24
+    subject            go to state 15
+    norm_subject_noun  go to state 25
 
 
 state 5
 
    14 condition: KEN . LA
 
-    LA  shift, and go to state 25
+    LA  shift, and go to state 26
 
 
 state 6
 
-   70 norm_subject_noun: SUPA . MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA . MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
-    MANI  shift, and go to state 26
+    MANI  shift, and go to state 27
 
 
 state 7
 
     9 o_sentence_2: O . vo_struct
-   33 vo_struct: . verb_phase
-   34          | . verb_phase LI vo_struct
-   35 verb_phase: . no_acceptance_verb_phase
-   36           | . acceptance_verb_phase
-   37           | . verb_phase po_phase
-   38 no_acceptance_verb_phase: . verb_group
-   39                         | . LON noun_phase
-   40                         | . TAWA noun_phase
-   41                         | . modal_verb LON noun_phase
-   42                         | . modal_verb TAWA noun_phase
-   43 acceptance_verb_phase: . verb_group acceptance_obj
-   44                      | . modal_verb verb_group acceptance_obj
-   47 verb_group: . verb
-   48           | . modal_verb verb
-   49           | . verb decorator
-   50           | . YnN_verb
-   51           | . modal_verb YnN_verb
-   52           | . YnN_verb decorator
-   53 YnN_verb: . verb ALA verb
-   56 modal_verb: . postive_modal_verb
-   57           | . negative_modal_verb
-   58           | . YnN_modal_verb
-   59 postive_modal_verb: . KAMA
-   60                   | . KEN
-   61                   | . WILE
-   62 negative_modal_verb: . postive_modal_verb ALA
-   63 YnN_modal_verb: . KAMA ALA KAMA
-   64               | . KEN ALA KEN
-   65               | . WILE ALA WILE
-   66 verb: . IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   31 vo_struct: . verb_phase
+   32          | . verb_phase LI vo_struct
+   33 verb_phase: . no_acceptance_verb_phase
+   34           | . acceptance_verb_phase
+   35           | . verb_phase po_phase
+   36 no_acceptance_verb_phase: . verb_group
+   37                         | . LON noun_phase
+   38                         | . TAWA noun_phase
+   39                         | . modal_verb LON noun_phase
+   40                         | . modal_verb TAWA noun_phase
+   41 acceptance_verb_phase: . verb_group acceptance_obj
+   42                      | . modal_verb verb_group acceptance_obj
+   45 verb_group: . verb
+   46           | . modal_verb verb
+   47           | . verb decorator
+   48           | . YnN_verb
+   49           | . modal_verb YnN_verb
+   50           | . YnN_verb decorator
+   51 YnN_verb: . verb ALA verb
+   54 modal_verb: . postive_modal_verb
+   55           | . negative_modal_verb
+   56           | . YnN_modal_verb
+   57 postive_modal_verb: . KAMA
+   58                   | . KEN
+   59                   | . WILE
+   60 negative_modal_verb: . postive_modal_verb ALA
+   61 YnN_modal_verb: . KAMA ALA KAMA
+   62               | . KEN ALA KEN
+   63               | . WILE ALA WILE
+   64 verb: . IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
-    IJO   shift, and go to state 27
-    WILE  shift, and go to state 28
-    KEN   shift, and go to state 29
-    TAWA  shift, and go to state 30
-    KAMA  shift, and go to state 31
-    LON   shift, and go to state 32
+    IJO   shift, and go to state 28
+    WILE  shift, and go to state 29
+    KEN   shift, and go to state 30
+    TAWA  shift, and go to state 31
+    KAMA  shift, and go to state 32
+    LON   shift, and go to state 33
 
-    vo_struct                 go to state 33
-    verb_phase                go to state 34
-    no_acceptance_verb_phase  go to state 35
-    acceptance_verb_phase     go to state 36
-    verb_group                go to state 37
-    YnN_verb                  go to state 38
-    modal_verb                go to state 39
-    postive_modal_verb        go to state 40
-    negative_modal_verb       go to state 41
-    YnN_modal_verb            go to state 42
-    verb                      go to state 43
+    vo_struct                 go to state 34
+    verb_phase                go to state 35
+    no_acceptance_verb_phase  go to state 36
+    acceptance_verb_phase     go to state 37
+    verb_group                go to state 38
+    YnN_verb                  go to state 39
+    modal_verb                go to state 40
+    postive_modal_verb        go to state 41
+    negative_modal_verb       go to state 42
+    YnN_modal_verb            go to state 43
+    verb                      go to state 44
 
 
 state 8
 
     0 $accept: toki_pona . $end
 
-    $end  shift, and go to state 44
+    $end  shift, and go to state 45
 
 
 state 9
@@ -550,34 +536,17 @@ state 13
    16 svo_sentence: . subject vo_struct
    17 subject: . MI
    18        | . SINA
-   19        | . norm_noun_phase LI
-   20 norm_noun_phase: . norm_subject_noun
-   21                | . structed_noun_phase
-   22 structed_noun_phase: . decorated_noun_struct
-   23                    | . noun_phase conj noun_phase
-   24 noun_phase: . noun
-   25           | . structed_noun_phase
-   28 decorated_noun_struct: . noun decorator
-   29                      | . noun noun
-   30                      | . noun noun decorator
-   67 noun: . MI
-   68     | . SINA
-   69     | . norm_subject_noun
-   70 norm_subject_noun: . SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   19        | . norm_subject_noun LI
+   68 norm_subject_noun: . SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
-    MI    shift, and go to state 2
-    SINA  shift, and go to state 3
+    MI    shift, and go to state 22
+    SINA  shift, and go to state 23
     SUPA  shift, and go to state 6
-    O     shift, and go to state 45
+    O     shift, and go to state 46
 
-    svo_sentence           go to state 46
-    subject                go to state 15
-    norm_noun_phase        go to state 16
-    structed_noun_phase    go to state 17
-    noun_phase             go to state 24
-    decorated_noun_struct  go to state 19
-    noun                   go to state 20
-    norm_subject_noun      go to state 21
+    svo_sentence       go to state 47
+    subject            go to state 15
+    norm_subject_noun  go to state 25
 
 
 state 14
@@ -585,7 +554,7 @@ state 14
     4 sentence: svo_sentence .  [$end]
    11 condition: svo_sentence . LA
 
-    LA  shift, and go to state 47
+    LA  shift, and go to state 48
 
     $default  reduce using rule 4 (sentence)
 
@@ -593,81 +562,72 @@ state 14
 state 15
 
    16 svo_sentence: subject . vo_struct
-   33 vo_struct: . verb_phase
-   34          | . verb_phase LI vo_struct
-   35 verb_phase: . no_acceptance_verb_phase
-   36           | . acceptance_verb_phase
-   37           | . verb_phase po_phase
-   38 no_acceptance_verb_phase: . verb_group
-   39                         | . LON noun_phase
-   40                         | . TAWA noun_phase
-   41                         | . modal_verb LON noun_phase
-   42                         | . modal_verb TAWA noun_phase
-   43 acceptance_verb_phase: . verb_group acceptance_obj
-   44                      | . modal_verb verb_group acceptance_obj
-   47 verb_group: . verb
-   48           | . modal_verb verb
-   49           | . verb decorator
-   50           | . YnN_verb
-   51           | . modal_verb YnN_verb
-   52           | . YnN_verb decorator
-   53 YnN_verb: . verb ALA verb
-   56 modal_verb: . postive_modal_verb
-   57           | . negative_modal_verb
-   58           | . YnN_modal_verb
-   59 postive_modal_verb: . KAMA
-   60                   | . KEN
-   61                   | . WILE
-   62 negative_modal_verb: . postive_modal_verb ALA
-   63 YnN_modal_verb: . KAMA ALA KAMA
-   64               | . KEN ALA KEN
-   65               | . WILE ALA WILE
-   66 verb: . IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   31 vo_struct: . verb_phase
+   32          | . verb_phase LI vo_struct
+   33 verb_phase: . no_acceptance_verb_phase
+   34           | . acceptance_verb_phase
+   35           | . verb_phase po_phase
+   36 no_acceptance_verb_phase: . verb_group
+   37                         | . LON noun_phase
+   38                         | . TAWA noun_phase
+   39                         | . modal_verb LON noun_phase
+   40                         | . modal_verb TAWA noun_phase
+   41 acceptance_verb_phase: . verb_group acceptance_obj
+   42                      | . modal_verb verb_group acceptance_obj
+   45 verb_group: . verb
+   46           | . modal_verb verb
+   47           | . verb decorator
+   48           | . YnN_verb
+   49           | . modal_verb YnN_verb
+   50           | . YnN_verb decorator
+   51 YnN_verb: . verb ALA verb
+   54 modal_verb: . postive_modal_verb
+   55           | . negative_modal_verb
+   56           | . YnN_modal_verb
+   57 postive_modal_verb: . KAMA
+   58                   | . KEN
+   59                   | . WILE
+   60 negative_modal_verb: . postive_modal_verb ALA
+   61 YnN_modal_verb: . KAMA ALA KAMA
+   62               | . KEN ALA KEN
+   63               | . WILE ALA WILE
+   64 verb: . IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
-    IJO   shift, and go to state 27
-    WILE  shift, and go to state 28
-    KEN   shift, and go to state 29
-    TAWA  shift, and go to state 30
-    KAMA  shift, and go to state 31
-    LON   shift, and go to state 32
+    IJO   shift, and go to state 28
+    WILE  shift, and go to state 29
+    KEN   shift, and go to state 30
+    TAWA  shift, and go to state 31
+    KAMA  shift, and go to state 32
+    LON   shift, and go to state 33
 
-    vo_struct                 go to state 48
-    verb_phase                go to state 34
-    no_acceptance_verb_phase  go to state 35
-    acceptance_verb_phase     go to state 36
-    verb_group                go to state 37
-    YnN_verb                  go to state 38
-    modal_verb                go to state 39
-    postive_modal_verb        go to state 40
-    negative_modal_verb       go to state 41
-    YnN_modal_verb            go to state 42
-    verb                      go to state 43
+    vo_struct                 go to state 49
+    verb_phase                go to state 35
+    no_acceptance_verb_phase  go to state 36
+    acceptance_verb_phase     go to state 37
+    verb_group                go to state 38
+    YnN_verb                  go to state 39
+    modal_verb                go to state 40
+    postive_modal_verb        go to state 41
+    negative_modal_verb       go to state 42
+    YnN_modal_verb            go to state 43
+    verb                      go to state 44
 
 
 state 16
 
-   19 subject: norm_noun_phase . LI
+   23 noun_phase: structed_noun_phase .
 
-    LI  shift, and go to state 49
+    $default  reduce using rule 23 (noun_phase)
 
 
 state 17
 
-   21 norm_noun_phase: structed_noun_phase .  [LI]
-   25 noun_phase: structed_noun_phase .  [LA, O, ANU, EN]
-
-    LI        reduce using rule 21 (norm_noun_phase)
-    $default  reduce using rule 25 (noun_phase)
-
-
-state 18
-
     7 o_sentence_1: noun_phase . O
     8             | noun_phase . O vo_struct
    12 condition: noun_phase . LA
-   23 structed_noun_phase: noun_phase . conj noun_phase
-   26 conj: . EN
-   27     | . ANU
+   21 structed_noun_phase: noun_phase . conj noun_phase
+   24 conj: . EN
+   25     | . ANU
 
     LA   shift, and go to state 50
     O    shift, and go to state 51
@@ -677,36 +637,36 @@ state 18
     conj  go to state 54
 
 
+state 18
+
+   20 structed_noun_phase: decorated_noun_struct .
+
+    $default  reduce using rule 20 (structed_noun_phase)
+
+
 state 19
 
-   22 structed_noun_phase: decorated_noun_struct .
-
-    $default  reduce using rule 22 (structed_noun_phase)
-
-
-state 20
-
-   24 noun_phase: noun .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O, ANU, EN, E]
-   28 decorated_noun_struct: noun . decorator
-   29                      | noun . noun
-   30                      | noun . noun decorator
-   31 decorator: . decorator_word
-   32          | . decorator_word decorator
-   67 noun: . MI
-   68     | . SINA
-   69     | . norm_subject_noun
-   70 norm_subject_noun: . SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
-   71 decorator_word: . ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   22 noun_phase: noun .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O, ANU, EN, E]
+   26 decorated_noun_struct: noun . decorator
+   27                      | noun . noun
+   28                      | noun . noun decorator
+   29 decorator: . decorator_word
+   30          | . decorator_word decorator
+   65 noun: . MI
+   66     | . SINA
+   67     | . norm_subject_noun
+   68 norm_subject_noun: . SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   69 decorator_word: . ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     MI    shift, and go to state 55
     SINA  shift, and go to state 56
     SUPA  shift, and go to state 6
     ALA   shift, and go to state 57
 
-    MI        [reduce using rule 24 (noun_phase)]
-    SINA      [reduce using rule 24 (noun_phase)]
-    SUPA      [reduce using rule 24 (noun_phase)]
-    $default  reduce using rule 24 (noun_phase)
+    MI        [reduce using rule 22 (noun_phase)]
+    SINA      [reduce using rule 22 (noun_phase)]
+    SUPA      [reduce using rule 22 (noun_phase)]
+    $default  reduce using rule 22 (noun_phase)
 
     decorator          go to state 58
     noun               go to state 59
@@ -714,167 +674,177 @@ state 20
     decorator_word     go to state 61
 
 
+state 20
+
+   19 subject: norm_subject_noun . LI
+   67 noun: norm_subject_noun .  [MI, SINA, SUPA, ALA, LA, O, ANU, EN]
+
+    LI  shift, and go to state 62
+
+    $default  reduce using rule 67 (noun)
+
+
 state 21
-
-   20 norm_noun_phase: norm_subject_noun .  [LI]
-   69 noun: norm_subject_noun .  [MI, SINA, SUPA, ALA, LA, O, ANU, EN]
-
-    LI        reduce using rule 20 (norm_noun_phase)
-    $default  reduce using rule 69 (noun)
-
-
-state 22
 
    15 condition: ANTE LA .
 
     $default  reduce using rule 15 (condition)
 
 
+state 22
+
+   17 subject: MI .
+
+    $default  reduce using rule 17 (subject)
+
+
 state 23
+
+   18 subject: SINA .
+
+    $default  reduce using rule 18 (subject)
+
+
+state 24
 
    13 condition: TASO svo_sentence .
 
     $default  reduce using rule 13 (condition)
 
 
-state 24
-
-   23 structed_noun_phase: noun_phase . conj noun_phase
-   26 conj: . EN
-   27     | . ANU
-
-    ANU  shift, and go to state 52
-    EN   shift, and go to state 53
-
-    conj  go to state 54
-
-
 state 25
+
+   19 subject: norm_subject_noun . LI
+
+    LI  shift, and go to state 62
+
+
+state 26
 
    14 condition: KEN LA .
 
     $default  reduce using rule 14 (condition)
 
 
-state 26
-
-   70 norm_subject_noun: SUPA MANI . SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
-
-    SIJELO  shift, and go to state 62
-
-
 state 27
 
-   66 verb: IJO . SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   68 norm_subject_noun: SUPA MANI . SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
-    SULI  shift, and go to state 63
+    SIJELO  shift, and go to state 63
 
 
 state 28
 
-   61 postive_modal_verb: WILE .  [IJO, WILE, KEN, TAWA, KAMA, LON, ALA]
-   65 YnN_modal_verb: WILE . ALA WILE
+   64 verb: IJO . SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
-    ALA  shift, and go to state 64
-
-    ALA       [reduce using rule 61 (postive_modal_verb)]
-    $default  reduce using rule 61 (postive_modal_verb)
+    SULI  shift, and go to state 64
 
 
 state 29
 
-   60 postive_modal_verb: KEN .  [IJO, WILE, KEN, TAWA, KAMA, LON, ALA]
-   64 YnN_modal_verb: KEN . ALA KEN
+   59 postive_modal_verb: WILE .  [IJO, WILE, KEN, TAWA, KAMA, LON, ALA]
+   63 YnN_modal_verb: WILE . ALA WILE
 
     ALA  shift, and go to state 65
-
-    ALA       [reduce using rule 60 (postive_modal_verb)]
-    $default  reduce using rule 60 (postive_modal_verb)
-
-
-state 30
-
-   22 structed_noun_phase: . decorated_noun_struct
-   23                    | . noun_phase conj noun_phase
-   24 noun_phase: . noun
-   25           | . structed_noun_phase
-   28 decorated_noun_struct: . noun decorator
-   29                      | . noun noun
-   30                      | . noun noun decorator
-   40 no_acceptance_verb_phase: TAWA . noun_phase
-   67 noun: . MI
-   68     | . SINA
-   69     | . norm_subject_noun
-   70 norm_subject_noun: . SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
-
-    MI    shift, and go to state 55
-    SINA  shift, and go to state 56
-    SUPA  shift, and go to state 6
-
-    structed_noun_phase    go to state 66
-    noun_phase             go to state 67
-    decorated_noun_struct  go to state 19
-    noun                   go to state 20
-    norm_subject_noun      go to state 60
-
-
-state 31
-
-   59 postive_modal_verb: KAMA .  [IJO, WILE, KEN, TAWA, KAMA, LON, ALA]
-   63 YnN_modal_verb: KAMA . ALA KAMA
-
-    ALA  shift, and go to state 68
 
     ALA       [reduce using rule 59 (postive_modal_verb)]
     $default  reduce using rule 59 (postive_modal_verb)
 
 
-state 32
+state 30
 
-   22 structed_noun_phase: . decorated_noun_struct
-   23                    | . noun_phase conj noun_phase
-   24 noun_phase: . noun
-   25           | . structed_noun_phase
-   28 decorated_noun_struct: . noun decorator
-   29                      | . noun noun
-   30                      | . noun noun decorator
-   39 no_acceptance_verb_phase: LON . noun_phase
-   67 noun: . MI
-   68     | . SINA
-   69     | . norm_subject_noun
-   70 norm_subject_noun: . SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   58 postive_modal_verb: KEN .  [IJO, WILE, KEN, TAWA, KAMA, LON, ALA]
+   62 YnN_modal_verb: KEN . ALA KEN
+
+    ALA  shift, and go to state 66
+
+    ALA       [reduce using rule 58 (postive_modal_verb)]
+    $default  reduce using rule 58 (postive_modal_verb)
+
+
+state 31
+
+   20 structed_noun_phase: . decorated_noun_struct
+   21                    | . noun_phase conj noun_phase
+   22 noun_phase: . noun
+   23           | . structed_noun_phase
+   26 decorated_noun_struct: . noun decorator
+   27                      | . noun noun
+   28                      | . noun noun decorator
+   38 no_acceptance_verb_phase: TAWA . noun_phase
+   65 noun: . MI
+   66     | . SINA
+   67     | . norm_subject_noun
+   68 norm_subject_noun: . SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     MI    shift, and go to state 55
     SINA  shift, and go to state 56
     SUPA  shift, and go to state 6
 
-    structed_noun_phase    go to state 66
-    noun_phase             go to state 69
-    decorated_noun_struct  go to state 19
-    noun                   go to state 20
+    structed_noun_phase    go to state 16
+    noun_phase             go to state 67
+    decorated_noun_struct  go to state 18
+    noun                   go to state 19
     norm_subject_noun      go to state 60
 
 
+state 32
+
+   57 postive_modal_verb: KAMA .  [IJO, WILE, KEN, TAWA, KAMA, LON, ALA]
+   61 YnN_modal_verb: KAMA . ALA KAMA
+
+    ALA  shift, and go to state 68
+
+    ALA       [reduce using rule 57 (postive_modal_verb)]
+    $default  reduce using rule 57 (postive_modal_verb)
+
+
 state 33
+
+   20 structed_noun_phase: . decorated_noun_struct
+   21                    | . noun_phase conj noun_phase
+   22 noun_phase: . noun
+   23           | . structed_noun_phase
+   26 decorated_noun_struct: . noun decorator
+   27                      | . noun noun
+   28                      | . noun noun decorator
+   37 no_acceptance_verb_phase: LON . noun_phase
+   65 noun: . MI
+   66     | . SINA
+   67     | . norm_subject_noun
+   68 norm_subject_noun: . SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+
+    MI    shift, and go to state 55
+    SINA  shift, and go to state 56
+    SUPA  shift, and go to state 6
+
+    structed_noun_phase    go to state 16
+    noun_phase             go to state 69
+    decorated_noun_struct  go to state 18
+    noun                   go to state 19
+    norm_subject_noun      go to state 60
+
+
+state 34
 
     9 o_sentence_2: O vo_struct .
 
     $default  reduce using rule 9 (o_sentence_2)
 
 
-state 34
+state 35
 
-   33 vo_struct: verb_phase .  [$end, MI, SINA, SUPA, LA, O]
-   34          | verb_phase . LI vo_struct
-   37 verb_phase: verb_phase . po_phase
-   54 po_phase: . prepostion noun_phase
-   55         | . prepostion noun_phase po_phase
-   72 prepostion: . KEPEKEN
-   73           | . LON
-   74           | . POKA
-   75           | . SAMA
-   76           | . TAN
-   77           | . TAWA
+   31 vo_struct: verb_phase .  [$end, MI, SINA, SUPA, LA, O]
+   32          | verb_phase . LI vo_struct
+   35 verb_phase: verb_phase . po_phase
+   52 po_phase: . prepostion noun_phase
+   53         | . prepostion noun_phase po_phase
+   70 prepostion: . KEPEKEN
+   71           | . LON
+   72           | . POKA
+   73           | . SAMA
+   74           | . TAN
+   75           | . TAWA
 
     TAWA     shift, and go to state 70
     KEPEKEN  shift, and go to state 71
@@ -884,226 +854,219 @@ state 34
     SAMA     shift, and go to state 75
     LI       shift, and go to state 76
 
-    $default  reduce using rule 33 (vo_struct)
+    $default  reduce using rule 31 (vo_struct)
 
     po_phase    go to state 77
     prepostion  go to state 78
 
 
-state 35
-
-   35 verb_phase: no_acceptance_verb_phase .
-
-    $default  reduce using rule 35 (verb_phase)
-
-
 state 36
 
-   36 verb_phase: acceptance_verb_phase .
+   33 verb_phase: no_acceptance_verb_phase .
 
-    $default  reduce using rule 36 (verb_phase)
+    $default  reduce using rule 33 (verb_phase)
 
 
 state 37
 
-   38 no_acceptance_verb_phase: verb_group .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O]
-   43 acceptance_verb_phase: verb_group . acceptance_obj
-   45 acceptance_obj: . E noun_phase
-   46               | . E noun_phase acceptance_obj
+   34 verb_phase: acceptance_verb_phase .
 
-    E  shift, and go to state 79
-
-    $default  reduce using rule 38 (no_acceptance_verb_phase)
-
-    acceptance_obj  go to state 80
+    $default  reduce using rule 34 (verb_phase)
 
 
 state 38
 
-   31 decorator: . decorator_word
-   32          | . decorator_word decorator
-   50 verb_group: YnN_verb .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O, E]
-   52           | YnN_verb . decorator
-   71 decorator_word: . ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   36 no_acceptance_verb_phase: verb_group .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O]
+   41 acceptance_verb_phase: verb_group . acceptance_obj
+   43 acceptance_obj: . E noun_phase
+   44               | . E noun_phase acceptance_obj
+
+    E  shift, and go to state 79
+
+    $default  reduce using rule 36 (no_acceptance_verb_phase)
+
+    acceptance_obj  go to state 80
+
+
+state 39
+
+   29 decorator: . decorator_word
+   30          | . decorator_word decorator
+   48 verb_group: YnN_verb .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O, E]
+   50           | YnN_verb . decorator
+   69 decorator_word: . ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     ALA  shift, and go to state 57
 
-    $default  reduce using rule 50 (verb_group)
+    $default  reduce using rule 48 (verb_group)
 
     decorator       go to state 81
     decorator_word  go to state 61
 
 
-state 39
+state 40
 
-   41 no_acceptance_verb_phase: modal_verb . LON noun_phase
-   42                         | modal_verb . TAWA noun_phase
-   44 acceptance_verb_phase: modal_verb . verb_group acceptance_obj
-   47 verb_group: . verb
-   48           | . modal_verb verb
-   48           | modal_verb . verb
-   49           | . verb decorator
-   50           | . YnN_verb
-   51           | . modal_verb YnN_verb
-   51           | modal_verb . YnN_verb
-   52           | . YnN_verb decorator
-   53 YnN_verb: . verb ALA verb
-   56 modal_verb: . postive_modal_verb
-   57           | . negative_modal_verb
-   58           | . YnN_modal_verb
-   59 postive_modal_verb: . KAMA
-   60                   | . KEN
-   61                   | . WILE
-   62 negative_modal_verb: . postive_modal_verb ALA
-   63 YnN_modal_verb: . KAMA ALA KAMA
-   64               | . KEN ALA KEN
-   65               | . WILE ALA WILE
-   66 verb: . IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   39 no_acceptance_verb_phase: modal_verb . LON noun_phase
+   40                         | modal_verb . TAWA noun_phase
+   42 acceptance_verb_phase: modal_verb . verb_group acceptance_obj
+   45 verb_group: . verb
+   46           | . modal_verb verb
+   46           | modal_verb . verb
+   47           | . verb decorator
+   48           | . YnN_verb
+   49           | . modal_verb YnN_verb
+   49           | modal_verb . YnN_verb
+   50           | . YnN_verb decorator
+   51 YnN_verb: . verb ALA verb
+   54 modal_verb: . postive_modal_verb
+   55           | . negative_modal_verb
+   56           | . YnN_modal_verb
+   57 postive_modal_verb: . KAMA
+   58                   | . KEN
+   59                   | . WILE
+   60 negative_modal_verb: . postive_modal_verb ALA
+   61 YnN_modal_verb: . KAMA ALA KAMA
+   62               | . KEN ALA KEN
+   63               | . WILE ALA WILE
+   64 verb: . IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
-    IJO   shift, and go to state 27
-    WILE  shift, and go to state 28
-    KEN   shift, and go to state 29
+    IJO   shift, and go to state 28
+    WILE  shift, and go to state 29
+    KEN   shift, and go to state 30
     TAWA  shift, and go to state 82
-    KAMA  shift, and go to state 31
+    KAMA  shift, and go to state 32
     LON   shift, and go to state 83
 
     verb_group           go to state 84
     YnN_verb             go to state 85
     modal_verb           go to state 86
-    postive_modal_verb   go to state 40
-    negative_modal_verb  go to state 41
-    YnN_modal_verb       go to state 42
+    postive_modal_verb   go to state 41
+    negative_modal_verb  go to state 42
+    YnN_modal_verb       go to state 43
     verb                 go to state 87
-
-
-state 40
-
-   56 modal_verb: postive_modal_verb .  [IJO, WILE, KEN, TAWA, KAMA, LON]
-   62 negative_modal_verb: postive_modal_verb . ALA
-
-    ALA  shift, and go to state 88
-
-    $default  reduce using rule 56 (modal_verb)
 
 
 state 41
 
-   57 modal_verb: negative_modal_verb .
+   54 modal_verb: postive_modal_verb .  [IJO, WILE, KEN, TAWA, KAMA, LON]
+   60 negative_modal_verb: postive_modal_verb . ALA
 
-    $default  reduce using rule 57 (modal_verb)
+    ALA  shift, and go to state 88
+
+    $default  reduce using rule 54 (modal_verb)
 
 
 state 42
 
-   58 modal_verb: YnN_modal_verb .
+   55 modal_verb: negative_modal_verb .
 
-    $default  reduce using rule 58 (modal_verb)
+    $default  reduce using rule 55 (modal_verb)
 
 
 state 43
 
-   31 decorator: . decorator_word
-   32          | . decorator_word decorator
-   47 verb_group: verb .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O, E]
-   49           | verb . decorator
-   53 YnN_verb: verb . ALA verb
-   71 decorator_word: . ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   56 modal_verb: YnN_modal_verb .
+
+    $default  reduce using rule 56 (modal_verb)
+
+
+state 44
+
+   29 decorator: . decorator_word
+   30          | . decorator_word decorator
+   45 verb_group: verb .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O, E]
+   47           | verb . decorator
+   51 YnN_verb: verb . ALA verb
+   69 decorator_word: . ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     ALA  shift, and go to state 89
 
-    $default  reduce using rule 47 (verb_group)
+    $default  reduce using rule 45 (verb_group)
 
     decorator       go to state 90
     decorator_word  go to state 61
 
 
-state 44
+state 45
 
     0 $accept: toki_pona $end .
 
     $default  accept
 
 
-state 45
+state 46
 
    10 o_sentence_2: condition O . vo_struct
-   33 vo_struct: . verb_phase
-   34          | . verb_phase LI vo_struct
-   35 verb_phase: . no_acceptance_verb_phase
-   36           | . acceptance_verb_phase
-   37           | . verb_phase po_phase
-   38 no_acceptance_verb_phase: . verb_group
-   39                         | . LON noun_phase
-   40                         | . TAWA noun_phase
-   41                         | . modal_verb LON noun_phase
-   42                         | . modal_verb TAWA noun_phase
-   43 acceptance_verb_phase: . verb_group acceptance_obj
-   44                      | . modal_verb verb_group acceptance_obj
-   47 verb_group: . verb
-   48           | . modal_verb verb
-   49           | . verb decorator
-   50           | . YnN_verb
-   51           | . modal_verb YnN_verb
-   52           | . YnN_verb decorator
-   53 YnN_verb: . verb ALA verb
-   56 modal_verb: . postive_modal_verb
-   57           | . negative_modal_verb
-   58           | . YnN_modal_verb
-   59 postive_modal_verb: . KAMA
-   60                   | . KEN
-   61                   | . WILE
-   62 negative_modal_verb: . postive_modal_verb ALA
-   63 YnN_modal_verb: . KAMA ALA KAMA
-   64               | . KEN ALA KEN
-   65               | . WILE ALA WILE
-   66 verb: . IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   31 vo_struct: . verb_phase
+   32          | . verb_phase LI vo_struct
+   33 verb_phase: . no_acceptance_verb_phase
+   34           | . acceptance_verb_phase
+   35           | . verb_phase po_phase
+   36 no_acceptance_verb_phase: . verb_group
+   37                         | . LON noun_phase
+   38                         | . TAWA noun_phase
+   39                         | . modal_verb LON noun_phase
+   40                         | . modal_verb TAWA noun_phase
+   41 acceptance_verb_phase: . verb_group acceptance_obj
+   42                      | . modal_verb verb_group acceptance_obj
+   45 verb_group: . verb
+   46           | . modal_verb verb
+   47           | . verb decorator
+   48           | . YnN_verb
+   49           | . modal_verb YnN_verb
+   50           | . YnN_verb decorator
+   51 YnN_verb: . verb ALA verb
+   54 modal_verb: . postive_modal_verb
+   55           | . negative_modal_verb
+   56           | . YnN_modal_verb
+   57 postive_modal_verb: . KAMA
+   58                   | . KEN
+   59                   | . WILE
+   60 negative_modal_verb: . postive_modal_verb ALA
+   61 YnN_modal_verb: . KAMA ALA KAMA
+   62               | . KEN ALA KEN
+   63               | . WILE ALA WILE
+   64 verb: . IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
-    IJO   shift, and go to state 27
-    WILE  shift, and go to state 28
-    KEN   shift, and go to state 29
-    TAWA  shift, and go to state 30
-    KAMA  shift, and go to state 31
-    LON   shift, and go to state 32
+    IJO   shift, and go to state 28
+    WILE  shift, and go to state 29
+    KEN   shift, and go to state 30
+    TAWA  shift, and go to state 31
+    KAMA  shift, and go to state 32
+    LON   shift, and go to state 33
 
     vo_struct                 go to state 91
-    verb_phase                go to state 34
-    no_acceptance_verb_phase  go to state 35
-    acceptance_verb_phase     go to state 36
-    verb_group                go to state 37
-    YnN_verb                  go to state 38
-    modal_verb                go to state 39
-    postive_modal_verb        go to state 40
-    negative_modal_verb       go to state 41
-    YnN_modal_verb            go to state 42
-    verb                      go to state 43
+    verb_phase                go to state 35
+    no_acceptance_verb_phase  go to state 36
+    acceptance_verb_phase     go to state 37
+    verb_group                go to state 38
+    YnN_verb                  go to state 39
+    modal_verb                go to state 40
+    postive_modal_verb        go to state 41
+    negative_modal_verb       go to state 42
+    YnN_modal_verb            go to state 43
+    verb                      go to state 44
 
 
-state 46
+state 47
 
     2 sentence: condition svo_sentence .
 
     $default  reduce using rule 2 (sentence)
 
 
-state 47
+state 48
 
    11 condition: svo_sentence LA .
 
     $default  reduce using rule 11 (condition)
 
 
-state 48
+state 49
 
    16 svo_sentence: subject vo_struct .
 
     $default  reduce using rule 16 (svo_sentence)
-
-
-state 49
-
-   19 subject: norm_noun_phase LI .
-
-    $default  reduce using rule 19 (subject)
 
 
 state 50
@@ -1117,138 +1080,138 @@ state 51
 
     7 o_sentence_1: noun_phase O .  [$end]
     8             | noun_phase O . vo_struct
-   33 vo_struct: . verb_phase
-   34          | . verb_phase LI vo_struct
-   35 verb_phase: . no_acceptance_verb_phase
-   36           | . acceptance_verb_phase
-   37           | . verb_phase po_phase
-   38 no_acceptance_verb_phase: . verb_group
-   39                         | . LON noun_phase
-   40                         | . TAWA noun_phase
-   41                         | . modal_verb LON noun_phase
-   42                         | . modal_verb TAWA noun_phase
-   43 acceptance_verb_phase: . verb_group acceptance_obj
-   44                      | . modal_verb verb_group acceptance_obj
-   47 verb_group: . verb
-   48           | . modal_verb verb
-   49           | . verb decorator
-   50           | . YnN_verb
-   51           | . modal_verb YnN_verb
-   52           | . YnN_verb decorator
-   53 YnN_verb: . verb ALA verb
-   56 modal_verb: . postive_modal_verb
-   57           | . negative_modal_verb
-   58           | . YnN_modal_verb
-   59 postive_modal_verb: . KAMA
-   60                   | . KEN
-   61                   | . WILE
-   62 negative_modal_verb: . postive_modal_verb ALA
-   63 YnN_modal_verb: . KAMA ALA KAMA
-   64               | . KEN ALA KEN
-   65               | . WILE ALA WILE
-   66 verb: . IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   31 vo_struct: . verb_phase
+   32          | . verb_phase LI vo_struct
+   33 verb_phase: . no_acceptance_verb_phase
+   34           | . acceptance_verb_phase
+   35           | . verb_phase po_phase
+   36 no_acceptance_verb_phase: . verb_group
+   37                         | . LON noun_phase
+   38                         | . TAWA noun_phase
+   39                         | . modal_verb LON noun_phase
+   40                         | . modal_verb TAWA noun_phase
+   41 acceptance_verb_phase: . verb_group acceptance_obj
+   42                      | . modal_verb verb_group acceptance_obj
+   45 verb_group: . verb
+   46           | . modal_verb verb
+   47           | . verb decorator
+   48           | . YnN_verb
+   49           | . modal_verb YnN_verb
+   50           | . YnN_verb decorator
+   51 YnN_verb: . verb ALA verb
+   54 modal_verb: . postive_modal_verb
+   55           | . negative_modal_verb
+   56           | . YnN_modal_verb
+   57 postive_modal_verb: . KAMA
+   58                   | . KEN
+   59                   | . WILE
+   60 negative_modal_verb: . postive_modal_verb ALA
+   61 YnN_modal_verb: . KAMA ALA KAMA
+   62               | . KEN ALA KEN
+   63               | . WILE ALA WILE
+   64 verb: . IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
-    IJO   shift, and go to state 27
-    WILE  shift, and go to state 28
-    KEN   shift, and go to state 29
-    TAWA  shift, and go to state 30
-    KAMA  shift, and go to state 31
-    LON   shift, and go to state 32
+    IJO   shift, and go to state 28
+    WILE  shift, and go to state 29
+    KEN   shift, and go to state 30
+    TAWA  shift, and go to state 31
+    KAMA  shift, and go to state 32
+    LON   shift, and go to state 33
 
     $default  reduce using rule 7 (o_sentence_1)
 
     vo_struct                 go to state 92
-    verb_phase                go to state 34
-    no_acceptance_verb_phase  go to state 35
-    acceptance_verb_phase     go to state 36
-    verb_group                go to state 37
-    YnN_verb                  go to state 38
-    modal_verb                go to state 39
-    postive_modal_verb        go to state 40
-    negative_modal_verb       go to state 41
-    YnN_modal_verb            go to state 42
-    verb                      go to state 43
+    verb_phase                go to state 35
+    no_acceptance_verb_phase  go to state 36
+    acceptance_verb_phase     go to state 37
+    verb_group                go to state 38
+    YnN_verb                  go to state 39
+    modal_verb                go to state 40
+    postive_modal_verb        go to state 41
+    negative_modal_verb       go to state 42
+    YnN_modal_verb            go to state 43
+    verb                      go to state 44
 
 
 state 52
 
-   27 conj: ANU .
+   25 conj: ANU .
 
-    $default  reduce using rule 27 (conj)
+    $default  reduce using rule 25 (conj)
 
 
 state 53
 
-   26 conj: EN .
+   24 conj: EN .
 
-    $default  reduce using rule 26 (conj)
+    $default  reduce using rule 24 (conj)
 
 
 state 54
 
-   22 structed_noun_phase: . decorated_noun_struct
-   23                    | . noun_phase conj noun_phase
-   23                    | noun_phase conj . noun_phase
-   24 noun_phase: . noun
-   25           | . structed_noun_phase
-   28 decorated_noun_struct: . noun decorator
-   29                      | . noun noun
-   30                      | . noun noun decorator
-   67 noun: . MI
-   68     | . SINA
-   69     | . norm_subject_noun
-   70 norm_subject_noun: . SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   20 structed_noun_phase: . decorated_noun_struct
+   21                    | . noun_phase conj noun_phase
+   21                    | noun_phase conj . noun_phase
+   22 noun_phase: . noun
+   23           | . structed_noun_phase
+   26 decorated_noun_struct: . noun decorator
+   27                      | . noun noun
+   28                      | . noun noun decorator
+   65 noun: . MI
+   66     | . SINA
+   67     | . norm_subject_noun
+   68 norm_subject_noun: . SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     MI    shift, and go to state 55
     SINA  shift, and go to state 56
     SUPA  shift, and go to state 6
 
-    structed_noun_phase    go to state 66
+    structed_noun_phase    go to state 16
     noun_phase             go to state 93
-    decorated_noun_struct  go to state 19
-    noun                   go to state 20
+    decorated_noun_struct  go to state 18
+    noun                   go to state 19
     norm_subject_noun      go to state 60
 
 
 state 55
 
-   67 noun: MI .
+   65 noun: MI .
 
-    $default  reduce using rule 67 (noun)
+    $default  reduce using rule 65 (noun)
 
 
 state 56
 
-   68 noun: SINA .
+   66 noun: SINA .
 
-    $default  reduce using rule 68 (noun)
+    $default  reduce using rule 66 (noun)
 
 
 state 57
 
-   71 decorator_word: ALA . TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA . TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     TASO  shift, and go to state 94
 
 
 state 58
 
-   28 decorated_noun_struct: noun decorator .
+   26 decorated_noun_struct: noun decorator .
 
-    $default  reduce using rule 28 (decorated_noun_struct)
+    $default  reduce using rule 26 (decorated_noun_struct)
 
 
 state 59
 
-   29 decorated_noun_struct: noun noun .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O, ANU, EN, E]
-   30                      | noun noun . decorator
-   31 decorator: . decorator_word
-   32          | . decorator_word decorator
-   71 decorator_word: . ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   27 decorated_noun_struct: noun noun .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O, ANU, EN, E]
+   28                      | noun noun . decorator
+   29 decorator: . decorator_word
+   30          | . decorator_word decorator
+   69 decorator_word: . ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     ALA  shift, and go to state 57
 
-    $default  reduce using rule 29 (decorated_noun_struct)
+    $default  reduce using rule 27 (decorated_noun_struct)
 
     decorator       go to state 95
     decorator_word  go to state 61
@@ -1256,22 +1219,22 @@ state 59
 
 state 60
 
-   69 noun: norm_subject_noun .
+   67 noun: norm_subject_noun .
 
-    $default  reduce using rule 69 (noun)
+    $default  reduce using rule 67 (noun)
 
 
 state 61
 
-   31 decorator: . decorator_word
-   31          | decorator_word .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O, ANU, EN, E]
-   32          | . decorator_word decorator
-   32          | decorator_word . decorator
-   71 decorator_word: . ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   29 decorator: . decorator_word
+   29          | decorator_word .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O, ANU, EN, E]
+   30          | . decorator_word decorator
+   30          | decorator_word . decorator
+   69 decorator_word: . ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     ALA  shift, and go to state 57
 
-    $default  reduce using rule 31 (decorator)
+    $default  reduce using rule 29 (decorator)
 
     decorator       go to state 96
     decorator_word  go to state 61
@@ -1279,304 +1242,304 @@ state 61
 
 state 62
 
-   70 norm_subject_noun: SUPA MANI SIJELO . POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   19 subject: norm_subject_noun LI .
 
-    POKI  shift, and go to state 97
+    $default  reduce using rule 19 (subject)
 
 
 state 63
 
-   66 verb: IJO SULI . KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   68 norm_subject_noun: SUPA MANI SIJELO . POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
-    KEN  shift, and go to state 98
+    POKI  shift, and go to state 97
 
 
 state 64
 
-   65 YnN_modal_verb: WILE ALA . WILE
+   64 verb: IJO SULI . KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
-    WILE  shift, and go to state 99
+    KEN  shift, and go to state 98
 
 
 state 65
 
-   64 YnN_modal_verb: KEN ALA . KEN
+   63 YnN_modal_verb: WILE ALA . WILE
 
-    KEN  shift, and go to state 100
+    WILE  shift, and go to state 99
 
 
 state 66
 
-   25 noun_phase: structed_noun_phase .
+   62 YnN_modal_verb: KEN ALA . KEN
 
-    $default  reduce using rule 25 (noun_phase)
+    KEN  shift, and go to state 100
 
 
 state 67
 
-   23 structed_noun_phase: noun_phase . conj noun_phase
-   26 conj: . EN
-   27     | . ANU
-   40 no_acceptance_verb_phase: TAWA noun_phase .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O]
+   21 structed_noun_phase: noun_phase . conj noun_phase
+   24 conj: . EN
+   25     | . ANU
+   38 no_acceptance_verb_phase: TAWA noun_phase .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O]
 
     ANU  shift, and go to state 52
     EN   shift, and go to state 53
 
-    $default  reduce using rule 40 (no_acceptance_verb_phase)
+    $default  reduce using rule 38 (no_acceptance_verb_phase)
 
     conj  go to state 54
 
 
 state 68
 
-   63 YnN_modal_verb: KAMA ALA . KAMA
+   61 YnN_modal_verb: KAMA ALA . KAMA
 
     KAMA  shift, and go to state 101
 
 
 state 69
 
-   23 structed_noun_phase: noun_phase . conj noun_phase
-   26 conj: . EN
-   27     | . ANU
-   39 no_acceptance_verb_phase: LON noun_phase .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O]
+   21 structed_noun_phase: noun_phase . conj noun_phase
+   24 conj: . EN
+   25     | . ANU
+   37 no_acceptance_verb_phase: LON noun_phase .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O]
 
     ANU  shift, and go to state 52
     EN   shift, and go to state 53
 
-    $default  reduce using rule 39 (no_acceptance_verb_phase)
+    $default  reduce using rule 37 (no_acceptance_verb_phase)
 
     conj  go to state 54
 
 
 state 70
 
-   77 prepostion: TAWA .
-
-    $default  reduce using rule 77 (prepostion)
-
-
-state 71
-
-   72 prepostion: KEPEKEN .
-
-    $default  reduce using rule 72 (prepostion)
-
-
-state 72
-
-   76 prepostion: TAN .
-
-    $default  reduce using rule 76 (prepostion)
-
-
-state 73
-
-   73 prepostion: LON .
-
-    $default  reduce using rule 73 (prepostion)
-
-
-state 74
-
-   74 prepostion: POKA .
-
-    $default  reduce using rule 74 (prepostion)
-
-
-state 75
-
-   75 prepostion: SAMA .
+   75 prepostion: TAWA .
 
     $default  reduce using rule 75 (prepostion)
 
 
+state 71
+
+   70 prepostion: KEPEKEN .
+
+    $default  reduce using rule 70 (prepostion)
+
+
+state 72
+
+   74 prepostion: TAN .
+
+    $default  reduce using rule 74 (prepostion)
+
+
+state 73
+
+   71 prepostion: LON .
+
+    $default  reduce using rule 71 (prepostion)
+
+
+state 74
+
+   72 prepostion: POKA .
+
+    $default  reduce using rule 72 (prepostion)
+
+
+state 75
+
+   73 prepostion: SAMA .
+
+    $default  reduce using rule 73 (prepostion)
+
+
 state 76
 
-   33 vo_struct: . verb_phase
-   34          | . verb_phase LI vo_struct
-   34          | verb_phase LI . vo_struct
-   35 verb_phase: . no_acceptance_verb_phase
-   36           | . acceptance_verb_phase
-   37           | . verb_phase po_phase
-   38 no_acceptance_verb_phase: . verb_group
-   39                         | . LON noun_phase
-   40                         | . TAWA noun_phase
-   41                         | . modal_verb LON noun_phase
-   42                         | . modal_verb TAWA noun_phase
-   43 acceptance_verb_phase: . verb_group acceptance_obj
-   44                      | . modal_verb verb_group acceptance_obj
-   47 verb_group: . verb
-   48           | . modal_verb verb
-   49           | . verb decorator
-   50           | . YnN_verb
-   51           | . modal_verb YnN_verb
-   52           | . YnN_verb decorator
-   53 YnN_verb: . verb ALA verb
-   56 modal_verb: . postive_modal_verb
-   57           | . negative_modal_verb
-   58           | . YnN_modal_verb
-   59 postive_modal_verb: . KAMA
-   60                   | . KEN
-   61                   | . WILE
-   62 negative_modal_verb: . postive_modal_verb ALA
-   63 YnN_modal_verb: . KAMA ALA KAMA
-   64               | . KEN ALA KEN
-   65               | . WILE ALA WILE
-   66 verb: . IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   31 vo_struct: . verb_phase
+   32          | . verb_phase LI vo_struct
+   32          | verb_phase LI . vo_struct
+   33 verb_phase: . no_acceptance_verb_phase
+   34           | . acceptance_verb_phase
+   35           | . verb_phase po_phase
+   36 no_acceptance_verb_phase: . verb_group
+   37                         | . LON noun_phase
+   38                         | . TAWA noun_phase
+   39                         | . modal_verb LON noun_phase
+   40                         | . modal_verb TAWA noun_phase
+   41 acceptance_verb_phase: . verb_group acceptance_obj
+   42                      | . modal_verb verb_group acceptance_obj
+   45 verb_group: . verb
+   46           | . modal_verb verb
+   47           | . verb decorator
+   48           | . YnN_verb
+   49           | . modal_verb YnN_verb
+   50           | . YnN_verb decorator
+   51 YnN_verb: . verb ALA verb
+   54 modal_verb: . postive_modal_verb
+   55           | . negative_modal_verb
+   56           | . YnN_modal_verb
+   57 postive_modal_verb: . KAMA
+   58                   | . KEN
+   59                   | . WILE
+   60 negative_modal_verb: . postive_modal_verb ALA
+   61 YnN_modal_verb: . KAMA ALA KAMA
+   62               | . KEN ALA KEN
+   63               | . WILE ALA WILE
+   64 verb: . IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
-    IJO   shift, and go to state 27
-    WILE  shift, and go to state 28
-    KEN   shift, and go to state 29
-    TAWA  shift, and go to state 30
-    KAMA  shift, and go to state 31
-    LON   shift, and go to state 32
+    IJO   shift, and go to state 28
+    WILE  shift, and go to state 29
+    KEN   shift, and go to state 30
+    TAWA  shift, and go to state 31
+    KAMA  shift, and go to state 32
+    LON   shift, and go to state 33
 
     vo_struct                 go to state 102
-    verb_phase                go to state 34
-    no_acceptance_verb_phase  go to state 35
-    acceptance_verb_phase     go to state 36
-    verb_group                go to state 37
-    YnN_verb                  go to state 38
-    modal_verb                go to state 39
-    postive_modal_verb        go to state 40
-    negative_modal_verb       go to state 41
-    YnN_modal_verb            go to state 42
-    verb                      go to state 43
+    verb_phase                go to state 35
+    no_acceptance_verb_phase  go to state 36
+    acceptance_verb_phase     go to state 37
+    verb_group                go to state 38
+    YnN_verb                  go to state 39
+    modal_verb                go to state 40
+    postive_modal_verb        go to state 41
+    negative_modal_verb       go to state 42
+    YnN_modal_verb            go to state 43
+    verb                      go to state 44
 
 
 state 77
 
-   37 verb_phase: verb_phase po_phase .
+   35 verb_phase: verb_phase po_phase .
 
-    $default  reduce using rule 37 (verb_phase)
+    $default  reduce using rule 35 (verb_phase)
 
 
 state 78
 
-   22 structed_noun_phase: . decorated_noun_struct
-   23                    | . noun_phase conj noun_phase
-   24 noun_phase: . noun
-   25           | . structed_noun_phase
-   28 decorated_noun_struct: . noun decorator
-   29                      | . noun noun
-   30                      | . noun noun decorator
-   54 po_phase: prepostion . noun_phase
-   55         | prepostion . noun_phase po_phase
-   67 noun: . MI
-   68     | . SINA
-   69     | . norm_subject_noun
-   70 norm_subject_noun: . SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   20 structed_noun_phase: . decorated_noun_struct
+   21                    | . noun_phase conj noun_phase
+   22 noun_phase: . noun
+   23           | . structed_noun_phase
+   26 decorated_noun_struct: . noun decorator
+   27                      | . noun noun
+   28                      | . noun noun decorator
+   52 po_phase: prepostion . noun_phase
+   53         | prepostion . noun_phase po_phase
+   65 noun: . MI
+   66     | . SINA
+   67     | . norm_subject_noun
+   68 norm_subject_noun: . SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     MI    shift, and go to state 55
     SINA  shift, and go to state 56
     SUPA  shift, and go to state 6
 
-    structed_noun_phase    go to state 66
+    structed_noun_phase    go to state 16
     noun_phase             go to state 103
-    decorated_noun_struct  go to state 19
-    noun                   go to state 20
+    decorated_noun_struct  go to state 18
+    noun                   go to state 19
     norm_subject_noun      go to state 60
 
 
 state 79
 
-   22 structed_noun_phase: . decorated_noun_struct
-   23                    | . noun_phase conj noun_phase
-   24 noun_phase: . noun
-   25           | . structed_noun_phase
-   28 decorated_noun_struct: . noun decorator
-   29                      | . noun noun
-   30                      | . noun noun decorator
-   45 acceptance_obj: E . noun_phase
-   46               | E . noun_phase acceptance_obj
-   67 noun: . MI
-   68     | . SINA
-   69     | . norm_subject_noun
-   70 norm_subject_noun: . SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   20 structed_noun_phase: . decorated_noun_struct
+   21                    | . noun_phase conj noun_phase
+   22 noun_phase: . noun
+   23           | . structed_noun_phase
+   26 decorated_noun_struct: . noun decorator
+   27                      | . noun noun
+   28                      | . noun noun decorator
+   43 acceptance_obj: E . noun_phase
+   44               | E . noun_phase acceptance_obj
+   65 noun: . MI
+   66     | . SINA
+   67     | . norm_subject_noun
+   68 norm_subject_noun: . SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     MI    shift, and go to state 55
     SINA  shift, and go to state 56
     SUPA  shift, and go to state 6
 
-    structed_noun_phase    go to state 66
+    structed_noun_phase    go to state 16
     noun_phase             go to state 104
-    decorated_noun_struct  go to state 19
-    noun                   go to state 20
+    decorated_noun_struct  go to state 18
+    noun                   go to state 19
     norm_subject_noun      go to state 60
 
 
 state 80
 
-   43 acceptance_verb_phase: verb_group acceptance_obj .
+   41 acceptance_verb_phase: verb_group acceptance_obj .
 
-    $default  reduce using rule 43 (acceptance_verb_phase)
+    $default  reduce using rule 41 (acceptance_verb_phase)
 
 
 state 81
 
-   52 verb_group: YnN_verb decorator .
+   50 verb_group: YnN_verb decorator .
 
-    $default  reduce using rule 52 (verb_group)
+    $default  reduce using rule 50 (verb_group)
 
 
 state 82
 
-   22 structed_noun_phase: . decorated_noun_struct
-   23                    | . noun_phase conj noun_phase
-   24 noun_phase: . noun
-   25           | . structed_noun_phase
-   28 decorated_noun_struct: . noun decorator
-   29                      | . noun noun
-   30                      | . noun noun decorator
-   42 no_acceptance_verb_phase: modal_verb TAWA . noun_phase
-   67 noun: . MI
-   68     | . SINA
-   69     | . norm_subject_noun
-   70 norm_subject_noun: . SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   20 structed_noun_phase: . decorated_noun_struct
+   21                    | . noun_phase conj noun_phase
+   22 noun_phase: . noun
+   23           | . structed_noun_phase
+   26 decorated_noun_struct: . noun decorator
+   27                      | . noun noun
+   28                      | . noun noun decorator
+   40 no_acceptance_verb_phase: modal_verb TAWA . noun_phase
+   65 noun: . MI
+   66     | . SINA
+   67     | . norm_subject_noun
+   68 norm_subject_noun: . SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     MI    shift, and go to state 55
     SINA  shift, and go to state 56
     SUPA  shift, and go to state 6
 
-    structed_noun_phase    go to state 66
+    structed_noun_phase    go to state 16
     noun_phase             go to state 105
-    decorated_noun_struct  go to state 19
-    noun                   go to state 20
+    decorated_noun_struct  go to state 18
+    noun                   go to state 19
     norm_subject_noun      go to state 60
 
 
 state 83
 
-   22 structed_noun_phase: . decorated_noun_struct
-   23                    | . noun_phase conj noun_phase
-   24 noun_phase: . noun
-   25           | . structed_noun_phase
-   28 decorated_noun_struct: . noun decorator
-   29                      | . noun noun
-   30                      | . noun noun decorator
-   41 no_acceptance_verb_phase: modal_verb LON . noun_phase
-   67 noun: . MI
-   68     | . SINA
-   69     | . norm_subject_noun
-   70 norm_subject_noun: . SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   20 structed_noun_phase: . decorated_noun_struct
+   21                    | . noun_phase conj noun_phase
+   22 noun_phase: . noun
+   23           | . structed_noun_phase
+   26 decorated_noun_struct: . noun decorator
+   27                      | . noun noun
+   28                      | . noun noun decorator
+   39 no_acceptance_verb_phase: modal_verb LON . noun_phase
+   65 noun: . MI
+   66     | . SINA
+   67     | . norm_subject_noun
+   68 norm_subject_noun: . SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     MI    shift, and go to state 55
     SINA  shift, and go to state 56
     SUPA  shift, and go to state 6
 
-    structed_noun_phase    go to state 66
+    structed_noun_phase    go to state 16
     noun_phase             go to state 106
-    decorated_noun_struct  go to state 19
-    noun                   go to state 20
+    decorated_noun_struct  go to state 18
+    noun                   go to state 19
     norm_subject_noun      go to state 60
 
 
 state 84
 
-   44 acceptance_verb_phase: modal_verb verb_group . acceptance_obj
-   45 acceptance_obj: . E noun_phase
-   46               | . E noun_phase acceptance_obj
+   42 acceptance_verb_phase: modal_verb verb_group . acceptance_obj
+   43 acceptance_obj: . E noun_phase
+   44               | . E noun_phase acceptance_obj
 
     E  shift, and go to state 79
 
@@ -1585,18 +1548,18 @@ state 84
 
 state 85
 
-   31 decorator: . decorator_word
-   32          | . decorator_word decorator
-   50 verb_group: YnN_verb .  [E]
-   51           | modal_verb YnN_verb .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O, E]
-   52           | YnN_verb . decorator
-   71 decorator_word: . ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   29 decorator: . decorator_word
+   30          | . decorator_word decorator
+   48 verb_group: YnN_verb .  [E]
+   49           | modal_verb YnN_verb .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O, E]
+   50           | YnN_verb . decorator
+   69 decorator_word: . ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     ALA  shift, and go to state 57
 
-    E         reduce using rule 50 (verb_group)
-    E         [reduce using rule 51 (verb_group)]
-    $default  reduce using rule 51 (verb_group)
+    E         reduce using rule 48 (verb_group)
+    E         [reduce using rule 49 (verb_group)]
+    $default  reduce using rule 49 (verb_group)
 
     decorator       go to state 81
     decorator_word  go to state 61
@@ -1604,12 +1567,12 @@ state 85
 
 state 86
 
-   48 verb_group: modal_verb . verb
-   51           | modal_verb . YnN_verb
-   53 YnN_verb: . verb ALA verb
-   66 verb: . IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   46 verb_group: modal_verb . verb
+   49           | modal_verb . YnN_verb
+   51 YnN_verb: . verb ALA verb
+   64 verb: . IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
-    IJO  shift, and go to state 27
+    IJO  shift, and go to state 28
 
     YnN_verb  go to state 108
     verb      go to state 109
@@ -1617,19 +1580,19 @@ state 86
 
 state 87
 
-   31 decorator: . decorator_word
-   32          | . decorator_word decorator
-   47 verb_group: verb .  [E]
-   48           | modal_verb verb .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O, E]
-   49           | verb . decorator
-   53 YnN_verb: verb . ALA verb
-   71 decorator_word: . ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   29 decorator: . decorator_word
+   30          | . decorator_word decorator
+   45 verb_group: verb .  [E]
+   46           | modal_verb verb .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O, E]
+   47           | verb . decorator
+   51 YnN_verb: verb . ALA verb
+   69 decorator_word: . ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     ALA  shift, and go to state 89
 
-    E         reduce using rule 47 (verb_group)
-    E         [reduce using rule 48 (verb_group)]
-    $default  reduce using rule 48 (verb_group)
+    E         reduce using rule 45 (verb_group)
+    E         [reduce using rule 46 (verb_group)]
+    $default  reduce using rule 46 (verb_group)
 
     decorator       go to state 90
     decorator_word  go to state 61
@@ -1637,18 +1600,18 @@ state 87
 
 state 88
 
-   62 negative_modal_verb: postive_modal_verb ALA .
+   60 negative_modal_verb: postive_modal_verb ALA .
 
-    $default  reduce using rule 62 (negative_modal_verb)
+    $default  reduce using rule 60 (negative_modal_verb)
 
 
 state 89
 
-   53 YnN_verb: verb ALA . verb
-   66 verb: . IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
-   71 decorator_word: ALA . TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   51 YnN_verb: verb ALA . verb
+   64 verb: . IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   69 decorator_word: ALA . TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
-    IJO   shift, and go to state 27
+    IJO   shift, and go to state 28
     TASO  shift, and go to state 94
 
     verb  go to state 110
@@ -1656,9 +1619,9 @@ state 89
 
 state 90
 
-   49 verb_group: verb decorator .
+   47 verb_group: verb decorator .
 
-    $default  reduce using rule 49 (verb_group)
+    $default  reduce using rule 47 (verb_group)
 
 
 state 91
@@ -1677,99 +1640,99 @@ state 92
 
 state 93
 
-   23 structed_noun_phase: noun_phase . conj noun_phase
-   23                    | noun_phase conj noun_phase .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O, ANU, EN, E]
-   26 conj: . EN
-   27     | . ANU
+   21 structed_noun_phase: noun_phase . conj noun_phase
+   21                    | noun_phase conj noun_phase .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O, ANU, EN, E]
+   24 conj: . EN
+   25     | . ANU
 
     ANU  shift, and go to state 52
     EN   shift, and go to state 53
 
-    ANU       [reduce using rule 23 (structed_noun_phase)]
-    EN        [reduce using rule 23 (structed_noun_phase)]
-    $default  reduce using rule 23 (structed_noun_phase)
+    ANU       [reduce using rule 21 (structed_noun_phase)]
+    EN        [reduce using rule 21 (structed_noun_phase)]
+    $default  reduce using rule 21 (structed_noun_phase)
 
     conj  go to state 54
 
 
 state 94
 
-   71 decorator_word: ALA TASO . MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO . MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     MELI  shift, and go to state 111
 
 
 state 95
 
-   30 decorated_noun_struct: noun noun decorator .
+   28 decorated_noun_struct: noun noun decorator .
 
-    $default  reduce using rule 30 (decorated_noun_struct)
+    $default  reduce using rule 28 (decorated_noun_struct)
 
 
 state 96
 
-   32 decorator: decorator_word decorator .
+   30 decorator: decorator_word decorator .
 
-    $default  reduce using rule 32 (decorator)
+    $default  reduce using rule 30 (decorator)
 
 
 state 97
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI . AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI . AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     AKESI  shift, and go to state 112
 
 
 state 98
 
-   66 verb: IJO SULI KEN . PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN . PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
     PALI  shift, and go to state 113
 
 
 state 99
 
-   65 YnN_modal_verb: WILE ALA WILE .
-
-    $default  reduce using rule 65 (YnN_modal_verb)
-
-
-state 100
-
-   64 YnN_modal_verb: KEN ALA KEN .
-
-    $default  reduce using rule 64 (YnN_modal_verb)
-
-
-state 101
-
-   63 YnN_modal_verb: KAMA ALA KAMA .
+   63 YnN_modal_verb: WILE ALA WILE .
 
     $default  reduce using rule 63 (YnN_modal_verb)
 
 
+state 100
+
+   62 YnN_modal_verb: KEN ALA KEN .
+
+    $default  reduce using rule 62 (YnN_modal_verb)
+
+
+state 101
+
+   61 YnN_modal_verb: KAMA ALA KAMA .
+
+    $default  reduce using rule 61 (YnN_modal_verb)
+
+
 state 102
 
-   34 vo_struct: verb_phase LI vo_struct .
+   32 vo_struct: verb_phase LI vo_struct .
 
-    $default  reduce using rule 34 (vo_struct)
+    $default  reduce using rule 32 (vo_struct)
 
 
 state 103
 
-   23 structed_noun_phase: noun_phase . conj noun_phase
-   26 conj: . EN
-   27     | . ANU
-   54 po_phase: . prepostion noun_phase
-   54         | prepostion noun_phase .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O]
-   55         | . prepostion noun_phase po_phase
-   55         | prepostion noun_phase . po_phase
-   72 prepostion: . KEPEKEN
-   73           | . LON
-   74           | . POKA
-   75           | . SAMA
-   76           | . TAN
-   77           | . TAWA
+   21 structed_noun_phase: noun_phase . conj noun_phase
+   24 conj: . EN
+   25     | . ANU
+   52 po_phase: . prepostion noun_phase
+   52         | prepostion noun_phase .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O]
+   53         | . prepostion noun_phase po_phase
+   53         | prepostion noun_phase . po_phase
+   70 prepostion: . KEPEKEN
+   71           | . LON
+   72           | . POKA
+   73           | . SAMA
+   74           | . TAN
+   75           | . TAWA
 
     TAWA     shift, and go to state 70
     KEPEKEN  shift, and go to state 71
@@ -1780,13 +1743,13 @@ state 103
     ANU      shift, and go to state 52
     EN       shift, and go to state 53
 
-    TAWA      [reduce using rule 54 (po_phase)]
-    KEPEKEN   [reduce using rule 54 (po_phase)]
-    TAN       [reduce using rule 54 (po_phase)]
-    LON       [reduce using rule 54 (po_phase)]
-    POKA      [reduce using rule 54 (po_phase)]
-    SAMA      [reduce using rule 54 (po_phase)]
-    $default  reduce using rule 54 (po_phase)
+    TAWA      [reduce using rule 52 (po_phase)]
+    KEPEKEN   [reduce using rule 52 (po_phase)]
+    TAN       [reduce using rule 52 (po_phase)]
+    LON       [reduce using rule 52 (po_phase)]
+    POKA      [reduce using rule 52 (po_phase)]
+    SAMA      [reduce using rule 52 (po_phase)]
+    $default  reduce using rule 52 (po_phase)
 
     conj        go to state 54
     po_phase    go to state 114
@@ -1795,19 +1758,19 @@ state 103
 
 state 104
 
-   23 structed_noun_phase: noun_phase . conj noun_phase
-   26 conj: . EN
-   27     | . ANU
-   45 acceptance_obj: . E noun_phase
-   45               | E noun_phase .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O]
-   46               | . E noun_phase acceptance_obj
-   46               | E noun_phase . acceptance_obj
+   21 structed_noun_phase: noun_phase . conj noun_phase
+   24 conj: . EN
+   25     | . ANU
+   43 acceptance_obj: . E noun_phase
+   43               | E noun_phase .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O]
+   44               | . E noun_phase acceptance_obj
+   44               | E noun_phase . acceptance_obj
 
     ANU  shift, and go to state 52
     EN   shift, and go to state 53
     E    shift, and go to state 79
 
-    $default  reduce using rule 45 (acceptance_obj)
+    $default  reduce using rule 43 (acceptance_obj)
 
     conj            go to state 54
     acceptance_obj  go to state 115
@@ -1815,798 +1778,798 @@ state 104
 
 state 105
 
-   23 structed_noun_phase: noun_phase . conj noun_phase
-   26 conj: . EN
-   27     | . ANU
-   42 no_acceptance_verb_phase: modal_verb TAWA noun_phase .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O]
+   21 structed_noun_phase: noun_phase . conj noun_phase
+   24 conj: . EN
+   25     | . ANU
+   40 no_acceptance_verb_phase: modal_verb TAWA noun_phase .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O]
 
     ANU  shift, and go to state 52
     EN   shift, and go to state 53
 
-    $default  reduce using rule 42 (no_acceptance_verb_phase)
+    $default  reduce using rule 40 (no_acceptance_verb_phase)
 
     conj  go to state 54
 
 
 state 106
 
-   23 structed_noun_phase: noun_phase . conj noun_phase
-   26 conj: . EN
-   27     | . ANU
-   41 no_acceptance_verb_phase: modal_verb LON noun_phase .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O]
+   21 structed_noun_phase: noun_phase . conj noun_phase
+   24 conj: . EN
+   25     | . ANU
+   39 no_acceptance_verb_phase: modal_verb LON noun_phase .  [$end, MI, SINA, TAWA, KEPEKEN, TAN, LON, SUPA, POKA, SAMA, LI, LA, O]
 
     ANU  shift, and go to state 52
     EN   shift, and go to state 53
 
-    $default  reduce using rule 41 (no_acceptance_verb_phase)
+    $default  reduce using rule 39 (no_acceptance_verb_phase)
 
     conj  go to state 54
 
 
 state 107
 
-   44 acceptance_verb_phase: modal_verb verb_group acceptance_obj .
+   42 acceptance_verb_phase: modal_verb verb_group acceptance_obj .
 
-    $default  reduce using rule 44 (acceptance_verb_phase)
+    $default  reduce using rule 42 (acceptance_verb_phase)
 
 
 state 108
 
-   51 verb_group: modal_verb YnN_verb .
+   49 verb_group: modal_verb YnN_verb .
 
-    $default  reduce using rule 51 (verb_group)
+    $default  reduce using rule 49 (verb_group)
 
 
 state 109
 
-   48 verb_group: modal_verb verb .  [E]
-   53 YnN_verb: verb . ALA verb
+   46 verb_group: modal_verb verb .  [E]
+   51 YnN_verb: verb . ALA verb
 
     ALA  shift, and go to state 116
 
-    $default  reduce using rule 48 (verb_group)
+    $default  reduce using rule 46 (verb_group)
 
 
 state 110
 
-   53 YnN_verb: verb ALA verb .
+   51 YnN_verb: verb ALA verb .
 
-    $default  reduce using rule 53 (YnN_verb)
+    $default  reduce using rule 51 (YnN_verb)
 
 
 state 111
 
-   71 decorator_word: ALA TASO MELI . SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI . SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     SINA  shift, and go to state 117
 
 
 state 112
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI . IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI . IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     IKE  shift, and go to state 118
 
 
 state 113
 
-   66 verb: IJO SULI KEN PALI . UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI . UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
     UTALA  shift, and go to state 119
 
 
 state 114
 
-   55 po_phase: prepostion noun_phase po_phase .
+   53 po_phase: prepostion noun_phase po_phase .
 
-    $default  reduce using rule 55 (po_phase)
+    $default  reduce using rule 53 (po_phase)
 
 
 state 115
 
-   46 acceptance_obj: E noun_phase acceptance_obj .
+   44 acceptance_obj: E noun_phase acceptance_obj .
 
-    $default  reduce using rule 46 (acceptance_obj)
+    $default  reduce using rule 44 (acceptance_obj)
 
 
 state 116
 
-   53 YnN_verb: verb ALA . verb
-   66 verb: . IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   51 YnN_verb: verb ALA . verb
+   64 verb: . IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
-    IJO  shift, and go to state 27
+    IJO  shift, and go to state 28
 
     verb  go to state 110
 
 
 state 117
 
-   71 decorator_word: ALA TASO MELI SINA . MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA . MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     MI  shift, and go to state 120
 
 
 state 118
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE . SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE . SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     SINPIN  shift, and go to state 121
 
 
 state 119
 
-   66 verb: IJO SULI KEN PALI UTALA . PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA . PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
     PIMEJA  shift, and go to state 122
 
 
 state 120
 
-   71 decorator_word: ALA TASO MELI SINA MI . SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI . SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     SIN  shift, and go to state 123
 
 
 state 121
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN . ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN . ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     ILO  shift, and go to state 124
 
 
 state 122
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA . SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA . SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
     SELI  shift, and go to state 125
 
 
 state 123
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN . WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN . WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     WAWA  shift, and go to state 126
 
 
 state 124
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO . PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO . PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     PILIN  shift, and go to state 127
 
 
 state 125
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI . KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI . KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
     KULE  shift, and go to state 128
 
 
 state 126
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA . UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA . UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     UTA  shift, and go to state 129
 
 
 state 127
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN . LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN . LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     LINJA  shift, and go to state 130
 
 
 state 128
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE . SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE . SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
     SONA  shift, and go to state 131
 
 
 state 129
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA . ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA . ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     ALE  shift, and go to state 132
 
 
 state 130
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA . MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA . MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     MA  shift, and go to state 133
 
 
 state 131
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA . OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA . OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
     OPEN  shift, and go to state 134
 
 
 state 132
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE . JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE . JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     JELO  shift, and go to state 135
 
 
 state 133
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA . NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA . NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     NIMI  shift, and go to state 136
 
 
 state 134
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN . PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN . PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
     PANA  shift, and go to state 137
 
 
 state 135
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO . MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO . MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     MOKU  shift, and go to state 138
 
 
 state 136
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI . WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI . WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     WAN  shift, and go to state 139
 
 
 state 137
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA . TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA . TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
     TAWA  shift, and go to state 140
 
 
 state 138
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU . ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU . ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     ALI  shift, and go to state 141
 
 
 state 139
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN . MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN . MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     MI  shift, and go to state 142
 
 
 state 140
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA . AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA . AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
     AWEN  shift, and go to state 143
 
 
 state 141
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI . SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI . SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     SEWI  shift, and go to state 144
 
 
 state 142
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI . UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI . UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     UNPA  shift, and go to state 145
 
 
 state 143
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN . JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN . JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
     JAKI  shift, and go to state 146
 
 
 state 144
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI . KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI . KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     KIN  shift, and go to state 147
 
 
 state 145
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA . LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA . LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     LEN  shift, and go to state 148
 
 
 state 146
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI . KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI . KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
     KAMA  shift, and go to state 149
 
 
 state 147
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN . NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN . NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     NASA  shift, and go to state 150
 
 
 state 148
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN . LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN . LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     LIPU  shift, and go to state 151
 
 
 state 149
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA . TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA . TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
     TOKI  shift, and go to state 152
 
 
 state 150
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA . LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA . LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     LAPE  shift, and go to state 153
 
 
 state 151
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU . MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU . MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     MAMA  shift, and go to state 154
 
 
 state 152
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI . MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI . MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
     MUTE  shift, and go to state 155
 
 
 state 153
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE . SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE . SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     SUWI  shift, and go to state 156
 
 
 state 154
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA . NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA . NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     NASIN  shift, and go to state 157
 
 
 state 155
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE . LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE . LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
     LETE  shift, and go to state 158
 
 
 state 156
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI . ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI . ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     ONA  shift, and go to state 159
 
 
 state 157
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN . SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN . SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     SOWELI  shift, and go to state 160
 
 
 state 158
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE . LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE . LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
     LILI  shift, and go to state 161
 
 
 state 159
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA . POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA . POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     POKA  shift, and go to state 162
 
 
 state 160
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI . NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI . NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     NANPA  shift, and go to state 163
 
 
 state 161
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI . KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI . KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
     KEPEKEN  shift, and go to state 164
 
 
 state 162
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA . KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA . KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     KALAMA  shift, and go to state 165
 
 
 state 163
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA . OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA . OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     OKO  shift, and go to state 166
 
 
 state 164
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN . LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN . LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
     LON  shift, and go to state 167
 
 
 state 165
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA . LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA . LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     LASO  shift, and go to state 168
 
 
 state 166
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO . SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO . SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     SUNO  shift, and go to state 169
 
 
 state 167
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON . MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON . MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
     MOLI  shift, and go to state 170
 
 
 state 168
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO . PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO . PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     PONA  shift, and go to state 171
 
 
 state 169
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO . TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO . TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     TU  shift, and go to state 172
 
 
 state 170
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI . JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI . JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
     JAN  shift, and go to state 173
 
 
 state 171
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA . SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA . SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     SAMA  shift, and go to state 174
 
 
 state 172
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU . KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU . KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     KILI  shift, and go to state 175
 
 
 state 173
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN . ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN . ANTE LAWA WEKA SITELEN TOMO ANPA MUSI
 
     ANTE  shift, and go to state 176
 
 
 state 174
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA . LUKIN KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA . LUKIN KULUPU WIKE SIKE LOJE KUTE
 
     LUKIN  shift, and go to state 177
 
 
 state 175
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI . LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI . LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     LUKA  shift, and go to state 178
 
 
 state 176
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE . LAWA WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE . LAWA WEKA SITELEN TOMO ANPA MUSI
 
     LAWA  shift, and go to state 179
 
 
 state 177
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN . KULUPU WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN . KULUPU WIKE SIKE LOJE KUTE
 
     KULUPU  shift, and go to state 180
 
 
 state 178
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA . OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA . OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     OLIN  shift, and go to state 181
 
 
 state 179
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA . WEKA SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA . WEKA SITELEN TOMO ANPA MUSI
 
     WEKA  shift, and go to state 182
 
 
 state 180
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU . WIKE SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU . WIKE SIKE LOJE KUTE
 
     WIKE  shift, and go to state 183
 
 
 state 181
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN . KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN . KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     KALA  shift, and go to state 184
 
 
 state 182
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA . SITELEN TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA . SITELEN TOMO ANPA MUSI
 
     SITELEN  shift, and go to state 185
 
 
 state 183
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE . SIKE LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE . SIKE LOJE KUTE
 
     SIKE  shift, and go to state 186
 
 
 state 184
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA . WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA . WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     WILE  shift, and go to state 187
 
 
 state 185
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN . TOMO ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN . TOMO ANPA MUSI
 
     TOMO  shift, and go to state 188
 
 
 state 186
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE . LOJE KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE . LOJE KUTE
 
     LOJE  shift, and go to state 189
 
 
 state 187
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE . SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE . SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     SINA  shift, and go to state 190
 
 
 state 188
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO . ANPA MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO . ANPA MUSI
 
     ANPA  shift, and go to state 191
 
 
 state 189
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE . KUTE
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE . KUTE
 
     KUTE  shift, and go to state 192
 
 
 state 190
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA . KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA . KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     KIWEN  shift, and go to state 193
 
 
 state 191
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA . MUSI
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA . MUSI
 
     MUSI  shift, and go to state 194
 
 
 state 192
 
-   71 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE .
+   69 decorator_word: ALA TASO MELI SINA MI SIN WAWA UTA ALE JELO MOKU ALI SEWI KIN NASA LAPE SUWI ONA POKA KALAMA LASO PONA SAMA LUKIN KULUPU WIKE SIKE LOJE KUTE .
 
-    $default  reduce using rule 71 (decorator_word)
+    $default  reduce using rule 69 (decorator_word)
 
 
 state 193
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN . NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN . NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     NOKA  shift, and go to state 195
 
 
 state 194
 
-   66 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI .
+   64 verb: IJO SULI KEN PALI UTALA PIMEJA SELI KULE SONA OPEN PANA TAWA AWEN JAKI KAMA TOKI MUTE LETE LILI KEPEKEN LON MOLI JAN ANTE LAWA WEKA SITELEN TOMO ANPA MUSI .
 
-    $default  reduce using rule 66 (verb)
+    $default  reduce using rule 64 (verb)
 
 
 state 195
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA . PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA . PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     PINI  shift, and go to state 196
 
 
 state 196
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI . MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI . MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     MUN  shift, and go to state 197
 
 
 state 197
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN . NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN . NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     NENA  shift, and go to state 198
 
 
 state 198
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA . JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA . JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     JO  shift, and go to state 199
 
 
 state 199
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO . SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO . SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     SELO  shift, and go to state 200
 
 
 state 200
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO . INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO . INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     INSA  shift, and go to state 201
 
 
 state 201
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA . MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA . MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     MONSI  shift, and go to state 202
 
 
 state 202
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI . NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI . NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     NI  shift, and go to state 203
 
 
 state 203
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI . PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI . PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     PIPI  shift, and go to state 204
 
 
 state 204
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI . TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI . TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     TELO  shift, and go to state 205
 
 
 state 205
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO . TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO . TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     TENPO  shift, and go to state 206
 
 
 state 206
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO . MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO . MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     MIJE  shift, and go to state 207
 
 
 state 207
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE . KASI WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE . KASI WALO WASO LUPA TAN PALISA PAKALA SEME
 
     KASI  shift, and go to state 208
 
 
 state 208
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI . WALO WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI . WALO WASO LUPA TAN PALISA PAKALA SEME
 
     WALO  shift, and go to state 209
 
 
 state 209
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO . WASO LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO . WASO LUPA TAN PALISA PAKALA SEME
 
     WASO  shift, and go to state 210
 
 
 state 210
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO . LUPA TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO . LUPA TAN PALISA PAKALA SEME
 
     LUPA  shift, and go to state 211
 
 
 state 211
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA . TAN PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA . TAN PALISA PAKALA SEME
 
     TAN  shift, and go to state 212
 
 
 state 212
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN . PALISA PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN . PALISA PAKALA SEME
 
     PALISA  shift, and go to state 213
 
 
 state 213
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA . PAKALA SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA . PAKALA SEME
 
     PAKALA  shift, and go to state 214
 
 
 state 214
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA . SEME
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA . SEME
 
     SEME  shift, and go to state 215
 
 
 state 215
 
-   70 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME .
+   68 norm_subject_noun: SUPA MANI SIJELO POKI AKESI IKE SINPIN ILO PILIN LINJA MA NIMI WAN MI UNPA LEN LIPU MAMA NASIN SOWELI NANPA OKO SUNO TU KILI LUKA OLIN KALA WILE SINA KIWEN NOKA PINI MUN NENA JO SELO INSA MONSI NI PIPI TELO TENPO MIJE KASI WALO WASO LUPA TAN PALISA PAKALA SEME .
 
-    $default  reduce using rule 70 (norm_subject_noun)
+    $default  reduce using rule 68 (norm_subject_noun)
