@@ -1,9 +1,0 @@
-enum WordType{
-    FULLSTOP,
-    SPECIALSUBJS,
-    NORMALSUBJS,
-    VERBS,
-    PREPOS,
-    QUALIFIERS,
-    AUXILIARY_VERB
-};
