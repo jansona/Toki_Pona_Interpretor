@@ -5,16 +5,12 @@
 %}
 blank [" "\n\t]
 whitespace {blank}+
-mi mi
-ante ante
-sina sina
-e e
-olin olin
 %%
 {whitespace} {;}
-{mi} {return MI;}
-{sina} {return SINA;}
-{ante} {return ANTE;}
-{e} {return E;}
+mi {return MI;}
+sina {return SINA;}
+ante {return ANTE;}
+e {return E;}
+olin {return OLIN;}
 %%
 

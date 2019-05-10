@@ -282,12 +282,13 @@ static void yy_fatal_error YY_PROTO(( yyconst char msg[] ));
 	*yy_cp = '\0'; \
 	yy_c_buf_p = yy_cp;
 
-#define YY_NUM_RULES 6
-#define YY_END_OF_BUFFER 7
-static yyconst short int yy_accept[19] =
+#define YY_NUM_RULES 7
+#define YY_END_OF_BUFFER 8
+static yyconst short int yy_accept[23] =
     {   0,
-        0,    0,    7,    6,    1,    6,    5,    6,    6,    1,
-        0,    2,    0,    0,    0,    4,    3,    0
+        0,    0,    8,    7,    1,    7,    5,    7,    7,    7,
+        1,    0,    2,    0,    0,    0,    0,    0,    4,    6,
+        3,    0
     } ;
 
 static yyconst int yy_ec[256] =
@@ -303,8 +304,8 @@ static yyconst int yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    3,    1,    1,    1,
 
-        4,    1,    1,    1,    5,    1,    1,    1,    6,    7,
-        1,    1,    1,    1,    8,    9,    1,    1,    1,    1,
+        4,    1,    1,    1,    5,    1,    1,    6,    7,    8,
+        9,    1,    1,    1,   10,   11,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -322,35 +323,40 @@ static yyconst int yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static yyconst int yy_meta[10] =
+static yyconst int yy_meta[12] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    1
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1
     } ;
 
-static yyconst short int yy_base[19] =
+static yyconst short int yy_base[23] =
     {   0,
-        0,    0,   19,   20,   16,   10,   20,   11,   10,   12,
-        4,   20,    5,    7,    7,   20,   20,   20
+        0,    0,   24,   25,   21,   14,   25,   16,   14,   14,
+       16,    6,   25,   11,    7,   10,    5,    9,   25,   25,
+       25,   25
     } ;
 
-static yyconst short int yy_def[19] =
+static yyconst short int yy_def[23] =
     {   0,
-       18,    1,   18,   18,   18,   18,   18,   18,   18,   18,
-       18,   18,   18,   18,   18,   18,   18,    0
+       22,    1,   22,   22,   22,   22,   22,   22,   22,   22,
+       22,   22,   22,   22,   22,   22,   22,   22,   22,   22,
+       22,    0
     } ;
 
-static yyconst short int yy_nxt[30] =
+static yyconst short int yy_nxt[37] =
     {   0,
-        4,    5,    6,    7,    4,    8,    4,    9,    4,   17,
-       16,   15,   14,   10,   13,   12,   11,   10,   18,    3,
-       18,   18,   18,   18,   18,   18,   18,   18,   18
+        4,    5,    6,    7,    4,    4,    8,    4,    9,   10,
+        4,   21,   20,   19,   18,   17,   16,   11,   15,   14,
+       13,   12,   11,   22,    3,   22,   22,   22,   22,   22,
+       22,   22,   22,   22,   22,   22
     } ;
 
-static yyconst short int yy_chk[30] =
+static yyconst short int yy_chk[37] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,   15,
-       14,   13,   11,   10,    9,    8,    6,    5,    3,   18,
-       18,   18,   18,   18,   18,   18,   18,   18,   18
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,   18,   17,   16,   15,   14,   12,   11,   10,    9,
+        8,    6,    5,    3,   22,   22,   22,   22,   22,   22,
+       22,   22,   22,   22,   22,   22
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -370,7 +376,7 @@ char *yytext;
 #include "toki_pona.tab.h"
 #include <stdio.h>
 #include <stdlib.h>
-#line 374 "lex.yy.c"
+#line 380 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -521,9 +527,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 13 ".\\toki_pona.l"
+#line 8 ".\\toki_pona.l"
 
-#line 527 "lex.yy.c"
+#line 533 "lex.yy.c"
 
 	if ( yy_init )
 		{
@@ -574,13 +580,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 19 )
+				if ( yy_current_state >= 23 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 20 );
+		while ( yy_base[yy_current_state] != 25 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -608,35 +614,40 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 14 ".\\toki_pona.l"
+#line 9 ".\\toki_pona.l"
 {;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 15 ".\\toki_pona.l"
+#line 10 ".\\toki_pona.l"
 {return MI;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 16 ".\\toki_pona.l"
+#line 11 ".\\toki_pona.l"
 {return SINA;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 17 ".\\toki_pona.l"
+#line 12 ".\\toki_pona.l"
 {return ANTE;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 18 ".\\toki_pona.l"
+#line 13 ".\\toki_pona.l"
 {return E;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 19 ".\\toki_pona.l"
+#line 14 ".\\toki_pona.l"
+{return OLIN;}
+	YY_BREAK
+case 7:
+YY_RULE_SETUP
+#line 15 ".\\toki_pona.l"
 ECHO;
 	YY_BREAK
-#line 640 "lex.yy.c"
+#line 651 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -928,7 +939,7 @@ static yy_state_type yy_get_previous_state()
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 19 )
+			if ( yy_current_state >= 23 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -963,11 +974,11 @@ yy_state_type yy_current_state;
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 19 )
+		if ( yy_current_state >= 23 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-	yy_is_jam = (yy_current_state == 18);
+	yy_is_jam = (yy_current_state == 22);
 
 	return yy_is_jam ? 0 : yy_current_state;
 	}
@@ -1522,6 +1533,6 @@ int main()
 	return 0;
 	}
 #endif
-#line 19 ".\\toki_pona.l"
+#line 15 ".\\toki_pona.l"
 
 
