@@ -10,9 +10,9 @@
 toki_pona :
     sentence
 sentence :
-    svo_sentence
-    | condition svo_sentence
+    condition svo_sentence
     | o_sentence
+    | svo_sentence
 o_sentence :
     o_sentence_1
     | o_sentence_2

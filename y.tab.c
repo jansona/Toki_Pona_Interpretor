@@ -75,7 +75,7 @@
 
 
 /* Line 189 of yacc.c  */
-#line 79 "toki_pona.tab.c"
+#line 79 "y.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -219,6 +219,123 @@
      E = 372
    };
 #endif
+/* Tokens.  */
+#define ILO 258
+#define PALISA 259
+#define LIPU 260
+#define OLIN 261
+#define ANTE 262
+#define WASO 263
+#define UNPA 264
+#define SIJELO 265
+#define TENPO 266
+#define LILI 267
+#define LAPE 268
+#define PINI 269
+#define KIN 270
+#define IJO 271
+#define MUN 272
+#define PALI 273
+#define SELI 274
+#define LINJA 275
+#define PAKALA 276
+#define KULE 277
+#define WILE 278
+#define LUPA 279
+#define UTA 280
+#define ALI 281
+#define KULUPU 282
+#define ONA 283
+#define SIN 284
+#define UTALA 285
+#define MONSI 286
+#define LEN 287
+#define SITELEN 288
+#define MI 289
+#define KASI 290
+#define MUSI 291
+#define AWEN 292
+#define JO 293
+#define NASA 294
+#define NENA 295
+#define WAN 296
+#define PIMEJA 297
+#define KILI 298
+#define SELO 299
+#define SONA 300
+#define OKO 301
+#define TU 302
+#define KALAMA 303
+#define SIKE 304
+#define SINA 305
+#define INSA 306
+#define KALA 307
+#define JELO 308
+#define PILIN 309
+#define PONA 310
+#define NIMI 311
+#define PANA 312
+#define TASO 313
+#define KEN 314
+#define JAKI 315
+#define MELI 316
+#define LOJE 317
+#define SINPIN 318
+#define PIPI 319
+#define MUTE 320
+#define WIKE 321
+#define TOKI 322
+#define MANI 323
+#define JAN 324
+#define TAWA 325
+#define KEPEKEN 326
+#define LUKIN 327
+#define TAN 328
+#define AKESI 329
+#define KAMA 330
+#define NOKA 331
+#define MOKU 332
+#define LAWA 333
+#define TELO 334
+#define LASO 335
+#define WEKA 336
+#define IKE 337
+#define LETE 338
+#define MOLI 339
+#define LON 340
+#define SUPA 341
+#define NASIN 342
+#define TOMO 343
+#define KUTE 344
+#define SUNO 345
+#define POKI 346
+#define SEME 347
+#define MA 348
+#define SOWELI 349
+#define NI 350
+#define MAMA 351
+#define MIJE 352
+#define WALO 353
+#define NANPA 354
+#define ALA 355
+#define KIWEN 356
+#define OPEN 357
+#define POKA 358
+#define LUKA 359
+#define SAMA 360
+#define SULI 361
+#define ALE 362
+#define SEWI 363
+#define ANPA 364
+#define WAWA 365
+#define SUWI 366
+#define LI 367
+#define LA 368
+#define O 369
+#define ANU 370
+#define EN 371
+#define E 372
+
 
 
 
@@ -234,7 +351,7 @@ typedef int YYSTYPE;
 
 
 /* Line 264 of yacc.c  */
-#line 238 "toki_pona.tab.c"
+#line 355 "y.tab.c"
 
 #ifdef short
 # undef short
@@ -1631,7 +1748,7 @@ yyreduce:
       
 
 /* Line 1455 of yacc.c  */
-#line 1635 "toki_pona.tab.c"
+#line 1752 "y.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
