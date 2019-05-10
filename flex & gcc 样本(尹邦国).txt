@@ -14,3 +14,5 @@ https://nchc.dl.sourceforge.net/project/gnuwin32/flex/2.5.4a-1/flex-2.5.4a-1.exe
 (生成lex.yy.c)
 5. gcc -o XXX.exe lex.yy.c XXX.tab.c -lfl
 
+
+bison -d .\toki_pona.y; flex .\toki_pona.l; gcc -o toki_pona.exe .\lex.yy.c .\toki_pona.tab.c -L "C:\GnuWin32\lib" -lfl
