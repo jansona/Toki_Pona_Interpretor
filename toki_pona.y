@@ -19,18 +19,21 @@ sentence:
     svo_sentence
     {sprintf($$, "%s.\n%s", $1, "svo_sentence\n");}
     | condition svo_sentence
-    {sprintf($$, "%s.\n%s", $1, "condition\n");}
+    {
+        sprintf(buf, "(-%s-) %s.\n%s", $1, $2, "condition\n");
+        strcpy($$, buf);
+    }
     | o_sentence
     {sprintf($$, "%s.\n%s", $1, "o_sentence\n");}
     ;
 o_sentence:
     o_sentence_1
     {
-        strcpy($$, $1);
+        $$ = $1;
     }
     | o_sentence_2
     {
-        
+        $$ = $1;
     }
     ;
 o_sentence_1:
@@ -48,13 +51,37 @@ o_sentence_1:
 o_sentence_2:
     O vo_struct
     | condition O vo_struct
+    {
+        sprintf(buf, "#%s# [%s] <%s>", $1, $2, $3);
+        strcpy($$, buf);
+    }
     ;
 condition:
     svo_sentence LA
+    {
+        sprintf(buf, "%s [%s]", $1, $2);
+        strcpy($$, buf);
+    }
     | noun_phase LA
+    {
+        sprintf(buf, "%s [%s]", $1, $2);
+        strcpy($$, buf);
+    }
     | TASO svo_sentence
+    {
+        sprintf(buf, "[%s] <%s>", $1, $2);
+        strcpy($$, buf);
+    }
     | KEN LA
+    {
+        sprintf(buf, "[%s] [%s]", $1, $2);
+        strcpy($$, buf);
+    }
     | ANTE LA
+    {
+        sprintf(buf, "[%s] [%s]", $1, $2);
+        strcpy($$, buf);
+    }
     ;
 svo_sentence:
     subject vo_struct
@@ -71,7 +98,7 @@ subject:
     | norm_noun_phase LI
     {
         sprintf($$, "%s [%s]", $1, $2);
-        // prinf("norm_noun_phase\n");
+        // printf("norm_noun_phase\n");
     }
     ;
 norm_noun_phase:
@@ -84,8 +111,16 @@ norm_noun_phase:
     ;
 structed_noun_phase:
     decorated_noun_struct
-    {$$ = $1;}
+    {
+        $$ = $1;
+        // printf("structed_noun_phase\n");
+        // printf("%s\n", $1);
+    }
     | noun_phase conj noun_phase
+    {
+        sprintf(buf, "(%s [%s] %s)", $1, $2, $3);
+        strcpy($$, buf);
+    }
     ;
 noun_phase:
     noun
@@ -98,34 +133,71 @@ conj:
 decorated_noun_struct:
     noun decorator
     {
-        sprintf(buf, "%s (%s)", $1, $2);
+        sprintf(buf, "%s-%s", $1, $2);
         strcpy($$, buf);
         // printf("I'm a decorator : %s\n", $2);
     }
     | noun noun
+    {
+        sprintf(buf, "%s-%s", $1, $2);
+        strcpy($$, buf);
+        // printf("I'm a decorator : %s\n", $2);
+    }
     | noun noun decorator
+    {
+        sprintf(buf, "%s-%s-%s", $1, $2, $3);
+        strcpy($$, buf);
+        // printf("I'm a decorator : %s\n", $2);
+    }
     ;
 decorator:
     decorator_word
     | decorator_word decorator
+    {
+        sprintf(buf, "%s-%s", $1, $2);
+        strcpy($$, buf);
+    }
     ;
 vo_struct:
     verb_phase
     {$$ = $1;}
     | verb_phase LI vo_struct
+    {
+        sprintf(buf, "%s [%s] <%s>", $1, $2, $3);
+        strcpy($$, buf);
+    }
     ;
 verb_phase:
     no_acceptance_verb_phase
     | acceptance_verb_phase
-    {$$ = $1;}
     | verb_phase po_phase
+    {
+        sprintf(buf, "%s>%s", $1, $2);
+        strcpy($$, buf);
+    }
     ;
 no_acceptance_verb_phase:
     verb_group
     | LON noun_phase
+    {
+        sprintf(buf, "%s->%s", $1, $2);
+        strcpy($$, buf);
+    }
     | TAWA noun_phase
+    {
+        sprintf(buf, "%s->%s", $1, $2);
+        strcpy($$, buf);
+    }
     | modal_verb LON noun_phase
+    {
+        sprintf(buf, "*%s %s->%s", $1, $2, $3);
+        strcpy($$, buf);
+    }
     | modal_verb TAWA noun_phase
+    {
+        sprintf(buf, "*%s %s->%s", $1, $2, $3);
+        strcpy($$, buf);
+    }
     ;
 acceptance_verb_phase:
     verb_group acceptance_obj
@@ -134,11 +206,15 @@ acceptance_verb_phase:
         strcpy($$, buf);
     }
     | modal_verb verb_group acceptance_obj
+    {
+        sprintf(buf, "*%s @%s %s", $1, $2, $3);
+        strcpy($$, buf);
+    }
     ;
 acceptance_obj:
     E noun_phase
     {
-        sprintf(buf, "[%s] %s", $1, $2);
+        sprintf(buf, "[%s] {%s}", $1, $2);
         strcpy($$, buf);
     }
     | E noun_phase acceptance_obj
@@ -146,17 +222,45 @@ acceptance_obj:
 verb_group:
     verb
     | modal_verb verb
+    {
+        sprintf(buf, "*%s %s", $1, $2);
+        strcpy($$, buf);
+    }
     | verb decorator
+    {
+        sprintf(buf, "%s-%s", $1, $2);
+        strcpy($$, buf);
+    }
     | YnN_verb
     | modal_verb YnN_verb
+    {
+        sprintf(buf, "*%s %s", $1, $2);
+        strcpy($$, buf);
+    }
     | YnN_verb decorator
+    {
+        sprintf(buf, "%s-%s", $1, $2);
+        strcpy($$, buf);
+    }
     ;
 YnN_verb:
     verb ALA verb
+    {
+        sprintf(buf, "(?%s %s %s?)", $1, $2, $3);
+        strcpy($$, buf);
+    }
     ;
 po_phase:
     prepostion noun_phase
+    {
+        sprintf(buf, "%s>%s", $1, $2);
+        strcpy($$, buf);
+    }
     | prepostion noun_phase po_phase
+    {
+        sprintf(buf, "%s>%s>%s", $1, $2, $3);
+        strcpy($$, buf);
+    }
     ;
 modal_verb:
     postive_modal_verb
@@ -170,11 +274,27 @@ postive_modal_verb:
     ;
 negative_modal_verb:
     postive_modal_verb ALA
+    {
+        sprintf(buf, "%s<%s", $1, $2);
+        strcpy($$, buf);
+    }
     ;
 YnN_modal_verb:
     KAMA ALA KAMA
+    {
+        sprintf(buf, "(?%s %s %s?)", $1, $2, $3);
+        strcpy($$, buf);
+    }
     | KEN ALA KEN
+    {
+        sprintf(buf, "(?%s %s %s?)", $1, $2, $3);
+        strcpy($$, buf);
+    }
     | WILE ALA WILE
+    {
+        sprintf(buf, "(?%s %s %s?)", $1, $2, $3);
+        strcpy($$, buf);
+    }
     ;
 verb:
     LUKIN | WEKA | IKE | KULE | PINI | JO | PONA | MUTE | LAPE | IJO | MOLI | PAKALA | LAWA | SONA | SULI | TAWA | WILE | JAN | KEPEKEN | OPEN | TOKI | LETE | OLIN | ANTE | AWEN | WAWA | LILI | LON | SELI | SIN | TU | UTALA | SITELEN | MUSI | WAN | SUWI | ANPA | KAMA | POKA | TELO | MOKU | PILIN | TOMO | PIMEJA | UNPA | NASA | JAKI | KALAMA | PALI | PANA | KEN
