@@ -10,10 +10,7 @@ char buf[100];
 
 %%
 toki_pona:
-    sentences
-    ;
-sentences:
-    sentence sentences
+    sentence ENDMARK
     {
         printf("%s", $1);
     }
@@ -28,11 +25,25 @@ sentence:
     ;
 o_sentence:
     o_sentence_1
+    {
+        strcpy($$, $1);
+    }
     | o_sentence_2
+    {
+        
+    }
     ;
 o_sentence_1:
     noun_phase O
+    {
+        sprintf(buf, "{%s} [%s]", $1, $2);
+        strcpy($$, buf);
+    }
     | noun_phase O vo_struct
+    {
+        sprintf(buf, "{%s} [%s] <%s>", $1, $2, $3);
+        strcpy($$, buf);
+    }
     ;
 o_sentence_2:
     O vo_struct
