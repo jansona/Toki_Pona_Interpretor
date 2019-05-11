@@ -34,10 +34,14 @@ condition :
     | ANTE LA
 svo_sentence :
     subject vo_struct
+    // {printf("%s %s\n", $1, $2);}
 subject :
     MI
+    {printf("{%s} ", $1);}
     | SINA
+    {printf("{%s} ", $1);}
     | norm_noun_phase LI
+    {printf("{%s} [%s] ", $1, $2);}
 norm_noun_phase :
     norm_subject_noun
     | structed_noun_phase
@@ -63,6 +67,7 @@ vo_struct :
 verb_phase :
     no_acceptance_verb_phase
     | acceptance_verb_phase
+    {printf(" %s ", $1);}
     | verb_phase po_phase
 no_acceptance_verb_phase :
     verb_group
@@ -72,6 +77,7 @@ no_acceptance_verb_phase :
     | modal_verb TAWA noun_phase
 acceptance_verb_phase :
     verb_group acceptance_obj
+    // {yylval = strdup(yytext);}
     | modal_verb verb_group acceptance_obj
 acceptance_obj :
     E noun_phase

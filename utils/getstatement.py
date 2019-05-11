@@ -7,5 +7,5 @@ if __name__ == "__main__":
     words = string.split(" ")
 
     for w in words:
-        print("{:<10}".format(w.lower()) + " {" + "return {};".format(w) + "}")
+        print("{:<10}".format(w.lower()) + " {yylval = strdup(yytext); " + "return {};".format(w) + "}")
 
