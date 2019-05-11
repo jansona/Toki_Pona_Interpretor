@@ -3,21 +3,28 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
+char buf[100];
 %}
 %token ALA SONA WAWA LUPA ONA NANPA IJO ILO OLIN WILE MUTE OKO SEWI LON TENPO JAKI JO NASIN TOKI SUNO UTA WIKE NASA ALI WALO LASO KILI SUPA AWEN LETE AKESI NENA UTALA NIMI SINPIN LAPE SITELEN POKA SAMA MOLI LUKIN JELO PAKALA MA LEN ALE LAWA KIWEN PINI WASO KULUPU PALI JAN OPEN TASO KUTE KALA TELO MONSI LILI KEN TOMO MAMA MIJE PONA SEME TU MELI PIMEJA PIPI NOKA KULE SIN SOWELI SUWI ANTE SIKE KALAMA LINJA KASI SIJELO MUN PANA TAWA LOJE TAN KEPEKEN KAMA SELO MI POKI SELI IKE PILIN WAN LUKA MANI ANPA SULI MUSI WEKA INSA LIPU MOKU KIN SINA NI UNPA PALISA LI LA O ANU EN E
 %token ENDMARK
 
 %%
 toki_pona:
-    sentence ENDMARK
+    sentences
+    ;
+sentences:
+    sentence sentences
+    {
+        printf("%s", $1);
+    }
     ;
 sentence:
     svo_sentence
-    {printf("svo_sentence\n");}
+    {sprintf($$, "%s.\n%s", $1, "svo_sentence\n");}
     | condition svo_sentence
-    {printf("condition\n");}
+    {sprintf($$, "%s.\n%s", $1, "condition\n");}
     | o_sentence
-    {printf("o_sentence\n");}
+    {sprintf($$, "%s.\n%s", $1, "o_sentence\n");}
     ;
 o_sentence:
     o_sentence_1
@@ -40,22 +47,33 @@ condition:
     ;
 svo_sentence:
     subject vo_struct
-    // {printf("%s %s\n", $1, $2);}
+    {
+        sprintf(buf, "{%s} <%s>", $1, $2);
+        strcpy($$, buf);
+    }
     ;
 subject:
     MI
-    {printf("{%s} ", $1);}
+    {$$ = $1;}
     | SINA
-    {printf("{%s} ", $1);}
+    {$$ = $1;}
     | norm_noun_phase LI
-    {printf("{%s} [%s] ", $1, $2);}
+    {
+        sprintf($$, "%s [%s]", $1, $2);
+        // prinf("norm_noun_phase\n");
+    }
     ;
 norm_noun_phase:
     norm_subject_noun
     | structed_noun_phase
+    {
+        $$ = $1;
+        // printf("structed_noun_phase\n");
+    }
     ;
 structed_noun_phase:
     decorated_noun_struct
+    {$$ = $1;}
     | noun_phase conj noun_phase
     ;
 noun_phase:
@@ -68,6 +86,11 @@ conj:
     ;
 decorated_noun_struct:
     noun decorator
+    {
+        sprintf(buf, "%s (%s)", $1, $2);
+        strcpy($$, buf);
+        // printf("I'm a decorator : %s\n", $2);
+    }
     | noun noun
     | noun noun decorator
     ;
@@ -77,12 +100,13 @@ decorator:
     ;
 vo_struct:
     verb_phase
+    {$$ = $1;}
     | verb_phase LI vo_struct
     ;
 verb_phase:
     no_acceptance_verb_phase
     | acceptance_verb_phase
-    {printf(" %s ", $1);}
+    {$$ = $1;}
     | verb_phase po_phase
     ;
 no_acceptance_verb_phase:
@@ -94,11 +118,18 @@ no_acceptance_verb_phase:
     ;
 acceptance_verb_phase:
     verb_group acceptance_obj
-    // {yylval = strdup(yytext);}
+    {
+        sprintf(buf, "@%s %s", $1, $2);
+        strcpy($$, buf);
+    }
     | modal_verb verb_group acceptance_obj
     ;
 acceptance_obj:
     E noun_phase
+    {
+        sprintf(buf, "[%s] %s", $1, $2);
+        strcpy($$, buf);
+    }
     | E noun_phase acceptance_obj
     ;
 verb_group:
