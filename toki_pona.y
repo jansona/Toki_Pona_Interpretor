@@ -50,6 +50,10 @@ o_sentence_1:
     ;
 o_sentence_2:
     O vo_struct
+    {
+        sprintf(buf, "[%s] <%s>", $1, $2);
+        strcpy($$, buf);
+    }
     | condition O vo_struct
     {
         sprintf(buf, "#%s# [%s] <%s>", $1, $2, $3);
