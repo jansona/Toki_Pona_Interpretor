@@ -13,6 +13,7 @@ toki_pona:
     sentence ENDMARK
     {
         printf("%s", $1);
+        exit(0);
     }
     ;
 sentence:
@@ -20,7 +21,7 @@ sentence:
     {sprintf($$, "%s.\n%s", $1, "svo_sentence\n");}
     | condition svo_sentence
     {
-        sprintf(buf, "(-%s-) %s.\n%s", $1, $2, "condition\n");
+        sprintf(buf, "#%s# %s.\n%s", $1, $2, "condition\n");
         strcpy($$, buf);
     }
     | o_sentence
@@ -176,7 +177,7 @@ verb_phase:
     | acceptance_verb_phase
     | verb_phase po_phase
     {
-        sprintf(buf, "%s>%s", $1, $2);
+        sprintf(buf, "%s=>%s", $1, $2);
         strcpy($$, buf);
     }
     ;
@@ -184,22 +185,22 @@ no_acceptance_verb_phase:
     verb_group
     | LON noun_phase
     {
-        sprintf(buf, "%s->%s", $1, $2);
+        sprintf(buf, "%s=>%s", $1, $2);
         strcpy($$, buf);
     }
     | TAWA noun_phase
     {
-        sprintf(buf, "%s->%s", $1, $2);
+        sprintf(buf, "%s=>%s", $1, $2);
         strcpy($$, buf);
     }
     | modal_verb LON noun_phase
     {
-        sprintf(buf, "*%s %s->%s", $1, $2, $3);
+        sprintf(buf, "*%s %s=>%s", $1, $2, $3);
         strcpy($$, buf);
     }
     | modal_verb TAWA noun_phase
     {
-        sprintf(buf, "*%s %s->%s", $1, $2, $3);
+        sprintf(buf, "*%s %s=>%s", $1, $2, $3);
         strcpy($$, buf);
     }
     ;
@@ -257,12 +258,12 @@ YnN_verb:
 po_phase:
     prepostion noun_phase
     {
-        sprintf(buf, "%s>%s", $1, $2);
+        sprintf(buf, "%s=>%s", $1, $2);
         strcpy($$, buf);
     }
     | prepostion noun_phase po_phase
     {
-        sprintf(buf, "%s>%s>%s", $1, $2, $3);
+        sprintf(buf, "%s=>%s=>%s", $1, $2, $3);
         strcpy($$, buf);
     }
     ;
@@ -279,7 +280,7 @@ postive_modal_verb:
 negative_modal_verb:
     postive_modal_verb ALA
     {
-        sprintf(buf, "%s<%s", $1, $2);
+        sprintf(buf, "%s^%s", $1, $2);
         strcpy($$, buf);
     }
     ;
