@@ -10,15 +10,22 @@ char buf[100];
 
 %%
 toki_pona:
+    sentences
+    ;
+sentences:
+    sentence_with_end sentence_with_end
+    ;
+sentence_with_end:
     sentence ENDMARK
     {
         printf("%s", $1);
-        exit(0);
     }
     ;
 sentence:
     svo_sentence
-    {sprintf($$, "%s.\n%s", $1, "svo_sentence\n");}
+    {
+        sprintf($$, "%s.\n%s", $1, "svo_sentence\n");
+    }
     | condition svo_sentence
     {
         sprintf(buf, "#%s# %s.\n%s", $1, $2, "condition\n");
@@ -185,22 +192,22 @@ no_acceptance_verb_phase:
     verb_group
     | LON noun_phase
     {
-        sprintf(buf, "%s=>%s", $1, $2);
+        sprintf(buf, "@%s-%s", $1, $2);
         strcpy($$, buf);
     }
     | TAWA noun_phase
     {
-        sprintf(buf, "%s=>%s", $1, $2);
+        sprintf(buf, "@%s-%s", $1, $2);
         strcpy($$, buf);
     }
     | modal_verb LON noun_phase
     {
-        sprintf(buf, "*%s %s=>%s", $1, $2, $3);
+        sprintf(buf, "*%s @%s-%s", $1, $2, $3);
         strcpy($$, buf);
     }
     | modal_verb TAWA noun_phase
     {
-        sprintf(buf, "*%s %s=>%s", $1, $2, $3);
+        sprintf(buf, "*%s @%s-%s", $1, $2, $3);
         strcpy($$, buf);
     }
     ;
@@ -321,6 +328,8 @@ prepostion:
 
 yyerror(const char *s){
     fprintf(stderr, "error: %s\n", s);
+    extern char *yytext;
+    fprintf(stderr, "parser error near %s\n", yytext);
 }
 
 int main(){
