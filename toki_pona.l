@@ -125,6 +125,8 @@ anu        {yylval = strdup(yytext); return ANU;}
 en         {yylval = strdup(yytext); return EN;}
 e          {yylval = strdup(yytext); return E;}
 .          {return ENDMARK;}
-unexpected_word {printf("unexpected word %s\n", yytext); return;}
+{unexpected_word} {
+        printf("unexpected word \"%s\"\n", yytext); exit(0);
+    }
 %%
 
