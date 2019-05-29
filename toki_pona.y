@@ -10,29 +10,29 @@ char buf[100];
 
 %%
 toki_pona:
-    sentences
-    ;
-sentences:
-    sentence_with_end sentence_with_end
-    ;
-sentence_with_end:
-    sentence ENDMARK
+    sentence
     {
-        printf("%s", $1);
+        printf($$);
+        exit(0);
     }
     ;
 sentence:
-    svo_sentence
+    svo_sentence ENDMARK
     {
         sprintf($$, "%s.\n%s", $1, "svo_sentence\n");
+        // printf("svo_sentence\n");
     }
-    | condition svo_sentence
+    | condition svo_sentence ENDMARK
     {
         sprintf(buf, "#%s# %s.\n%s", $1, $2, "condition\n");
         strcpy($$, buf);
+        // printf("condition\n");
     }
-    | o_sentence
-    {sprintf($$, "%s.\n%s", $1, "o_sentence\n");}
+    | o_sentence ENDMARK
+    {
+        sprintf($$, "%s.\n%s", $1, "o_sentence\n");
+        // printf("o_sentence\n");
+    }
     ;
 o_sentence:
     o_sentence_1
