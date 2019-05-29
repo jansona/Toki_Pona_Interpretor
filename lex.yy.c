@@ -520,7 +520,9 @@ char *yytext;
 #include "toki_pona.tab.h"
 #include <stdio.h>
 #include <stdlib.h>
-#line 524 "lex.yy.c"
+
+int isUnexpected = 0;
+#line 526 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -671,9 +673,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 10 ".\\toki_pona.l"
+#line 12 ".\\toki_pona.l"
 
-#line 677 "lex.yy.c"
+#line 679 "lex.yy.c"
 
 	if ( yy_init )
 		{
@@ -758,600 +760,605 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 11 ".\\toki_pona.l"
+#line 13 ".\\toki_pona.l"
 {;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 12 ".\\toki_pona.l"
+#line 14 ".\\toki_pona.l"
 {printf("%d\t",ALA);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 13 ".\\toki_pona.l"
+#line 15 ".\\toki_pona.l"
 {printf("%d\t",SONA);}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 14 ".\\toki_pona.l"
+#line 16 ".\\toki_pona.l"
 {printf("%d\t",WAWA);}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 15 ".\\toki_pona.l"
+#line 17 ".\\toki_pona.l"
 {printf("%d\t",LUPA);}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 16 ".\\toki_pona.l"
+#line 18 ".\\toki_pona.l"
 {printf("%d\t",ONA);}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 17 ".\\toki_pona.l"
+#line 19 ".\\toki_pona.l"
 {printf("%d\t",NANPA);}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 18 ".\\toki_pona.l"
+#line 20 ".\\toki_pona.l"
 {printf("%d\t",IJO);}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 19 ".\\toki_pona.l"
+#line 21 ".\\toki_pona.l"
 {printf("%d\t",ILO);}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 20 ".\\toki_pona.l"
+#line 22 ".\\toki_pona.l"
 {printf("%d\t",OLIN);}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 21 ".\\toki_pona.l"
+#line 23 ".\\toki_pona.l"
 {printf("%d\t",WILE);}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 22 ".\\toki_pona.l"
+#line 24 ".\\toki_pona.l"
 {printf("%d\t",MUTE);}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 23 ".\\toki_pona.l"
+#line 25 ".\\toki_pona.l"
 {printf("%d\t",OKO);}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 24 ".\\toki_pona.l"
+#line 26 ".\\toki_pona.l"
 {printf("%d\t",SEWI);}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 25 ".\\toki_pona.l"
+#line 27 ".\\toki_pona.l"
 {printf("%d\t",LON);}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 26 ".\\toki_pona.l"
+#line 28 ".\\toki_pona.l"
 {printf("%d\t",TENPO);}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 27 ".\\toki_pona.l"
+#line 29 ".\\toki_pona.l"
 {printf("%d\t",JAKI);}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 28 ".\\toki_pona.l"
+#line 30 ".\\toki_pona.l"
 {printf("%d\t",JO);}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 29 ".\\toki_pona.l"
+#line 31 ".\\toki_pona.l"
 {printf("%d\t",NASIN);}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 30 ".\\toki_pona.l"
+#line 32 ".\\toki_pona.l"
 {printf("%d\t",TOKI);}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 31 ".\\toki_pona.l"
+#line 33 ".\\toki_pona.l"
 {printf("%d\t",SUNO);}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 32 ".\\toki_pona.l"
+#line 34 ".\\toki_pona.l"
 {printf("%d\t",UTA);}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 33 ".\\toki_pona.l"
+#line 35 ".\\toki_pona.l"
 {printf("%d\t",WIKE);}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 34 ".\\toki_pona.l"
+#line 36 ".\\toki_pona.l"
 {printf("%d\t",NASA);}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 35 ".\\toki_pona.l"
+#line 37 ".\\toki_pona.l"
 {printf("%d\t",ALI);}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 36 ".\\toki_pona.l"
+#line 38 ".\\toki_pona.l"
 {printf("%d\t",WALO);}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 37 ".\\toki_pona.l"
+#line 39 ".\\toki_pona.l"
 {printf("%d\t",LASO);}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 38 ".\\toki_pona.l"
+#line 40 ".\\toki_pona.l"
 {printf("%d\t",KILI);}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 39 ".\\toki_pona.l"
+#line 41 ".\\toki_pona.l"
 {printf("%d\t",SUPA);}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 40 ".\\toki_pona.l"
+#line 42 ".\\toki_pona.l"
 {printf("%d\t",AWEN);}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 41 ".\\toki_pona.l"
+#line 43 ".\\toki_pona.l"
 {printf("%d\t",LETE);}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 42 ".\\toki_pona.l"
+#line 44 ".\\toki_pona.l"
 {printf("%d\t",AKESI);}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 43 ".\\toki_pona.l"
+#line 45 ".\\toki_pona.l"
 {printf("%d\t",NENA);}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 44 ".\\toki_pona.l"
+#line 46 ".\\toki_pona.l"
 {printf("%d\t",UTALA);}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 45 ".\\toki_pona.l"
+#line 47 ".\\toki_pona.l"
 {printf("%d\t",NIMI);}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 46 ".\\toki_pona.l"
+#line 48 ".\\toki_pona.l"
 {printf("%d\t",SINPIN);}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 47 ".\\toki_pona.l"
+#line 49 ".\\toki_pona.l"
 {printf("%d\t",LAPE);}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 48 ".\\toki_pona.l"
+#line 50 ".\\toki_pona.l"
 {printf("%d\t",SITELEN);}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 49 ".\\toki_pona.l"
+#line 51 ".\\toki_pona.l"
 {printf("%d\t",POKA);}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 50 ".\\toki_pona.l"
+#line 52 ".\\toki_pona.l"
 {printf("%d\t",SAMA);}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 51 ".\\toki_pona.l"
+#line 53 ".\\toki_pona.l"
 {printf("%d\t",MOLI);}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 52 ".\\toki_pona.l"
+#line 54 ".\\toki_pona.l"
 {printf("%d\t",LUKIN);}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 53 ".\\toki_pona.l"
+#line 55 ".\\toki_pona.l"
 {printf("%d\t",JELO);}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 54 ".\\toki_pona.l"
+#line 56 ".\\toki_pona.l"
 {printf("%d\t",PAKALA);}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 55 ".\\toki_pona.l"
+#line 57 ".\\toki_pona.l"
 {printf("%d\t",MA);}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 56 ".\\toki_pona.l"
+#line 58 ".\\toki_pona.l"
 {printf("%d\t",LEN);}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 57 ".\\toki_pona.l"
+#line 59 ".\\toki_pona.l"
 {printf("%d\t",ALE);}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 58 ".\\toki_pona.l"
+#line 60 ".\\toki_pona.l"
 {printf("%d\t",LAWA);}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 59 ".\\toki_pona.l"
+#line 61 ".\\toki_pona.l"
 {printf("%d\t",KIWEN);}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 60 ".\\toki_pona.l"
+#line 62 ".\\toki_pona.l"
 {printf("%d\t",PINI);}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 61 ".\\toki_pona.l"
+#line 63 ".\\toki_pona.l"
 {printf("%d\t",WASO);}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 62 ".\\toki_pona.l"
+#line 64 ".\\toki_pona.l"
 {printf("%d\t",KULUPU);}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 63 ".\\toki_pona.l"
+#line 65 ".\\toki_pona.l"
 {printf("%d\t",PALI);}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 64 ".\\toki_pona.l"
+#line 66 ".\\toki_pona.l"
 {printf("%d\t",JAN);}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 65 ".\\toki_pona.l"
+#line 67 ".\\toki_pona.l"
 {printf("%d\t",OPEN);}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 66 ".\\toki_pona.l"
+#line 68 ".\\toki_pona.l"
 {printf("%d\t",TASO);}
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 67 ".\\toki_pona.l"
+#line 69 ".\\toki_pona.l"
 {printf("%d\t",KUTE);}
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 68 ".\\toki_pona.l"
+#line 70 ".\\toki_pona.l"
 {printf("%d\t",KALA);}
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 69 ".\\toki_pona.l"
+#line 71 ".\\toki_pona.l"
 {printf("%d\t",TELO);}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 70 ".\\toki_pona.l"
+#line 72 ".\\toki_pona.l"
 {printf("%d\t",MONSI);}
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 71 ".\\toki_pona.l"
+#line 73 ".\\toki_pona.l"
 {printf("%d\t",LILI);}
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 72 ".\\toki_pona.l"
+#line 74 ".\\toki_pona.l"
 {printf("%d\t",KEN);}
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 73 ".\\toki_pona.l"
+#line 75 ".\\toki_pona.l"
 {printf("%d\t",TOMO);}
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 74 ".\\toki_pona.l"
+#line 76 ".\\toki_pona.l"
 {printf("%d\t",MAMA);}
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 75 ".\\toki_pona.l"
+#line 77 ".\\toki_pona.l"
 {printf("%d\t",MIJE);}
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 76 ".\\toki_pona.l"
+#line 78 ".\\toki_pona.l"
 {printf("%d\t",PONA);}
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 77 ".\\toki_pona.l"
+#line 79 ".\\toki_pona.l"
 {printf("%d\t",SEME);}
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 78 ".\\toki_pona.l"
+#line 80 ".\\toki_pona.l"
 {printf("%d\t",TU);}
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 79 ".\\toki_pona.l"
+#line 81 ".\\toki_pona.l"
 {printf("%d\t",MELI);}
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 80 ".\\toki_pona.l"
+#line 82 ".\\toki_pona.l"
 {printf("%d\t",PIMEJA);}
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 81 ".\\toki_pona.l"
+#line 83 ".\\toki_pona.l"
 {printf("%d\t",PIPI);}
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 82 ".\\toki_pona.l"
+#line 84 ".\\toki_pona.l"
 {printf("%d\t",NOKA);}
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 83 ".\\toki_pona.l"
+#line 85 ".\\toki_pona.l"
 {printf("%d\t",KULE);}
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 84 ".\\toki_pona.l"
+#line 86 ".\\toki_pona.l"
 {printf("%d\t",SIN);}
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 85 ".\\toki_pona.l"
+#line 87 ".\\toki_pona.l"
 {printf("%d\t",SOWELI);}
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 86 ".\\toki_pona.l"
+#line 88 ".\\toki_pona.l"
 {printf("%d\t",SUWI);}
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 87 ".\\toki_pona.l"
+#line 89 ".\\toki_pona.l"
 {printf("%d\t",ANTE);}
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 88 ".\\toki_pona.l"
+#line 90 ".\\toki_pona.l"
 {printf("%d\t",SIKE);}
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 89 ".\\toki_pona.l"
+#line 91 ".\\toki_pona.l"
 {printf("%d\t",KALAMA);}
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 90 ".\\toki_pona.l"
+#line 92 ".\\toki_pona.l"
 {printf("%d\t",LINJA);}
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 91 ".\\toki_pona.l"
+#line 93 ".\\toki_pona.l"
 {printf("%d\t",KASI);}
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 92 ".\\toki_pona.l"
+#line 94 ".\\toki_pona.l"
 {printf("%d\t",SIJELO);}
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 93 ".\\toki_pona.l"
+#line 95 ".\\toki_pona.l"
 {printf("%d\t",MUN);}
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 94 ".\\toki_pona.l"
+#line 96 ".\\toki_pona.l"
 {printf("%d\t",PANA);}
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 95 ".\\toki_pona.l"
+#line 97 ".\\toki_pona.l"
 {printf("%d\t",TAWA);}
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 96 ".\\toki_pona.l"
+#line 98 ".\\toki_pona.l"
 {printf("%d\t",LOJE);}
 	YY_BREAK
 case 87:
 YY_RULE_SETUP
-#line 97 ".\\toki_pona.l"
+#line 99 ".\\toki_pona.l"
 {printf("%d\t",TAN);}
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
-#line 98 ".\\toki_pona.l"
+#line 100 ".\\toki_pona.l"
 {printf("%d\t",KEPEKEN);}
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 99 ".\\toki_pona.l"
+#line 101 ".\\toki_pona.l"
 {printf("%d\t",KAMA);}
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 100 ".\\toki_pona.l"
+#line 102 ".\\toki_pona.l"
 {printf("%d\t",SELO);}
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-#line 101 ".\\toki_pona.l"
+#line 103 ".\\toki_pona.l"
 {printf("%d\t",MI);}
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
-#line 102 ".\\toki_pona.l"
+#line 104 ".\\toki_pona.l"
 {printf("%d\t",POKI);}
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 103 ".\\toki_pona.l"
+#line 105 ".\\toki_pona.l"
 {printf("%d\t",SELI);}
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
-#line 104 ".\\toki_pona.l"
+#line 106 ".\\toki_pona.l"
 {printf("%d\t",IKE);}
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-#line 105 ".\\toki_pona.l"
+#line 107 ".\\toki_pona.l"
 {printf("%d\t",PILIN);}
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
-#line 106 ".\\toki_pona.l"
+#line 108 ".\\toki_pona.l"
 {printf("%d\t",WAN);}
 	YY_BREAK
 case 97:
 YY_RULE_SETUP
-#line 107 ".\\toki_pona.l"
+#line 109 ".\\toki_pona.l"
 {printf("%d\t",LUKA);}
 	YY_BREAK
 case 98:
 YY_RULE_SETUP
-#line 108 ".\\toki_pona.l"
+#line 110 ".\\toki_pona.l"
 {printf("%d\t",MANI);}
 	YY_BREAK
 case 99:
 YY_RULE_SETUP
-#line 109 ".\\toki_pona.l"
+#line 111 ".\\toki_pona.l"
 {printf("%d\t",ANPA);}
 	YY_BREAK
 case 100:
 YY_RULE_SETUP
-#line 110 ".\\toki_pona.l"
+#line 112 ".\\toki_pona.l"
 {printf("%d\t",SULI);}
 	YY_BREAK
 case 101:
 YY_RULE_SETUP
-#line 111 ".\\toki_pona.l"
+#line 113 ".\\toki_pona.l"
 {printf("%d\t",MUSI);}
 	YY_BREAK
 case 102:
 YY_RULE_SETUP
-#line 112 ".\\toki_pona.l"
+#line 114 ".\\toki_pona.l"
 {printf("%d\t",WEKA);}
 	YY_BREAK
 case 103:
 YY_RULE_SETUP
-#line 113 ".\\toki_pona.l"
+#line 115 ".\\toki_pona.l"
 {printf("%d\t",INSA);}
 	YY_BREAK
 case 104:
 YY_RULE_SETUP
-#line 114 ".\\toki_pona.l"
+#line 116 ".\\toki_pona.l"
 {printf("%d\t",LIPU);}
 	YY_BREAK
 case 105:
 YY_RULE_SETUP
-#line 115 ".\\toki_pona.l"
+#line 117 ".\\toki_pona.l"
 {printf("%d\t",MOKU);}
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
-#line 116 ".\\toki_pona.l"
+#line 118 ".\\toki_pona.l"
 {printf("%d\t",KIN);}
 	YY_BREAK
 case 107:
 YY_RULE_SETUP
-#line 117 ".\\toki_pona.l"
+#line 119 ".\\toki_pona.l"
 {printf("%d\t",SINA);}
 	YY_BREAK
 case 108:
 YY_RULE_SETUP
-#line 118 ".\\toki_pona.l"
+#line 120 ".\\toki_pona.l"
 {printf("%d\t",NI);}
 	YY_BREAK
 case 109:
 YY_RULE_SETUP
-#line 119 ".\\toki_pona.l"
+#line 121 ".\\toki_pona.l"
 {printf("%d\t",UNPA);}
 	YY_BREAK
 case 110:
 YY_RULE_SETUP
-#line 120 ".\\toki_pona.l"
+#line 122 ".\\toki_pona.l"
 {printf("%d\t",PALISA);}
 	YY_BREAK
 case 111:
 YY_RULE_SETUP
-#line 121 ".\\toki_pona.l"
+#line 123 ".\\toki_pona.l"
 {printf("%d\t",LI);}
 	YY_BREAK
 case 112:
 YY_RULE_SETUP
-#line 122 ".\\toki_pona.l"
+#line 124 ".\\toki_pona.l"
 {printf("%d\t",LA);}
 	YY_BREAK
 case 113:
 YY_RULE_SETUP
-#line 123 ".\\toki_pona.l"
+#line 125 ".\\toki_pona.l"
 {printf("%d\t",O);}
 	YY_BREAK
 case 114:
 YY_RULE_SETUP
-#line 124 ".\\toki_pona.l"
+#line 126 ".\\toki_pona.l"
 {printf("%d\t",ANU);}
 	YY_BREAK
 case 115:
 YY_RULE_SETUP
-#line 125 ".\\toki_pona.l"
+#line 127 ".\\toki_pona.l"
 {printf("%d\t",EN);}
 	YY_BREAK
 case 116:
 YY_RULE_SETUP
-#line 126 ".\\toki_pona.l"
+#line 128 ".\\toki_pona.l"
 {printf("%d\t",E);}
 	YY_BREAK
 case 117:
 YY_RULE_SETUP
-#line 127 ".\\toki_pona.l"
-{printf("%d\n",ENDMARK);}
+#line 129 ".\\toki_pona.l"
+{
+        printf("%d\n",ENDMARK);
+    }
 	YY_BREAK
 case 118:
 YY_RULE_SETUP
-#line 128 ".\\toki_pona.l"
-{printf("unexpected word \"%s\"\n", yytext); exit(0);}
+#line 132 ".\\toki_pona.l"
+{
+        isUnexpected = 1;
+        printf("\nunexpected word \"%s\"\n", yytext);
+    }
 	YY_BREAK
 case 119:
 YY_RULE_SETUP
-#line 129 ".\\toki_pona.l"
+#line 136 ".\\toki_pona.l"
 ECHO;
 	YY_BREAK
-#line 1355 "lex.yy.c"
+#line 1362 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2237,6 +2244,6 @@ int main()
 	return 0;
 	}
 #endif
-#line 129 ".\\toki_pona.l"
+#line 136 ".\\toki_pona.l"
 
 
