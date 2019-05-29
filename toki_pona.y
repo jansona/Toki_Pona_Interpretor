@@ -14,6 +14,9 @@ toki_pona:
     ;
 sentences:
     sentence_with_end sentence_with_end
+    {
+        exit(0);
+    }
     ;
 sentence_with_end:
     sentence ENDMARK

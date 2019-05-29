@@ -289,34 +289,34 @@ static yyconst short int yy_accept[285] =
         0,    0,  119,  117,    1,    1,  117,  116,  117,  117,
       117,  117,  117,  117,  113,  117,  117,  117,  117,  117,
         1,    0,    0,    0,    0,  115,    0,    0,    0,    0,
-        0,    0,   37,    0,    0,    0,    0,  112,    0,  111,
-        0,    0,   92,    0,   33,    0,    0,    0,    0,   94,
+        0,    0,   18,    0,    0,    0,    0,  112,    0,  111,
+        0,    0,   45,    0,   91,    0,    0,    0,    0,  108,
         0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-        0,    0,    0,    0,    0,    0,   46,    0,    0,    0,
-        0,    0,    0,   99,  106,   25,    0,    0,  114,    0,
-       15,   81,    2,    0,    0,   68,    0,    0,    0,    0,
-       58,    0,    0,   14,    0,    0,    0,    0,    0,    0,
+        0,    0,    0,    0,    0,    0,   68,    0,    0,    0,
+        0,    0,    0,    2,   47,   25,    0,    0,  114,    0,
+        8,   94,    9,    0,    0,   54,    0,    0,    0,    0,
+       62,    0,    0,  106,    0,    0,    0,    0,    0,    0,
 
-       31,    0,    0,    0,    0,    0,   84,    0,    0,    0,
-        0,    0,    0,    0,    0,    0,   16,    0,    0,    0,
-        0,    0,    0,    0,   45,    0,   27,    0,    0,    0,
+       46,    0,    0,    0,    0,    0,   15,    0,    0,    0,
+        0,    0,    0,    0,    0,    0,   83,    0,    0,    0,
+        0,    0,    0,    0,   13,    0,    6,    0,    0,    0,
         0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-        0,    0,    0,   28,    0,    0,    0,    0,    0,    0,
-        0,   72,    0,    0,    0,    0,    0,    0,    0,   24,
-        0,   40,    0,    0,    0,    0,    0,    0,  108,    6,
-       36,   50,   59,   52,   51,   74,   34,    0,   42,    0,
-       21,    0,   88,   12,   79,   77,   82,   11,    0,    4,
-       61,  103,    0,   23,   95,   67,   60,   96,   76,   83,
+        0,    0,    0,   74,    0,    0,    0,    0,    0,    0,
+        0,   87,    0,    0,    0,    0,    0,    0,    0,   22,
+        0,   96,    0,    0,    0,    0,    0,    0,   99,   77,
+       30,  103,   17,   43,   58,   89,   81,    0,   28,    0,
+       73,    0,   57,   37,   27,   48,   31,   61,    0,  104,
+       86,   97,    0,    5,   64,   98,   69,   65,  105,   41,
 
-        0,   35,   64,    0,   38,    0,   39,   55,   75,    5,
-      101,    0,   17,   56,    0,    0,   13,   63,  102,   90,
-       54,  104,   18,   43,   91,  107,    0,   48,   49,    0,
-        0,   44,    0,  105,   89,   85,  110,   57,   69,   78,
-        0,   66,   87,    8,    0,   97,    7,  109,   80,   65,
-       22,   73,    0,    0,  100,    0,   19,   71,   30,   98,
-       86,    0,    0,   53,    0,    0,    0,    0,    0,   10,
-       29,   47,    0,   26,   20,    3,   41,    9,   62,    0,
-       93,   70,   32,    0
+        0,  101,   12,    0,   24,    0,   33,   35,   72,   10,
+       55,    0,   53,   84,    0,    0,   50,   71,   39,   92,
+       66,   40,   93,   90,   67,   14,    0,   78,  107,    0,
+        0,    3,    0,  100,   21,   29,   76,   56,   85,   59,
+        0,   20,   63,  109,    0,   26,   51,    4,  102,   23,
+       11,   32,    0,    0,   49,    0,   80,   42,   60,    7,
+       19,    0,    0,   95,    0,    0,    0,    0,    0,   16,
+       34,   79,    0,   52,   44,  110,   70,   82,   36,    0,
+       75,   88,   38,    0
     } ;
 
 static yyconst int yy_ec[256] =
@@ -764,582 +764,582 @@ YY_RULE_SETUP
 case 2:
 YY_RULE_SETUP
 #line 10 ".\\toki_pona.l"
-{yylval = strdup(yytext); return ILO;}
+{printf("%d\t",ALA);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
 #line 11 ".\\toki_pona.l"
-{yylval = strdup(yytext); return PALISA;}
+{printf("%d\t",SONA);}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
 #line 12 ".\\toki_pona.l"
-{yylval = strdup(yytext); return LIPU;}
+{printf("%d\t",WAWA);}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
 #line 13 ".\\toki_pona.l"
-{yylval = strdup(yytext); return OLIN;}
+{printf("%d\t",LUPA);}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
 #line 14 ".\\toki_pona.l"
-{yylval = strdup(yytext); return ANTE;}
+{printf("%d\t",ONA);}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 15 ".\\toki_pona.l"
-{yylval = strdup(yytext); return WASO;}
+{printf("%d\t",NANPA);}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
 #line 16 ".\\toki_pona.l"
-{yylval = strdup(yytext); return UNPA;}
+{printf("%d\t",IJO);}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
 #line 17 ".\\toki_pona.l"
-{yylval = strdup(yytext); return SIJELO;}
+{printf("%d\t",ILO);}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
 #line 18 ".\\toki_pona.l"
-{yylval = strdup(yytext); return TENPO;}
+{printf("%d\t",OLIN);}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
 #line 19 ".\\toki_pona.l"
-{yylval = strdup(yytext); return LILI;}
+{printf("%d\t",WILE);}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
 #line 20 ".\\toki_pona.l"
-{yylval = strdup(yytext); return LAPE;}
+{printf("%d\t",MUTE);}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
 #line 21 ".\\toki_pona.l"
-{yylval = strdup(yytext); return PINI;}
+{printf("%d\t",OKO);}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
 #line 22 ".\\toki_pona.l"
-{yylval = strdup(yytext); return KIN;}
+{printf("%d\t",SEWI);}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
 #line 23 ".\\toki_pona.l"
-{yylval = strdup(yytext); return IJO;}
+{printf("%d\t",LON);}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
 #line 24 ".\\toki_pona.l"
-{yylval = strdup(yytext); return MUN;}
+{printf("%d\t",TENPO);}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
 #line 25 ".\\toki_pona.l"
-{yylval = strdup(yytext); return PALI;}
+{printf("%d\t",JAKI);}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
 #line 26 ".\\toki_pona.l"
-{yylval = strdup(yytext); return SELI;}
+{printf("%d\t",JO);}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
 #line 27 ".\\toki_pona.l"
-{yylval = strdup(yytext); return LINJA;}
+{printf("%d\t",NASIN);}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
 #line 28 ".\\toki_pona.l"
-{yylval = strdup(yytext); return PAKALA;}
+{printf("%d\t",TOKI);}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
 #line 29 ".\\toki_pona.l"
-{yylval = strdup(yytext); return KULE;}
+{printf("%d\t",SUNO);}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
 #line 30 ".\\toki_pona.l"
-{yylval = strdup(yytext); return WILE;}
+{printf("%d\t",UTA);}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
 #line 31 ".\\toki_pona.l"
-{yylval = strdup(yytext); return LUPA;}
+{printf("%d\t",WIKE);}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
 #line 32 ".\\toki_pona.l"
-{yylval = strdup(yytext); return UTA;}
+{printf("%d\t",NASA);}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
 #line 33 ".\\toki_pona.l"
-{yylval = strdup(yytext); return ALI;}
+{printf("%d\t",ALI);}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
 #line 34 ".\\toki_pona.l"
-{yylval = strdup(yytext); return KULUPU;}
+{printf("%d\t",WALO);}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
 #line 35 ".\\toki_pona.l"
-{yylval = strdup(yytext); return ONA;}
+{printf("%d\t",LASO);}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
 #line 36 ".\\toki_pona.l"
-{yylval = strdup(yytext); return SIN;}
+{printf("%d\t",KILI);}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
 #line 37 ".\\toki_pona.l"
-{yylval = strdup(yytext); return UTALA;}
+{printf("%d\t",SUPA);}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
 #line 38 ".\\toki_pona.l"
-{yylval = strdup(yytext); return MONSI;}
+{printf("%d\t",AWEN);}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
 #line 39 ".\\toki_pona.l"
-{yylval = strdup(yytext); return LEN;}
+{printf("%d\t",LETE);}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
 #line 40 ".\\toki_pona.l"
-{yylval = strdup(yytext); return SITELEN;}
+{printf("%d\t",AKESI);}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
 #line 41 ".\\toki_pona.l"
-{yylval = strdup(yytext); return MI;}
+{printf("%d\t",NENA);}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
 #line 42 ".\\toki_pona.l"
-{yylval = strdup(yytext); return KASI;}
+{printf("%d\t",UTALA);}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
 #line 43 ".\\toki_pona.l"
-{yylval = strdup(yytext); return MUSI;}
+{printf("%d\t",NIMI);}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
 #line 44 ".\\toki_pona.l"
-{yylval = strdup(yytext); return AWEN;}
+{printf("%d\t",SINPIN);}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
 #line 45 ".\\toki_pona.l"
-{yylval = strdup(yytext); return JO;}
+{printf("%d\t",LAPE);}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
 #line 46 ".\\toki_pona.l"
-{yylval = strdup(yytext); return NASA;}
+{printf("%d\t",SITELEN);}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
 #line 47 ".\\toki_pona.l"
-{yylval = strdup(yytext); return NENA;}
+{printf("%d\t",POKA);}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
 #line 48 ".\\toki_pona.l"
-{yylval = strdup(yytext); return WAN;}
+{printf("%d\t",SAMA);}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
 #line 49 ".\\toki_pona.l"
-{yylval = strdup(yytext); return PIMEJA;}
+{printf("%d\t",MOLI);}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
 #line 50 ".\\toki_pona.l"
-{yylval = strdup(yytext); return KILI;}
+{printf("%d\t",LUKIN);}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
 #line 51 ".\\toki_pona.l"
-{yylval = strdup(yytext); return SELO;}
+{printf("%d\t",JELO);}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
 #line 52 ".\\toki_pona.l"
-{yylval = strdup(yytext); return SONA;}
+{printf("%d\t",PAKALA);}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
 #line 53 ".\\toki_pona.l"
-{yylval = strdup(yytext); return OKO;}
+{printf("%d\t",MA);}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
 #line 54 ".\\toki_pona.l"
-{yylval = strdup(yytext); return TU;}
+{printf("%d\t",LEN);}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
 #line 55 ".\\toki_pona.l"
-{yylval = strdup(yytext); return KALAMA;}
+{printf("%d\t",ALE);}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
 #line 56 ".\\toki_pona.l"
-{yylval = strdup(yytext); return SIKE;}
+{printf("%d\t",LAWA);}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
 #line 57 ".\\toki_pona.l"
-{yylval = strdup(yytext); return SINA;}
+{printf("%d\t",KIWEN);}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
 #line 58 ".\\toki_pona.l"
-{yylval = strdup(yytext); return INSA;}
+{printf("%d\t",PINI);}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
 #line 59 ".\\toki_pona.l"
-{yylval = strdup(yytext); return KALA;}
+{printf("%d\t",WASO);}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
 #line 60 ".\\toki_pona.l"
-{yylval = strdup(yytext); return JELO;}
+{printf("%d\t",KULUPU);}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
 #line 61 ".\\toki_pona.l"
-{yylval = strdup(yytext); return PILIN;}
+{printf("%d\t",PALI);}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
 #line 62 ".\\toki_pona.l"
-{yylval = strdup(yytext); return PONA;}
+{printf("%d\t",JAN);}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
 #line 63 ".\\toki_pona.l"
-{yylval = strdup(yytext); return NIMI;}
+{printf("%d\t",OPEN);}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
 #line 64 ".\\toki_pona.l"
-{yylval = strdup(yytext); return PANA;}
+{printf("%d\t",TASO);}
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
 #line 65 ".\\toki_pona.l"
-{yylval = strdup(yytext); return TASO;}
+{printf("%d\t",KUTE);}
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
 #line 66 ".\\toki_pona.l"
-{yylval = strdup(yytext); return KEN;}
+{printf("%d\t",KALA);}
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
 #line 67 ".\\toki_pona.l"
-{yylval = strdup(yytext); return JAKI;}
+{printf("%d\t",TELO);}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
 #line 68 ".\\toki_pona.l"
-{yylval = strdup(yytext); return MELI;}
+{printf("%d\t",MONSI);}
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
 #line 69 ".\\toki_pona.l"
-{yylval = strdup(yytext); return LOJE;}
+{printf("%d\t",LILI);}
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
 #line 70 ".\\toki_pona.l"
-{yylval = strdup(yytext); return SINPIN;}
+{printf("%d\t",KEN);}
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
 #line 71 ".\\toki_pona.l"
-{yylval = strdup(yytext); return PIPI;}
+{printf("%d\t",TOMO);}
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
 #line 72 ".\\toki_pona.l"
-{yylval = strdup(yytext); return MUTE;}
+{printf("%d\t",MAMA);}
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
 #line 73 ".\\toki_pona.l"
-{yylval = strdup(yytext); return WIKE;}
+{printf("%d\t",MIJE);}
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
 #line 74 ".\\toki_pona.l"
-{yylval = strdup(yytext); return TOKI;}
+{printf("%d\t",PONA);}
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
 #line 75 ".\\toki_pona.l"
-{yylval = strdup(yytext); return MANI;}
+{printf("%d\t",SEME);}
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
 #line 76 ".\\toki_pona.l"
-{yylval = strdup(yytext); return JAN;}
+{printf("%d\t",TU);}
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
 #line 77 ".\\toki_pona.l"
-{yylval = strdup(yytext); return TAWA;}
+{printf("%d\t",MELI);}
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
 #line 78 ".\\toki_pona.l"
-{yylval = strdup(yytext); return KEPEKEN;}
+{printf("%d\t",PIMEJA);}
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
 #line 79 ".\\toki_pona.l"
-{yylval = strdup(yytext); return LUKIN;}
+{printf("%d\t",PIPI);}
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
 #line 80 ".\\toki_pona.l"
-{yylval = strdup(yytext); return TAN;}
+{printf("%d\t",NOKA);}
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
 #line 81 ".\\toki_pona.l"
-{yylval = strdup(yytext); return AKESI;}
+{printf("%d\t",KULE);}
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
 #line 82 ".\\toki_pona.l"
-{yylval = strdup(yytext); return KAMA;}
+{printf("%d\t",SIN);}
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
 #line 83 ".\\toki_pona.l"
-{yylval = strdup(yytext); return NOKA;}
+{printf("%d\t",SOWELI);}
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
 #line 84 ".\\toki_pona.l"
-{yylval = strdup(yytext); return MOKU;}
+{printf("%d\t",SUWI);}
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
 #line 85 ".\\toki_pona.l"
-{yylval = strdup(yytext); return LAWA;}
+{printf("%d\t",ANTE);}
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
 #line 86 ".\\toki_pona.l"
-{yylval = strdup(yytext); return TELO;}
+{printf("%d\t",SIKE);}
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
 #line 87 ".\\toki_pona.l"
-{yylval = strdup(yytext); return LASO;}
+{printf("%d\t",KALAMA);}
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
 #line 88 ".\\toki_pona.l"
-{yylval = strdup(yytext); return WEKA;}
+{printf("%d\t",LINJA);}
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
 #line 89 ".\\toki_pona.l"
-{yylval = strdup(yytext); return IKE;}
+{printf("%d\t",KASI);}
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
 #line 90 ".\\toki_pona.l"
-{yylval = strdup(yytext); return LETE;}
+{printf("%d\t",SIJELO);}
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
 #line 91 ".\\toki_pona.l"
-{yylval = strdup(yytext); return MOLI;}
+{printf("%d\t",MUN);}
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
 #line 92 ".\\toki_pona.l"
-{yylval = strdup(yytext); return LON;}
+{printf("%d\t",PANA);}
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
 #line 93 ".\\toki_pona.l"
-{yylval = strdup(yytext); return SUPA;}
+{printf("%d\t",TAWA);}
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
 #line 94 ".\\toki_pona.l"
-{yylval = strdup(yytext); return NASIN;}
+{printf("%d\t",LOJE);}
 	YY_BREAK
 case 87:
 YY_RULE_SETUP
 #line 95 ".\\toki_pona.l"
-{yylval = strdup(yytext); return TOMO;}
+{printf("%d\t",TAN);}
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
 #line 96 ".\\toki_pona.l"
-{yylval = strdup(yytext); return KUTE;}
+{printf("%d\t",KEPEKEN);}
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
 #line 97 ".\\toki_pona.l"
-{yylval = strdup(yytext); return SUNO;}
+{printf("%d\t",KAMA);}
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
 #line 98 ".\\toki_pona.l"
-{yylval = strdup(yytext); return POKI;}
+{printf("%d\t",SELO);}
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
 #line 99 ".\\toki_pona.l"
-{yylval = strdup(yytext); return SEME;}
+{printf("%d\t",MI);}
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
 #line 100 ".\\toki_pona.l"
-{yylval = strdup(yytext); return MA;}
+{printf("%d\t",POKI);}
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
 #line 101 ".\\toki_pona.l"
-{yylval = strdup(yytext); return SOWELI;}
+{printf("%d\t",SELI);}
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
 #line 102 ".\\toki_pona.l"
-{yylval = strdup(yytext); return NI;}
+{printf("%d\t",IKE);}
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
 #line 103 ".\\toki_pona.l"
-{yylval = strdup(yytext); return MAMA;}
+{printf("%d\t",PILIN);}
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
 #line 104 ".\\toki_pona.l"
-{yylval = strdup(yytext); return MIJE;}
+{printf("%d\t",WAN);}
 	YY_BREAK
 case 97:
 YY_RULE_SETUP
 #line 105 ".\\toki_pona.l"
-{yylval = strdup(yytext); return WALO;}
+{printf("%d\t",LUKA);}
 	YY_BREAK
 case 98:
 YY_RULE_SETUP
 #line 106 ".\\toki_pona.l"
-{yylval = strdup(yytext); return NANPA;}
+{printf("%d\t",MANI);}
 	YY_BREAK
 case 99:
 YY_RULE_SETUP
 #line 107 ".\\toki_pona.l"
-{yylval = strdup(yytext); return ALA;}
+{printf("%d\t",ANPA);}
 	YY_BREAK
 case 100:
 YY_RULE_SETUP
 #line 108 ".\\toki_pona.l"
-{yylval = strdup(yytext); return KIWEN;}
+{printf("%d\t",SULI);}
 	YY_BREAK
 case 101:
 YY_RULE_SETUP
 #line 109 ".\\toki_pona.l"
-{yylval = strdup(yytext); return OPEN;}
+{printf("%d\t",MUSI);}
 	YY_BREAK
 case 102:
 YY_RULE_SETUP
 #line 110 ".\\toki_pona.l"
-{yylval = strdup(yytext); return POKA;}
+{printf("%d\t",WEKA);}
 	YY_BREAK
 case 103:
 YY_RULE_SETUP
 #line 111 ".\\toki_pona.l"
-{yylval = strdup(yytext); return LUKA;}
+{printf("%d\t",INSA);}
 	YY_BREAK
 case 104:
 YY_RULE_SETUP
 #line 112 ".\\toki_pona.l"
-{yylval = strdup(yytext); return SAMA;}
+{printf("%d\t",LIPU);}
 	YY_BREAK
 case 105:
 YY_RULE_SETUP
 #line 113 ".\\toki_pona.l"
-{yylval = strdup(yytext); return SULI;}
+{printf("%d\t",MOKU);}
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
 #line 114 ".\\toki_pona.l"
-{yylval = strdup(yytext); return ALE;}
+{printf("%d\t",KIN);}
 	YY_BREAK
 case 107:
 YY_RULE_SETUP
 #line 115 ".\\toki_pona.l"
-{yylval = strdup(yytext); return SEWI;}
+{printf("%d\t",SINA);}
 	YY_BREAK
 case 108:
 YY_RULE_SETUP
 #line 116 ".\\toki_pona.l"
-{yylval = strdup(yytext); return ANPA;}
+{printf("%d\t",NI);}
 	YY_BREAK
 case 109:
 YY_RULE_SETUP
 #line 117 ".\\toki_pona.l"
-{yylval = strdup(yytext); return WAWA;}
+{printf("%d\t",UNPA);}
 	YY_BREAK
 case 110:
 YY_RULE_SETUP
 #line 118 ".\\toki_pona.l"
-{yylval = strdup(yytext); return SUWI;}
+{printf("%d\t",PALISA);}
 	YY_BREAK
 case 111:
 YY_RULE_SETUP
 #line 119 ".\\toki_pona.l"
-{yylval = strdup(yytext); return LI;}
+{printf("%d\t",LI);}
 	YY_BREAK
 case 112:
 YY_RULE_SETUP
 #line 120 ".\\toki_pona.l"
-{yylval = strdup(yytext); return LA;}
+{printf("%d\t",LA);}
 	YY_BREAK
 case 113:
 YY_RULE_SETUP
 #line 121 ".\\toki_pona.l"
-{yylval = strdup(yytext); return O;}
+{printf("%d\t",O);}
 	YY_BREAK
 case 114:
 YY_RULE_SETUP
 #line 122 ".\\toki_pona.l"
-{yylval = strdup(yytext); return ANU;}
+{printf("%d\t",ANU);}
 	YY_BREAK
 case 115:
 YY_RULE_SETUP
 #line 123 ".\\toki_pona.l"
-{yylval = strdup(yytext); return EN;}
+{printf("%d\t",EN);}
 	YY_BREAK
 case 116:
 YY_RULE_SETUP
 #line 124 ".\\toki_pona.l"
-{yylval = strdup(yytext); return E;}
+{printf("%d\t",E);}
 	YY_BREAK
 case 117:
 YY_RULE_SETUP
 #line 125 ".\\toki_pona.l"
-{return ENDMARK;}
+{printf("%d\n",ENDMARK);}
 	YY_BREAK
 case 118:
 YY_RULE_SETUP
