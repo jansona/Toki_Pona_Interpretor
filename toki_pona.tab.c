@@ -73,7 +73,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 char buf[100];
-int test = 1;
+int test = 0;
 
 
 /* Line 189 of yacc.c  */

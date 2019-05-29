@@ -5,6 +5,8 @@
 %}
 blank [" "\n\t]
 whitespace {blank}+
+letter [A-Za-z]
+unexpected_word {letter}+
 %%
 {whitespace} {;}
 ilo        {yylval = strdup(yytext); return ILO;}
@@ -123,5 +125,6 @@ anu        {yylval = strdup(yytext); return ANU;}
 en         {yylval = strdup(yytext); return EN;}
 e          {yylval = strdup(yytext); return E;}
 .          {return ENDMARK;}
+unexpected_word {printf("unexpected word %s\n", yytext); return;}
 %%
 
