@@ -5,6 +5,8 @@
 %}
 blank [" "\n\t]
 whitespace {blank}+
+letter [A-Za-z]
+unexpected_word {letter}+
 %%
 {whitespace} {;}
 ala       {printf("%d\t",ALA);}
@@ -122,6 +124,7 @@ o         {printf("%d\t",O);}
 anu       {printf("%d\t",ANU);}
 en        {printf("%d\t",EN);}
 e         {printf("%d\t",E);}
-.   {printf("%d\n",ENDMARK);}
+\.   {printf("%d\n",ENDMARK);}
+{unexpected_word} {printf("unexpected word %s\n", yytext); exit(0);}
 %%
 
