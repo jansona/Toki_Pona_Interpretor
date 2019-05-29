@@ -2,6 +2,8 @@
 #include "toki_pona.tab.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+int isUnexpected = 0;
 %}
 blank [" "\n\t]
 whitespace {blank}+
@@ -124,9 +126,15 @@ o          {yylval = strdup(yytext); return O;}
 anu        {yylval = strdup(yytext); return ANU;}
 en         {yylval = strdup(yytext); return EN;}
 e          {yylval = strdup(yytext); return E;}
-.          {return ENDMARK;}
+.          {
+        if(isUnexpected){
+            exit(0);
+        }
+        return ENDMARK;
+    }
 {unexpected_word} {
-        printf("unexpected word \"%s\"\n", yytext); exit(0);
+        printf("unexpected word: \"%s\"\n", yytext);
+        isUnexpected = 1;
     }
 %%
 
