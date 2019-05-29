@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 char buf[100];
+int test = 1;
 %}
 %token ALA SONA WAWA LUPA ONA NANPA IJO ILO OLIN WILE MUTE OKO SEWI LON TENPO JAKI JO NASIN TOKI SUNO UTA WIKE NASA ALI WALO LASO KILI SUPA AWEN LETE AKESI NENA UTALA NIMI SINPIN LAPE SITELEN POKA SAMA MOLI LUKIN JELO PAKALA MA LEN ALE LAWA KIWEN PINI WASO KULUPU PALI JAN OPEN TASO KUTE KALA TELO MONSI LILI KEN TOMO MAMA MIJE PONA SEME TU MELI PIMEJA PIPI NOKA KULE SIN SOWELI SUWI ANTE SIKE KALAMA LINJA KASI SIJELO MUN PANA TAWA LOJE TAN KEPEKEN KAMA SELO MI POKI SELI IKE PILIN WAN LUKA MANI ANPA SULI MUSI WEKA INSA LIPU MOKU KIN SINA NI UNPA PALISA LI LA O ANU EN E
 %token ENDMARK
@@ -12,7 +13,9 @@ char buf[100];
 toki_pona:
     sentence
     {
-        printf($$);
+        if(!test){
+            printf($$);
+        }
         exit(0);
     }
     ;
@@ -20,18 +23,20 @@ sentence:
     svo_sentence ENDMARK
     {
         sprintf($$, "%s.\n%s", $1, "svo_sentence\n");
-        // printf("svo_sentence\n");
+        if(test)
+            printf("svo_sentence\n");
     }
     | condition svo_sentence ENDMARK
     {
         sprintf(buf, "#%s# %s.\n%s", $1, $2, "condition\n");
         strcpy($$, buf);
-        // printf("condition\n");
+        printf("condition\n");
     }
     | o_sentence ENDMARK
     {
         sprintf($$, "%s.\n%s", $1, "o_sentence\n");
-        // printf("o_sentence\n");
+        if(test)
+            printf("o_sentence\n");
     }
     ;
 o_sentence:
@@ -329,7 +334,8 @@ prepostion:
 yyerror(const char *s){
     fprintf(stderr, "error: %s\n", s);
     extern char *yytext;
-    fprintf(stderr, "parser error near %s\n", yytext);
+    if(!test)
+        fprintf(stderr, "parser error near %s\n", yytext);
 }
 
 int main(){
