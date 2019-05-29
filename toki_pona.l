@@ -125,6 +125,6 @@ anu       {printf("%d\t",ANU);}
 en        {printf("%d\t",EN);}
 e         {printf("%d\t",E);}
 \.   {printf("%d\n",ENDMARK);}
-{unexpected_word} {printf("unexpected word %s\n", yytext); exit(0);}
+{unexpected_word} {printf("unexpected word \"%s\"\n", yytext); exit(0);}
 %%
 

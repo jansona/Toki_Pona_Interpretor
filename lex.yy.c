@@ -1344,7 +1344,7 @@ YY_RULE_SETUP
 case 118:
 YY_RULE_SETUP
 #line 128 ".\\toki_pona.l"
-{printf("unexpected word %s\n", yytext); exit(0);}
+{printf("unexpected word \"%s\"\n", yytext); exit(0);}
 	YY_BREAK
 case 119:
 YY_RULE_SETUP
