@@ -8,3 +8,13 @@ D:\project\Toki_Pona_Interpretor\TPP_Launcher\TPP_Launcher\TPP_Launcher\obj\Debu
 D:\project\Toki_Pona_Interpretor\TPP_Launcher\TPP_Launcher\TPP_Launcher\obj\Debug\TPP_Launcher.csproj.CoreCompileInputs.cache
 D:\project\Toki_Pona_Interpretor\TPP_Launcher\TPP_Launcher\TPP_Launcher\obj\Debug\TPP_Launcher.exe
 D:\project\Toki_Pona_Interpretor\TPP_Launcher\TPP_Launcher\TPP_Launcher\obj\Debug\TPP_Launcher.pdb
+D:\project\Toki_Pona_Interpretor\GUI_Launcher\TPP_Launcher\TPP_Launcher\bin\Debug\TPP_Launcher.exe.config
+D:\project\Toki_Pona_Interpretor\GUI_Launcher\TPP_Launcher\TPP_Launcher\bin\Debug\TPP_Launcher.exe
+D:\project\Toki_Pona_Interpretor\GUI_Launcher\TPP_Launcher\TPP_Launcher\bin\Debug\TPP_Launcher.pdb
+D:\project\Toki_Pona_Interpretor\GUI_Launcher\TPP_Launcher\TPP_Launcher\obj\Debug\TPP_Launcher.csprojAssemblyReference.cache
+D:\project\Toki_Pona_Interpretor\GUI_Launcher\TPP_Launcher\TPP_Launcher\obj\Debug\TPP_Launcher.Form1.resources
+D:\project\Toki_Pona_Interpretor\GUI_Launcher\TPP_Launcher\TPP_Launcher\obj\Debug\TPP_Launcher.Properties.Resources.resources
+D:\project\Toki_Pona_Interpretor\GUI_Launcher\TPP_Launcher\TPP_Launcher\obj\Debug\TPP_Launcher.csproj.GenerateResource.cache
+D:\project\Toki_Pona_Interpretor\GUI_Launcher\TPP_Launcher\TPP_Launcher\obj\Debug\TPP_Launcher.csproj.CoreCompileInputs.cache
+D:\project\Toki_Pona_Interpretor\GUI_Launcher\TPP_Launcher\TPP_Launcher\obj\Debug\TPP_Launcher.exe
+D:\project\Toki_Pona_Interpretor\GUI_Launcher\TPP_Launcher\TPP_Launcher\obj\Debug\TPP_Launcher.pdb

@@ -109,36 +109,21 @@ namespace TPP_Launcher
             writer.Flush();
             writer.Close(); // 我哭辽
             String resultStr = "";
-            for (int i = 0; i < 100; i++)
+            resultStr = reader.ReadLine();
+            if(resultStr == null)
             {
-                resultStr = reader.ReadLine();
-                if (resultStr != null)
-                {
-                    break;
-                }
                 resultStr = readerErr.ReadLine();
-                if (resultStr != null)
-                {
-                    break;
-                }
             }
 
             keyValues["structure"] = resultStr;
 
-            resultStr = "";
-            for (int i = 0; i < 100; i++)
+            resultStr = null;
+            resultStr = reader.ReadLine();
+            if(resultStr == null)
             {
-                resultStr = reader.ReadLine();
-                if (resultStr != null)
-                {
-                    break;
-                }
                 resultStr = readerErr.ReadLine();
-                if (resultStr != null)
-                {
-                    break;
-                }
             }
+            
 
             keyValues["type"] = resultStr;
 
