@@ -14,77 +14,33 @@ namespace TPP_Launcher
 {
     public partial class Form1 : Form
     {
+        ProcessStartInfo processStartInfo = new ProcessStartInfo("toki_pona.exe");
+
         public Form1()
         {
             InitializeComponent();
+
+            processStartInfo.UseShellExecute = false;
+            processStartInfo.CreateNoWindow = true;
+            processStartInfo.RedirectStandardOutput = true;
+            processStartInfo.RedirectStandardInput = true;
+            processStartInfo.RedirectStandardError = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ProcessStartInfo processStartInfo = new ProcessStartInfo("toki_pona.exe");
-            processStartInfo.UseShellExecute = false;
-            processStartInfo.CreateNoWindow = false;
-            processStartInfo.RedirectStandardOutput = true;
-            processStartInfo.RedirectStandardInput = true;
-            processStartInfo.RedirectStandardError = true;
+            Dictionary<string, string> keyValues = getStructAndType(inputBox.Text);
 
-            Process process = Process.Start(processStartInfo);
-
-            StreamWriter writer = process.StandardInput;
-            StreamReader reader = process.StandardOutput;
-            StreamReader readerErr = process.StandardError;
-
-            writer.WriteLine(textBox1.Text);
-            writer.Flush();
-            writer.Close(); // 我哭辽
-            String resultStr = "";
-            for(int i = 0; i < 100; i++)
-            {
-                resultStr = reader.ReadLine();
-                if(resultStr != null)
-                {
-                    break;
-                }
-                resultStr = readerErr.ReadLine();
-                if (resultStr != null)
-                {
-                    break;
-                }
-            }
-
-            textBox3.Text = resultStr;
-            textBox3.Refresh();
-
-            resultStr = "";
-            for (int i = 0; i < 100; i++)
-            {
-                resultStr = reader.ReadLine();
-                if (resultStr != null)
-                {
-                    break;
-                }
-                resultStr = readerErr.ReadLine();
-                if (resultStr != null)
-                {
-                    break;
-                }
-            }
-
-            textBox2.Text = resultStr;
-            textBox2.Refresh();
-
-            //if (process != null)
-            //{
-            //    process.OutputDataReceived += MyDataReceiver;
-            //}
+            structBox.Text = keyValues["structure"];
+            typeBox.Text = keyValues["type"];
         }
 
         private void MyDataReceiver(object sender, DataReceivedEventArgs e)
         {
             string consoleLine = e.Data;
-            textBox2.Text = consoleLine;
+            typeBox.Text = consoleLine;
 
-            textBox2.Refresh();
+            typeBox.Refresh();
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -97,55 +53,10 @@ namespace TPP_Launcher
 
             foreach(string line in lines)
             {
-                ProcessStartInfo processStartInfo = new ProcessStartInfo("toki_pona.exe");
-                processStartInfo.UseShellExecute = false;
-                processStartInfo.CreateNoWindow = false;
-                processStartInfo.RedirectStandardOutput = true;
-                processStartInfo.RedirectStandardInput = true;
-                processStartInfo.RedirectStandardError = true;
+                Dictionary<string, string> keyValues = getStructAndType(line);
 
-                Process process = Process.Start(processStartInfo);
-
-                StreamWriter writer = process.StandardInput;
-                StreamReader reader = process.StandardOutput;
-                StreamReader readerErr = process.StandardError;
-
-                writer.WriteLine(line);
-                writer.Flush();
-                writer.Close(); // 我哭辽
-                String resultStr = "";
-                for (int i = 0; i < 100; i++)
-                {
-                    resultStr = reader.ReadLine();
-                    if (resultStr != null)
-                    {
-                        break;
-                    }
-                    resultStr = readerErr.ReadLine();
-                    if (resultStr != null)
-                    {
-                        break;
-                    }
-                }
-
-                string structure = resultStr;
-                
-                resultStr = "";
-                for (int i = 0; i < 100; i++)
-                {
-                    resultStr = reader.ReadLine();
-                    if (resultStr != null)
-                    {
-                        break;
-                    }
-                    resultStr = readerErr.ReadLine();
-                    if (resultStr != null)
-                    {
-                        break;
-                    }
-                }
-
-                string type = resultStr;
+                string structure = keyValues["structure"];
+                string type = keyValues["type"];
 
                 richTextBox1.Text += (line + "\n");
                 richTextBox1.Text += (structure + "\n");
@@ -182,5 +93,57 @@ namespace TPP_Launcher
                 }
             }
         }
+
+        private Dictionary<string, string> getStructAndType(string line)
+        {
+            Dictionary<string, string> keyValues = new Dictionary<string, string>();
+
+            // 启动应用 
+            Process process = Process.Start(processStartInfo);
+
+            StreamWriter writer = process.StandardInput;
+            StreamReader reader = process.StandardOutput;
+            StreamReader readerErr = process.StandardError;
+
+            writer.WriteLine(line);
+            writer.Flush();
+            writer.Close(); // 我哭辽
+            String resultStr = "";
+            for (int i = 0; i < 100; i++)
+            {
+                resultStr = reader.ReadLine();
+                if (resultStr != null)
+                {
+                    break;
+                }
+                resultStr = readerErr.ReadLine();
+                if (resultStr != null)
+                {
+                    break;
+                }
+            }
+
+            keyValues["structure"] = resultStr;
+
+            resultStr = "";
+            for (int i = 0; i < 100; i++)
+            {
+                resultStr = reader.ReadLine();
+                if (resultStr != null)
+                {
+                    break;
+                }
+                resultStr = readerErr.ReadLine();
+                if (resultStr != null)
+                {
+                    break;
+                }
+            }
+
+            keyValues["type"] = resultStr;
+
+            return keyValues;
+        }
+
     }
 }
