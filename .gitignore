@@ -1,5 +1,5 @@
 *.exe
-!./release/*.exe
+!release/*.exe
 .vscode/
 test/
 */bin/
