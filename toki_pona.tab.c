@@ -72,12 +72,13 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 char buf[100];
 int test = 0;
 
 
 /* Line 189 of yacc.c  */
-#line 81 "toki_pona.tab.c"
+#line 82 "toki_pona.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -237,7 +238,7 @@ typedef int YYSTYPE;
 
 
 /* Line 264 of yacc.c  */
-#line 241 "toki_pona.tab.c"
+#line 242 "toki_pona.tab.c"
 
 #ifdef short
 # undef short
@@ -622,36 +623,36 @@ static const yytype_int16 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,    14,    14,    23,    29,    35,    43,    47,    53,    58,
-      65,    70,    77,    82,    87,    92,    97,   104,   111,   113,
-     115,   122,   123,   130,   136,   143,   144,   147,   148,   151,
-     157,   163,   171,   172,   179,   181,   188,   189,   190,   197,
-     198,   203,   208,   213,   220,   225,   232,   237,   240,   241,
-     246,   251,   252,   257,   264,   271,   276,   283,   284,   285,
-     288,   289,   290,   293,   300,   305,   310,   317,   317,   317,
-     317,   317,   317,   317,   317,   317,   317,   317,   317,   317,
-     317,   317,   317,   317,   317,   317,   317,   317,   317,   317,
-     317,   317,   317,   317,   317,   317,   317,   317,   317,   317,
-     317,   317,   317,   317,   317,   317,   317,   317,   317,   317,
-     317,   317,   317,   317,   317,   317,   317,   317,   320,   321,
-     322,   325,   325,   325,   325,   325,   325,   325,   325,   325,
-     325,   325,   325,   325,   325,   325,   325,   325,   325,   325,
-     325,   325,   325,   325,   325,   325,   325,   325,   325,   325,
-     325,   325,   325,   325,   325,   325,   325,   325,   325,   325,
-     325,   325,   325,   325,   325,   325,   325,   325,   325,   325,
-     325,   325,   325,   325,   325,   325,   325,   325,   325,   325,
-     325,   325,   325,   325,   325,   325,   325,   325,   325,   325,
-     325,   325,   325,   325,   325,   325,   325,   325,   325,   325,
-     325,   325,   325,   325,   325,   325,   325,   325,   325,   325,
-     325,   325,   328,   328,   328,   328,   328,   328,   328,   328,
-     328,   328,   328,   328,   328,   328,   328,   328,   328,   328,
-     328,   328,   328,   328,   328,   328,   328,   328,   328,   328,
-     328,   328,   328,   328,   328,   328,   328,   328,   328,   328,
-     328,   328,   328,   328,   328,   328,   328,   328,   328,   328,
-     328,   328,   328,   328,   328,   328,   328,   328,   328,   328,
-     328,   328,   328,   328,   328,   328,   328,   328,   328,   331,
-     331,   331,   331,   331,   331,   331,   331,   331,   331,   331,
-     331
+       0,    15,    15,    24,    30,    36,    44,    48,    54,    59,
+      66,    71,    78,    83,    88,    93,    98,   105,   112,   114,
+     116,   123,   124,   131,   137,   144,   145,   148,   149,   152,
+     158,   164,   172,   173,   180,   182,   189,   190,   191,   198,
+     199,   204,   209,   214,   221,   226,   233,   238,   241,   242,
+     247,   252,   253,   258,   265,   272,   277,   284,   285,   286,
+     289,   290,   291,   294,   301,   306,   311,   318,   318,   318,
+     318,   318,   318,   318,   318,   318,   318,   318,   318,   318,
+     318,   318,   318,   318,   318,   318,   318,   318,   318,   318,
+     318,   318,   318,   318,   318,   318,   318,   318,   318,   318,
+     318,   318,   318,   318,   318,   318,   318,   318,   318,   318,
+     318,   318,   318,   318,   318,   318,   318,   318,   321,   322,
+     323,   326,   326,   326,   326,   326,   326,   326,   326,   326,
+     326,   326,   326,   326,   326,   326,   326,   326,   326,   326,
+     326,   326,   326,   326,   326,   326,   326,   326,   326,   326,
+     326,   326,   326,   326,   326,   326,   326,   326,   326,   326,
+     326,   326,   326,   326,   326,   326,   326,   326,   326,   326,
+     326,   326,   326,   326,   326,   326,   326,   326,   326,   326,
+     326,   326,   326,   326,   326,   326,   326,   326,   326,   326,
+     326,   326,   326,   326,   326,   326,   326,   326,   326,   326,
+     326,   326,   326,   326,   326,   326,   326,   326,   326,   326,
+     326,   326,   329,   329,   329,   329,   329,   329,   329,   329,
+     329,   329,   329,   329,   329,   329,   329,   329,   329,   329,
+     329,   329,   329,   329,   329,   329,   329,   329,   329,   329,
+     329,   329,   329,   329,   329,   329,   329,   329,   329,   329,
+     329,   329,   329,   329,   329,   329,   329,   329,   329,   329,
+     329,   329,   329,   329,   329,   329,   329,   329,   329,   329,
+     329,   329,   329,   329,   329,   329,   329,   329,   329,   332,
+     332,   332,   332,   332,   332,   332,   332,   332,   332,   332,
+     332
 };
 #endif
 
@@ -2140,7 +2141,7 @@ yyreduce:
         case 2:
 
 /* Line 1455 of yacc.c  */
-#line 15 ".\\toki_pona.y"
+#line 16 ".\\toki_pona.y"
     {
         if(!test){
             printf((yyval));
@@ -2152,7 +2153,7 @@ yyreduce:
   case 3:
 
 /* Line 1455 of yacc.c  */
-#line 24 ".\\toki_pona.y"
+#line 25 ".\\toki_pona.y"
     {
         sprintf((yyval), "%s.\n%s", (yyvsp[(1) - (2)]), "svo_sentence\n");
         if(test)
@@ -2163,7 +2164,7 @@ yyreduce:
   case 4:
 
 /* Line 1455 of yacc.c  */
-#line 30 ".\\toki_pona.y"
+#line 31 ".\\toki_pona.y"
     {
         sprintf(buf, "#%s# %s.\n%s", (yyvsp[(1) - (3)]), (yyvsp[(2) - (3)]), "condition\n");
         strcpy((yyval), buf);
@@ -2174,7 +2175,7 @@ yyreduce:
   case 5:
 
 /* Line 1455 of yacc.c  */
-#line 36 ".\\toki_pona.y"
+#line 37 ".\\toki_pona.y"
     {
         sprintf((yyval), "%s.\n%s", (yyvsp[(1) - (2)]), "o_sentence\n");
         if(test)
@@ -2185,7 +2186,7 @@ yyreduce:
   case 6:
 
 /* Line 1455 of yacc.c  */
-#line 44 ".\\toki_pona.y"
+#line 45 ".\\toki_pona.y"
     {
         (yyval) = (yyvsp[(1) - (1)]);
     ;}
@@ -2194,7 +2195,7 @@ yyreduce:
   case 7:
 
 /* Line 1455 of yacc.c  */
-#line 48 ".\\toki_pona.y"
+#line 49 ".\\toki_pona.y"
     {
         (yyval) = (yyvsp[(1) - (1)]);
     ;}
@@ -2203,7 +2204,7 @@ yyreduce:
   case 8:
 
 /* Line 1455 of yacc.c  */
-#line 54 ".\\toki_pona.y"
+#line 55 ".\\toki_pona.y"
     {
         sprintf(buf, "{%s} [%s]", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         strcpy((yyval), buf);
@@ -2213,7 +2214,7 @@ yyreduce:
   case 9:
 
 /* Line 1455 of yacc.c  */
-#line 59 ".\\toki_pona.y"
+#line 60 ".\\toki_pona.y"
     {
         sprintf(buf, "{%s} [%s] <%s>", (yyvsp[(1) - (3)]), (yyvsp[(2) - (3)]), (yyvsp[(3) - (3)]));
         strcpy((yyval), buf);
@@ -2223,7 +2224,7 @@ yyreduce:
   case 10:
 
 /* Line 1455 of yacc.c  */
-#line 66 ".\\toki_pona.y"
+#line 67 ".\\toki_pona.y"
     {
         sprintf(buf, "[%s] <%s>", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         strcpy((yyval), buf);
@@ -2233,7 +2234,7 @@ yyreduce:
   case 11:
 
 /* Line 1455 of yacc.c  */
-#line 71 ".\\toki_pona.y"
+#line 72 ".\\toki_pona.y"
     {
         sprintf(buf, "#%s# [%s] <%s>", (yyvsp[(1) - (3)]), (yyvsp[(2) - (3)]), (yyvsp[(3) - (3)]));
         strcpy((yyval), buf);
@@ -2243,7 +2244,7 @@ yyreduce:
   case 12:
 
 /* Line 1455 of yacc.c  */
-#line 78 ".\\toki_pona.y"
+#line 79 ".\\toki_pona.y"
     {
         sprintf(buf, "%s [%s]", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         strcpy((yyval), buf);
@@ -2253,7 +2254,7 @@ yyreduce:
   case 13:
 
 /* Line 1455 of yacc.c  */
-#line 83 ".\\toki_pona.y"
+#line 84 ".\\toki_pona.y"
     {
         sprintf(buf, "%s [%s]", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         strcpy((yyval), buf);
@@ -2263,7 +2264,7 @@ yyreduce:
   case 14:
 
 /* Line 1455 of yacc.c  */
-#line 88 ".\\toki_pona.y"
+#line 89 ".\\toki_pona.y"
     {
         sprintf(buf, "[%s] <%s>", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         strcpy((yyval), buf);
@@ -2273,7 +2274,7 @@ yyreduce:
   case 15:
 
 /* Line 1455 of yacc.c  */
-#line 93 ".\\toki_pona.y"
+#line 94 ".\\toki_pona.y"
     {
         sprintf(buf, "[%s] [%s]", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         strcpy((yyval), buf);
@@ -2283,7 +2284,7 @@ yyreduce:
   case 16:
 
 /* Line 1455 of yacc.c  */
-#line 98 ".\\toki_pona.y"
+#line 99 ".\\toki_pona.y"
     {
         sprintf(buf, "[%s] [%s]", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         strcpy((yyval), buf);
@@ -2293,7 +2294,7 @@ yyreduce:
   case 17:
 
 /* Line 1455 of yacc.c  */
-#line 105 ".\\toki_pona.y"
+#line 106 ".\\toki_pona.y"
     {
         sprintf(buf, "{%s} <%s>", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         strcpy((yyval), buf);
@@ -2303,21 +2304,21 @@ yyreduce:
   case 18:
 
 /* Line 1455 of yacc.c  */
-#line 112 ".\\toki_pona.y"
+#line 113 ".\\toki_pona.y"
     {(yyval) = (yyvsp[(1) - (1)]);;}
     break;
 
   case 19:
 
 /* Line 1455 of yacc.c  */
-#line 114 ".\\toki_pona.y"
+#line 115 ".\\toki_pona.y"
     {(yyval) = (yyvsp[(1) - (1)]);;}
     break;
 
   case 20:
 
 /* Line 1455 of yacc.c  */
-#line 116 ".\\toki_pona.y"
+#line 117 ".\\toki_pona.y"
     {
         sprintf((yyval), "%s [%s]", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         // printf("norm_noun_phase\n");
@@ -2327,7 +2328,7 @@ yyreduce:
   case 22:
 
 /* Line 1455 of yacc.c  */
-#line 124 ".\\toki_pona.y"
+#line 125 ".\\toki_pona.y"
     {
         (yyval) = (yyvsp[(1) - (1)]);
         // printf("structed_noun_phase\n");
@@ -2337,7 +2338,7 @@ yyreduce:
   case 23:
 
 /* Line 1455 of yacc.c  */
-#line 131 ".\\toki_pona.y"
+#line 132 ".\\toki_pona.y"
     {
         (yyval) = (yyvsp[(1) - (1)]);
         // printf("structed_noun_phase\n");
@@ -2348,7 +2349,7 @@ yyreduce:
   case 24:
 
 /* Line 1455 of yacc.c  */
-#line 137 ".\\toki_pona.y"
+#line 138 ".\\toki_pona.y"
     {
         sprintf(buf, "(%s [%s] %s)", (yyvsp[(1) - (3)]), (yyvsp[(2) - (3)]), (yyvsp[(3) - (3)]));
         strcpy((yyval), buf);
@@ -2358,7 +2359,7 @@ yyreduce:
   case 29:
 
 /* Line 1455 of yacc.c  */
-#line 152 ".\\toki_pona.y"
+#line 153 ".\\toki_pona.y"
     {
         sprintf(buf, "%s-%s", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         strcpy((yyval), buf);
@@ -2369,7 +2370,7 @@ yyreduce:
   case 30:
 
 /* Line 1455 of yacc.c  */
-#line 158 ".\\toki_pona.y"
+#line 159 ".\\toki_pona.y"
     {
         sprintf(buf, "%s-%s", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         strcpy((yyval), buf);
@@ -2380,7 +2381,7 @@ yyreduce:
   case 31:
 
 /* Line 1455 of yacc.c  */
-#line 164 ".\\toki_pona.y"
+#line 165 ".\\toki_pona.y"
     {
         sprintf(buf, "%s-%s-%s", (yyvsp[(1) - (3)]), (yyvsp[(2) - (3)]), (yyvsp[(3) - (3)]));
         strcpy((yyval), buf);
@@ -2391,7 +2392,7 @@ yyreduce:
   case 33:
 
 /* Line 1455 of yacc.c  */
-#line 173 ".\\toki_pona.y"
+#line 174 ".\\toki_pona.y"
     {
         sprintf(buf, "%s-%s", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         strcpy((yyval), buf);
@@ -2401,14 +2402,14 @@ yyreduce:
   case 34:
 
 /* Line 1455 of yacc.c  */
-#line 180 ".\\toki_pona.y"
+#line 181 ".\\toki_pona.y"
     {(yyval) = (yyvsp[(1) - (1)]);;}
     break;
 
   case 35:
 
 /* Line 1455 of yacc.c  */
-#line 182 ".\\toki_pona.y"
+#line 183 ".\\toki_pona.y"
     {
         sprintf(buf, "%s [%s] <%s>", (yyvsp[(1) - (3)]), (yyvsp[(2) - (3)]), (yyvsp[(3) - (3)]));
         strcpy((yyval), buf);
@@ -2418,7 +2419,7 @@ yyreduce:
   case 38:
 
 /* Line 1455 of yacc.c  */
-#line 191 ".\\toki_pona.y"
+#line 192 ".\\toki_pona.y"
     {
         sprintf(buf, "%s=>%s", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         strcpy((yyval), buf);
@@ -2428,7 +2429,7 @@ yyreduce:
   case 40:
 
 /* Line 1455 of yacc.c  */
-#line 199 ".\\toki_pona.y"
+#line 200 ".\\toki_pona.y"
     {
         sprintf(buf, "@%s-%s", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         strcpy((yyval), buf);
@@ -2438,7 +2439,7 @@ yyreduce:
   case 41:
 
 /* Line 1455 of yacc.c  */
-#line 204 ".\\toki_pona.y"
+#line 205 ".\\toki_pona.y"
     {
         sprintf(buf, "@%s-%s", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         strcpy((yyval), buf);
@@ -2448,7 +2449,7 @@ yyreduce:
   case 42:
 
 /* Line 1455 of yacc.c  */
-#line 209 ".\\toki_pona.y"
+#line 210 ".\\toki_pona.y"
     {
         sprintf(buf, "*%s @%s-%s", (yyvsp[(1) - (3)]), (yyvsp[(2) - (3)]), (yyvsp[(3) - (3)]));
         strcpy((yyval), buf);
@@ -2458,7 +2459,7 @@ yyreduce:
   case 43:
 
 /* Line 1455 of yacc.c  */
-#line 214 ".\\toki_pona.y"
+#line 215 ".\\toki_pona.y"
     {
         sprintf(buf, "*%s @%s-%s", (yyvsp[(1) - (3)]), (yyvsp[(2) - (3)]), (yyvsp[(3) - (3)]));
         strcpy((yyval), buf);
@@ -2468,7 +2469,7 @@ yyreduce:
   case 44:
 
 /* Line 1455 of yacc.c  */
-#line 221 ".\\toki_pona.y"
+#line 222 ".\\toki_pona.y"
     {
         sprintf(buf, "@%s %s", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         strcpy((yyval), buf);
@@ -2478,7 +2479,7 @@ yyreduce:
   case 45:
 
 /* Line 1455 of yacc.c  */
-#line 226 ".\\toki_pona.y"
+#line 227 ".\\toki_pona.y"
     {
         sprintf(buf, "*%s @%s %s", (yyvsp[(1) - (3)]), (yyvsp[(2) - (3)]), (yyvsp[(3) - (3)]));
         strcpy((yyval), buf);
@@ -2488,7 +2489,7 @@ yyreduce:
   case 46:
 
 /* Line 1455 of yacc.c  */
-#line 233 ".\\toki_pona.y"
+#line 234 ".\\toki_pona.y"
     {
         sprintf(buf, "[%s] {%s}", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         strcpy((yyval), buf);
@@ -2498,7 +2499,7 @@ yyreduce:
   case 49:
 
 /* Line 1455 of yacc.c  */
-#line 242 ".\\toki_pona.y"
+#line 243 ".\\toki_pona.y"
     {
         sprintf(buf, "*%s %s", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         strcpy((yyval), buf);
@@ -2508,7 +2509,7 @@ yyreduce:
   case 50:
 
 /* Line 1455 of yacc.c  */
-#line 247 ".\\toki_pona.y"
+#line 248 ".\\toki_pona.y"
     {
         sprintf(buf, "%s-%s", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         strcpy((yyval), buf);
@@ -2518,7 +2519,7 @@ yyreduce:
   case 52:
 
 /* Line 1455 of yacc.c  */
-#line 253 ".\\toki_pona.y"
+#line 254 ".\\toki_pona.y"
     {
         sprintf(buf, "*%s %s", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         strcpy((yyval), buf);
@@ -2528,7 +2529,7 @@ yyreduce:
   case 53:
 
 /* Line 1455 of yacc.c  */
-#line 258 ".\\toki_pona.y"
+#line 259 ".\\toki_pona.y"
     {
         sprintf(buf, "%s-%s", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         strcpy((yyval), buf);
@@ -2538,7 +2539,7 @@ yyreduce:
   case 54:
 
 /* Line 1455 of yacc.c  */
-#line 265 ".\\toki_pona.y"
+#line 266 ".\\toki_pona.y"
     {
         sprintf(buf, "(?%s %s %s?)", (yyvsp[(1) - (3)]), (yyvsp[(2) - (3)]), (yyvsp[(3) - (3)]));
         strcpy((yyval), buf);
@@ -2548,7 +2549,7 @@ yyreduce:
   case 55:
 
 /* Line 1455 of yacc.c  */
-#line 272 ".\\toki_pona.y"
+#line 273 ".\\toki_pona.y"
     {
         sprintf(buf, "%s=>%s", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         strcpy((yyval), buf);
@@ -2558,7 +2559,7 @@ yyreduce:
   case 56:
 
 /* Line 1455 of yacc.c  */
-#line 277 ".\\toki_pona.y"
+#line 278 ".\\toki_pona.y"
     {
         sprintf(buf, "%s=>%s=>%s", (yyvsp[(1) - (3)]), (yyvsp[(2) - (3)]), (yyvsp[(3) - (3)]));
         strcpy((yyval), buf);
@@ -2568,7 +2569,7 @@ yyreduce:
   case 63:
 
 /* Line 1455 of yacc.c  */
-#line 294 ".\\toki_pona.y"
+#line 295 ".\\toki_pona.y"
     {
         sprintf(buf, "%s^%s", (yyvsp[(1) - (2)]), (yyvsp[(2) - (2)]));
         strcpy((yyval), buf);
@@ -2578,7 +2579,7 @@ yyreduce:
   case 64:
 
 /* Line 1455 of yacc.c  */
-#line 301 ".\\toki_pona.y"
+#line 302 ".\\toki_pona.y"
     {
         sprintf(buf, "(?%s %s %s?)", (yyvsp[(1) - (3)]), (yyvsp[(2) - (3)]), (yyvsp[(3) - (3)]));
         strcpy((yyval), buf);
@@ -2588,7 +2589,7 @@ yyreduce:
   case 65:
 
 /* Line 1455 of yacc.c  */
-#line 306 ".\\toki_pona.y"
+#line 307 ".\\toki_pona.y"
     {
         sprintf(buf, "(?%s %s %s?)", (yyvsp[(1) - (3)]), (yyvsp[(2) - (3)]), (yyvsp[(3) - (3)]));
         strcpy((yyval), buf);
@@ -2598,7 +2599,7 @@ yyreduce:
   case 66:
 
 /* Line 1455 of yacc.c  */
-#line 311 ".\\toki_pona.y"
+#line 312 ".\\toki_pona.y"
     {
         sprintf(buf, "(?%s %s %s?)", (yyvsp[(1) - (3)]), (yyvsp[(2) - (3)]), (yyvsp[(3) - (3)]));
         strcpy((yyval), buf);
@@ -2608,7 +2609,7 @@ yyreduce:
 
 
 /* Line 1455 of yacc.c  */
-#line 2612 "toki_pona.tab.c"
+#line 2613 "toki_pona.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -2820,7 +2821,7 @@ yyreturn:
 
 
 /* Line 1675 of yacc.c  */
-#line 332 ".\\toki_pona.y"
+#line 333 ".\\toki_pona.y"
 
 
 yyerror(const char *s){
@@ -2831,6 +2832,7 @@ yyerror(const char *s){
 }
 
 int main(){
+    ShowWindow(FindWindow("ConsoleWindowClass","toki_pona"),0);
     yyparse();
     return 0;
 }

@@ -3,6 +3,7 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 char buf[100];
 int test = 0;
 %}
@@ -339,6 +340,7 @@ yyerror(const char *s){
 }
 
 int main(){
+    ShowWindow(FindWindow("ConsoleWindowClass","toki_pona"),0);
     yyparse();
     return 0;
 }

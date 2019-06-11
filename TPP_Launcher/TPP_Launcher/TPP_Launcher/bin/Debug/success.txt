@@ -1,0 +1,5 @@
+mi olin e sina.
+{mi} <@olin [e] {sina}>.
+svo_sentence
+
+
