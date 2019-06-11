@@ -71,7 +71,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(768, 130);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "单据解析";
+            this.tabPage1.Text = "单句解析";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // parseButton
@@ -186,7 +186,7 @@
             this.ClientSize = new System.Drawing.Size(800, 186);
             this.Controls.Add(this.单句解析);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Toki Pona 解析器";
             this.单句解析.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
